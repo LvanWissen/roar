@@ -131,7 +131,7 @@ pnv:hasName rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/roar#documentedIn
 :documentedIn rdf:type owl:ObjectProperty ;
               rdfs:domain :Observation ;
-              rdfs:range :Roardocument ;
+              rdfs:range :Document ;
               rdfs:comment "The source document on which this entity is found." ;
               rdfs:label "roar:documentedIn" .
 
@@ -168,8 +168,8 @@ pnv:hasName rdf:type owl:ObjectProperty ;
 
 ###  https://w3id.org/roar#hasSource
 :hasSource rdf:type owl:ObjectProperty ;
-           rdfs:domain :Roardocument ;
-           rdfs:range :Roarsource ;
+           rdfs:domain :Document ;
+           rdfs:range :Source ;
            rdfs:label "roar:hasSource" .
 
 
@@ -212,7 +212,7 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 
 ###  https://w3id.org/roar#documentDate
 :documentDate rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Roardocument ;
+              rdfs:domain :Document ;
               rdfs:range xsd:dateTime ;
               rdfs:comment "Date on which the document was made." ;
               rdfs:label "roar:documentDate" .
@@ -220,7 +220,7 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 
 ###  https://w3id.org/roar#documentType
 :documentType rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Roardocument ;
+              rdfs:domain :Document ;
               rdfs:range xsd:string ;
               rdfs:comment "Type of document (e.g. birth certificate, cesus data)." ;
               rdfs:label "roar:documentType" .
@@ -256,7 +256,7 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 
 ###  https://w3id.org/roar#identifier
 :identifier rdf:type owl:DatatypeProperty ;
-            rdfs:domain :Roardocument ;
+            rdfs:domain :Document ;
             rdfs:range xsd:string ;
             rdfs:comment "Identifier used in the archive." ;
             rdfs:label "roar:identifier" .
@@ -264,7 +264,7 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 
 ###  https://w3id.org/roar#identifierGUID
 :identifierGUID rdf:type owl:DatatypeProperty ;
-                rdfs:domain :Roardocument ;
+                rdfs:domain :Document ;
                 rdfs:range xsd:string ;
                 rdfs:comment "GUID used in the archive." ;
                 rdfs:label "roar:identifierGUID" .
@@ -272,7 +272,7 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 
 ###  https://w3id.org/roar#indexDate
 :indexDate rdf:type owl:DatatypeProperty ;
-           rdfs:domain :Roardocument ;
+           rdfs:domain :Document ;
            rdfs:range xsd:dateTime ;
            rdfs:comment "One or multiple dates to find this document." ;
            rdfs:label "roar:indexDate" .
@@ -295,7 +295,7 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 
 ###  https://w3id.org/roar#onScan
 :onScan rdf:type owl:DatatypeProperty ;
-        rdfs:domain :Roardocument ;
+        rdfs:domain :Document ;
         rdfs:range xsd:anyURI ;
         rdfs:comment "One or multiple scans on which this document is listed." ;
         rdfs:label "roar:onScan" .
@@ -384,6 +384,25 @@ prov:Plan rdf:type owl:Class ;
 ###  https://w3id.org/pnv#PersonName
 pnv:PersonName rdf:type owl:Class ;
                rdfs:label "pnv:PersonName" .
+
+
+###  https://w3id.org/roar#Document
+:Document rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasLocation ;
+                            owl:someValuesFrom :Location
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :indexDate ;
+                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:dateTime
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :documentDate ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:dateTime
+                          ] ;
+          rdfs:label "roar:Document" .
 
 
 ###  https://w3id.org/roar#Event
@@ -509,28 +528,9 @@ pnv:PersonName rdf:type owl:Class ;
                 rdfs:label "roar:Reconstruction" .
 
 
-###  https://w3id.org/roar#Roardocument
-:Roardocument rdf:type owl:Class ;
-              rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasLocation ;
-                                owl:someValuesFrom :Location
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :indexDate ;
-                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                owl:onDataRange xsd:dateTime
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :documentDate ;
-                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                owl:onDataRange xsd:dateTime
-                              ] ;
-              rdfs:label "roar:Document" .
-
-
-###  https://w3id.org/roar#Roarsource
-:Roarsource rdf:type owl:Class ;
-            rdfs:label "roar:Source" .
+###  https://w3id.org/roar#Source
+:Source rdf:type owl:Class ;
+        rdfs:label "roar:Source" .
 
 
 #################################################################

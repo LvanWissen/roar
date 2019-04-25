@@ -206,7 +206,7 @@
 
     <owl:ObjectProperty rdf:about="https://w3id.org/roar#documentedIn">
         <rdfs:domain rdf:resource="https://w3id.org/roar#Observation"/>
-        <rdfs:range rdf:resource="https://w3id.org/roar#Roardocument"/>
+        <rdfs:range rdf:resource="https://w3id.org/roar#Document"/>
         <rdfs:comment>The source document on which this entity is found.</rdfs:comment>
         <rdfs:label>roar:documentedIn</rdfs:label>
     </owl:ObjectProperty>
@@ -266,8 +266,8 @@
 
 
     <owl:ObjectProperty rdf:about="https://w3id.org/roar#hasSource">
-        <rdfs:domain rdf:resource="https://w3id.org/roar#Roardocument"/>
-        <rdfs:range rdf:resource="https://w3id.org/roar#Roarsource"/>
+        <rdfs:domain rdf:resource="https://w3id.org/roar#Document"/>
+        <rdfs:range rdf:resource="https://w3id.org/roar#Source"/>
         <rdfs:label>roar:hasSource</rdfs:label>
     </owl:ObjectProperty>
     
@@ -342,7 +342,7 @@
 
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/roar#documentDate">
-        <rdfs:domain rdf:resource="https://w3id.org/roar#Roardocument"/>
+        <rdfs:domain rdf:resource="https://w3id.org/roar#Document"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
         <rdfs:comment>Date on which the document was made.</rdfs:comment>
         <rdfs:label>roar:documentDate</rdfs:label>
@@ -354,7 +354,7 @@
 
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/roar#documentType">
-        <rdfs:domain rdf:resource="https://w3id.org/roar#Roardocument"/>
+        <rdfs:domain rdf:resource="https://w3id.org/roar#Document"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment>Type of document (e.g. birth certificate, cesus data).</rdfs:comment>
         <rdfs:label>roar:documentType</rdfs:label>
@@ -410,7 +410,7 @@
 
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/roar#identifier">
-        <rdfs:domain rdf:resource="https://w3id.org/roar#Roardocument"/>
+        <rdfs:domain rdf:resource="https://w3id.org/roar#Document"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment>Identifier used in the archive.</rdfs:comment>
         <rdfs:label>roar:identifier</rdfs:label>
@@ -422,7 +422,7 @@
 
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/roar#identifierGUID">
-        <rdfs:domain rdf:resource="https://w3id.org/roar#Roardocument"/>
+        <rdfs:domain rdf:resource="https://w3id.org/roar#Document"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment>GUID used in the archive.</rdfs:comment>
         <rdfs:label>roar:identifierGUID</rdfs:label>
@@ -434,7 +434,7 @@
 
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/roar#indexDate">
-        <rdfs:domain rdf:resource="https://w3id.org/roar#Roardocument"/>
+        <rdfs:domain rdf:resource="https://w3id.org/roar#Document"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
         <rdfs:comment>One or multiple dates to find this document.</rdfs:comment>
         <rdfs:label>roar:indexDate</rdfs:label>
@@ -469,7 +469,7 @@
 
 
     <owl:DatatypeProperty rdf:about="https://w3id.org/roar#onScan">
-        <rdfs:domain rdf:resource="https://w3id.org/roar#Roardocument"/>
+        <rdfs:domain rdf:resource="https://w3id.org/roar#Document"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
         <rdfs:comment>One or multiple scans on which this document is listed.</rdfs:comment>
         <rdfs:label>roar:onScan</rdfs:label>
@@ -626,6 +626,35 @@
 
     <owl:Class rdf:about="https://w3id.org/pnv#PersonName">
         <rdfs:label>pnv:PersonName</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/roar#Document -->
+
+
+    <owl:Class rdf:about="https://w3id.org/roar#Document">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/roar#hasLocation"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/roar#Location"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/roar#indexDate"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/roar#documentDate"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>roar:Document</rdfs:label>
     </owl:Class>
     
 
@@ -821,39 +850,10 @@
     
 
 
-    <!-- https://w3id.org/roar#Roardocument -->
+    <!-- https://w3id.org/roar#Source -->
 
 
-    <owl:Class rdf:about="https://w3id.org/roar#Roardocument">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/roar#hasLocation"/>
-                <owl:someValuesFrom rdf:resource="https://w3id.org/roar#Location"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/roar#indexDate"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://w3id.org/roar#documentDate"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label>roar:Document</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- https://w3id.org/roar#Roarsource -->
-
-
-    <owl:Class rdf:about="https://w3id.org/roar#Roarsource">
+    <owl:Class rdf:about="https://w3id.org/roar#Source">
         <rdfs:label>roar:Source</rdfs:label>
     </owl:Class>
     
