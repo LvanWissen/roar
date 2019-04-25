@@ -1,0 +1,548 @@
+@prefix : <https://w3id.org/roar#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix bio: <http://purl.org/vocab/bio/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pnv: <https://w3id.org/pnv#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/spec/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix roar: <https://w3id.org/roar##> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@base <https://w3id.org/roar#> .
+
+<https://w3id.org/roar#> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/vocab/bio/0.1/event
+bio:event rdf:type owl:ObjectProperty ;
+          rdfs:domain :Person ;
+          rdfs:range bio:Event ;
+          rdfs:comment "Use the more specific properties and classes from Bio (e.g. Birth, Baptism, Death) when applicable. The value might be the event that was observed (roar:EventObservation)." ;
+          rdfs:label "bio:event" .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#value
+rdf:value rdf:type owl:ObjectProperty ;
+          rdfs:domain <_:WithRole> ;
+          rdfs:range [ rdf:type owl:Class ;
+                       owl:unionOf ( :Event
+                                     :Location
+                                     :Person
+                                   )
+                     ] ;
+          rdfs:label "rdf:value" .
+
+
+###  http://www.w3.org/2002/07/owl#disjointWith
+owl:disjointWith rdf:type owl:ObjectProperty ;
+                 rdfs:label "owl:disjointWith" .
+
+
+###  http://www.w3.org/2002/07/owl#equivalentClass
+owl:equivalentClass rdf:type owl:ObjectProperty ;
+                    rdfs:label "owl:equivalentClass" .
+
+
+###  http://www.w3.org/ns/prov#activity
+prov:activity rdf:type owl:ObjectProperty ;
+              rdfs:domain prov:Generation ;
+              rdfs:range prov:Activity ;
+              rdfs:label "prov:activity" .
+
+
+###  http://www.w3.org/ns/prov#agent
+prov:agent rdf:type owl:ObjectProperty ;
+           rdfs:domain prov:Association ;
+           rdfs:range prov:Agent ;
+           rdfs:label "prov:agent" .
+
+
+###  http://www.w3.org/ns/prov#entity
+prov:entity rdf:type owl:ObjectProperty ;
+            rdfs:domain prov:Derivation ;
+            rdfs:range :Observation ;
+            rdfs:label "prov:entity" .
+
+
+###  http://www.w3.org/ns/prov#hadActivity
+prov:hadActivity rdf:type owl:ObjectProperty ;
+                 rdfs:domain prov:Derivation ;
+                 rdfs:range prov:Activity ;
+                 rdfs:label "prov:hadActivity" .
+
+
+###  http://www.w3.org/ns/prov#hadGeneration
+prov:hadGeneration rdf:type owl:ObjectProperty ;
+                   rdfs:domain prov:Derivation ;
+                   rdfs:range prov:Generation ;
+                   rdfs:label "prov:hadGeneration" .
+
+
+###  http://www.w3.org/ns/prov#hadPlan
+prov:hadPlan rdf:type owl:ObjectProperty ;
+             rdfs:domain prov:Association ;
+             rdfs:range prov:Plan ;
+             rdfs:label "prov:hadPlan" .
+
+
+###  http://www.w3.org/ns/prov#qualifiedAssociation
+prov:qualifiedAssociation rdf:type owl:ObjectProperty ;
+                          rdfs:domain prov:Activity ;
+                          rdfs:range prov:Association ;
+                          rdfs:label "prov:qualifiedAssociation" .
+
+
+###  http://www.w3.org/ns/prov#qualifiedDerivation
+prov:qualifiedDerivation rdf:type owl:ObjectProperty ;
+                         rdfs:domain :Reconstruction ;
+                         rdfs:range prov:Derivation ;
+                         rdfs:label "prov:qualifiedDerivation" .
+
+
+###  http://www.w3.org/ns/prov#wasAssociatedWith
+prov:wasAssociatedWith rdf:type owl:ObjectProperty ;
+                       rdfs:domain prov:Activity ;
+                       rdfs:range prov:Agent ;
+                       rdfs:label "prov:wasAssociatedWith" .
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+prov:wasDerivedFrom rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Reconstruction ;
+                    rdfs:range :Observation ;
+                    rdfs:label "prov:wasDerivedFrom" .
+
+
+###  https://w3id.org/pnv#hasName
+pnv:hasName rdf:type owl:ObjectProperty ;
+            rdfs:domain :Person ;
+            rdfs:range pnv:PersonName ;
+            rdfs:label "pnv:hasName" .
+
+
+###  https://w3id.org/roar#documentedIn
+:documentedIn rdf:type owl:ObjectProperty ;
+              rdfs:domain :Observation ;
+              rdfs:range :Roardocument ;
+              rdfs:comment "The source document on which this entity is found." ;
+              rdfs:label "roar:documentedIn" .
+
+
+###  https://w3id.org/roar#hasEvent
+:hasEvent rdf:type owl:ObjectProperty ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( :Location
+                                      :Person
+                                    )
+                      ] ;
+          rdfs:range <_:WithRole> ;
+          rdfs:label "roar:hasEvent" .
+
+
+###  https://w3id.org/roar#hasLocation
+:hasLocation rdf:type owl:ObjectProperty ;
+             rdfs:label "roar:hasLocation" .
+
+
+###  https://w3id.org/roar#hasOerson
+:hasOerson rdf:type owl:ObjectProperty ;
+           rdfs:domain :Location ;
+           rdfs:range <_:WithRole> ;
+           rdfs:label "roar:hasPerson" .
+
+
+###  https://w3id.org/roar#hasPerson
+:hasPerson rdf:type owl:ObjectProperty ;
+           rdfs:domain :Event ;
+           rdfs:range <_:WithRole> ;
+           rdfs:label "roar:hasPerson" .
+
+
+###  https://w3id.org/roar#hasSource
+:hasSource rdf:type owl:ObjectProperty ;
+           rdfs:domain :Roardocument ;
+           rdfs:range :Roarsource ;
+           rdfs:label "roar:hasSource" .
+
+
+###  https://w3id.org/roar#observedInEvent
+:observedInEvent rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Observation ;
+                 rdfs:range :Observationevent ;
+                 rdfs:label "roar:observedInEvent" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://semanticweb.cs.vu.nl/2009/11/sem/hasTimeStamp
+sem:hasTimeStamp rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Event ;
+                 rdfs:comment "A2A:EventDate" ;
+                 rdfs:label "sem:hasTimeStamp" .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#comment
+rdfs:comment rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Person .
+
+
+###  http://www.w3.org/ns/prov#atTime
+prov:atTime rdf:type owl:DatatypeProperty ;
+            rdfs:domain prov:Generation ;
+            rdfs:range xsd:dateTime ;
+            rdfs:label "atTime" .
+
+
+###  http://www.w3.org/ns/prov#startedAtTime
+prov:startedAtTime rdf:type owl:DatatypeProperty ;
+                   rdfs:domain prov:Activity ;
+                   rdfs:range xsd:dateTime ;
+                   rdfs:label "startedAtTime" .
+
+
+###  https://w3id.org/roar#documentDate
+:documentDate rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Roardocument ;
+              rdfs:range xsd:dateTime ;
+              rdfs:comment "Date on which the document was made." ;
+              rdfs:label "roar:documentDate" .
+
+
+###  https://w3id.org/roar#documentType
+:documentType rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Roardocument ;
+              rdfs:range xsd:string ;
+              rdfs:comment "Type of document (e.g. birth certificate, cesus data)." ;
+              rdfs:label "roar:documentType" .
+
+
+###  https://w3id.org/roar#eventtype
+:eventtype rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Event ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Type of event. E.g. burial, marriage, baptism" ;
+           rdfs:label "eventType" .
+
+
+###  https://w3id.org/roar#gender
+:gender rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Person ;
+        rdfs:range xsd:string ;
+        rdfs:label "roar:gender" .
+
+
+###  https://w3id.org/roar#hasOccupation
+:hasOccupation rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Person ;
+               rdfs:label "roar:hasOccupation" .
+
+
+###  https://w3id.org/roar#hasRole
+:hasRole rdf:type owl:DatatypeProperty ;
+         rdfs:domain <_:WithRole> ;
+         rdfs:range xsd:string ;
+         rdfs:label "roar:hasRole" .
+
+
+###  https://w3id.org/roar#identifier
+:identifier rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Roardocument ;
+            rdfs:range xsd:string ;
+            rdfs:comment "Identifier used in the archive." ;
+            rdfs:label "roar:identifier" .
+
+
+###  https://w3id.org/roar#identifierGUID
+:identifierGUID rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Roardocument ;
+                rdfs:range xsd:string ;
+                rdfs:comment "GUID used in the archive." ;
+                rdfs:label "roar:identifierGUID" .
+
+
+###  https://w3id.org/roar#indexDate
+:indexDate rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Roardocument ;
+           rdfs:range xsd:dateTime ;
+           rdfs:comment "One or multiple dates to find this document." ;
+           rdfs:label "roar:indexDate" .
+
+
+###  https://w3id.org/roar#maritalStatus
+:maritalStatus rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Person ;
+               rdfs:comment "The marital status of a person." ;
+               rdfs:label "roar:maritalStatus" .
+
+
+###  https://w3id.org/roar#observationType
+:observationType rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Observation ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Can be used if the observation does not match roar:EventObservation, roar:PersonObservation or roar:LocationObservation." ;
+                 rdfs:label "roar:observationType" .
+
+
+###  https://w3id.org/roar#onScan
+:onScan rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Roardocument ;
+        rdfs:range xsd:anyURI ;
+        rdfs:comment "One or multiple scans on which this document is listed." ;
+        rdfs:label "roar:onScan" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  _:WithRole
+<_:WithRole> rdf:type owl:Class ;
+             rdfs:label "_:WithRole" .
+
+
+###  http://purl.org/vocab/bio/0.1/Event
+bio:Event rdf:type owl:Class ;
+          rdfs:label "bio:Event" .
+
+
+###  http://schema.org/Person
+schema:Person rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty owl:equivalentClass ;
+                                owl:someValuesFrom :Person
+                              ] ;
+              rdfs:label "schema:Person" .
+
+
+###  http://schema.org/Place
+schema:Place rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty owl:equivalentClass ;
+                               owl:someValuesFrom :Location
+                             ] ;
+             rdfs:label "schema:Place" .
+
+
+###  http://semanticweb.cs.vu.nl/2009/11/sem/Event
+sem:Event rdf:type owl:Class ;
+          rdfs:label "sem:Event" .
+
+
+###  http://www.w3.org/ns/prov#Activity
+prov:Activity rdf:type owl:Class ;
+              rdfs:label "prov:Activity" .
+
+
+###  http://www.w3.org/ns/prov#Agent
+prov:Agent rdf:type owl:Class ;
+           rdfs:label "prov:Agent" .
+
+
+###  http://www.w3.org/ns/prov#Association
+prov:Association rdf:type owl:Class ;
+                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty rdfs:comment ;
+                                   owl:someValuesFrom xsd:string
+                                 ] ;
+                 rdfs:label "prov:Association" .
+
+
+###  http://www.w3.org/ns/prov#Derivation
+prov:Derivation rdf:type owl:Class ;
+                rdfs:label "prov:Derivation" .
+
+
+###  http://www.w3.org/ns/prov#Entity
+prov:Entity rdf:type owl:Class ;
+            rdfs:label "prov:Entity" .
+
+
+###  http://www.w3.org/ns/prov#Generation
+prov:Generation rdf:type owl:Class ;
+                rdfs:label "prov:Generation" .
+
+
+###  http://www.w3.org/ns/prov#Plan
+prov:Plan rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty rdfs:comment ;
+                            owl:someValuesFrom xsd:string
+                          ] ;
+          rdfs:label "prov:Plan" .
+
+
+###  https://w3id.org/pnv#PersonName
+pnv:PersonName rdf:type owl:Class ;
+               rdfs:label "pnv:PersonName" .
+
+
+###  https://w3id.org/roar#Event
+:Event rdf:type owl:Class ;
+       rdfs:subClassOf sem:Event ,
+                       prov:Entity ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasLocation ;
+                         owl:someValuesFrom <_:WithRole>
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty rdfs:comment ;
+                         owl:someValuesFrom xsd:string
+                       ] ;
+       rdfs:label "roar:Event" .
+
+
+###  https://w3id.org/roar#EventObservation
+:EventObservation rdf:type owl:Class ;
+                  rdfs:subClassOf :Event ,
+                                  :Observation ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty owl:disjointWith ;
+                                    owl:someValuesFrom :LocationObservation
+                                  ] ;
+                  rdfs:label "roar:EventObservation" .
+
+
+###  https://w3id.org/roar#EventReconstruction
+:EventReconstruction rdf:type owl:Class ;
+                     rdfs:subClassOf :Event ,
+                                     :Reconstruction ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty owl:disjointWith ;
+                                       owl:someValuesFrom :LocationReconstruction
+                                     ] ;
+                     rdfs:label "roar:EventReconstruction" .
+
+
+###  https://w3id.org/roar#Location
+:Location rdf:type owl:Class ;
+          rdfs:subClassOf prov:Entity ;
+          rdfs:label "roar:Location" .
+
+
+###  https://w3id.org/roar#LocationObservation
+:LocationObservation rdf:type owl:Class ;
+                     rdfs:subClassOf :Location ,
+                                     :Observation ;
+                     rdfs:label "roar:LocationObservation" .
+
+
+###  https://w3id.org/roar#LocationReconstruction
+:LocationReconstruction rdf:type owl:Class ;
+                        rdfs:subClassOf :Location ,
+                                        :Reconstruction ;
+                        rdfs:label "roar:LocationReconstruction" .
+
+
+###  https://w3id.org/roar#Observation
+:Observation rdf:type owl:Class ;
+             rdfs:subClassOf prov:Entity ;
+             rdfs:comment "An attestation (e.g. a written name or description) of an entity that is present in a single source." ;
+             rdfs:label "roar:Observation" .
+
+
+###  https://w3id.org/roar#Observationevent
+:Observationevent rdf:type owl:Class ;
+                  rdfs:subClassOf :Event ;
+                  rdfs:comment "The event in which the observation was made. E.g. a census event, or the transport of property." ;
+                  rdfs:label "roar:ObservationEvent" .
+
+
+###  https://w3id.org/roar#Person
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf prov:Entity ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasLocation ;
+                          owl:someValuesFrom <_:WithRole>
+                        ] ;
+        rdfs:label "roar:Person" .
+
+
+###  https://w3id.org/roar#PersonObservation
+:PersonObservation rdf:type owl:Class ;
+                   rdfs:subClassOf :Observation ,
+                                   :Person ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty owl:disjointWith ;
+                                     owl:someValuesFrom :EventObservation
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty owl:disjointWith ;
+                                     owl:someValuesFrom :LocationObservation
+                                   ] ;
+                   rdfs:label "roar:PersonObservation" .
+
+
+###  https://w3id.org/roar#PersonReconstruction
+:PersonReconstruction rdf:type owl:Class ;
+                      rdfs:subClassOf :Person ,
+                                      :Reconstruction ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty owl:disjointWith ;
+                                        owl:someValuesFrom :EventReconstruction
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty owl:disjointWith ;
+                                        owl:someValuesFrom :LocationReconstruction
+                                      ] ;
+                      rdfs:label "roar:PersonReconstruction" .
+
+
+###  https://w3id.org/roar#Reconstruction
+:Reconstruction rdf:type owl:Class ;
+                rdfs:subClassOf prov:Entity ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty prov:wasDerivedFrom ;
+                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Observation
+                                ] ;
+                rdfs:comment "A verified attestation (could be the result of an algorithm) of an entity, based on one or multiple Observations." ;
+                rdfs:label "roar:Reconstruction" .
+
+
+###  https://w3id.org/roar#Roardocument
+:Roardocument rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasLocation ;
+                                owl:someValuesFrom :Location
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :indexDate ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:dateTime
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :documentDate ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:dateTime
+                              ] ;
+              rdfs:label "roar:Document" .
+
+
+###  https://w3id.org/roar#Roarsource
+:Roarsource rdf:type owl:Class ;
+            rdfs:label "roar:Source" .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+rdfs:comment rdfs:comment "Additional comments on this person can be added here." ;
+             rdfs:label "rdfs:comment" .
+
+
+<https://w3id.org/roar#> rdfs:comment "Ontology to account for multiple Person/Location/Event etc. observations in archival resources, with the possibility to express a (corrected) Reconstruction of these entities, based on one or several observations. A2A can be mapped to this quite easily." ;
+                         rdfs:label "Reconstructions and Observations in Archival Resources" .
+
+
+###  Generated by the OWL API (version 5.1.6) https://github.com/owlcs/owlapi/
