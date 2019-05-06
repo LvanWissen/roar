@@ -1,11 +1,12 @@
 @prefix : <https://w3id.org/roar#> .
-@prefix bio: <http://purl.org/vocab/bio/0.1/> .
+@prefix bio: <http://purl.org/vocab/bio/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pnv: <https://w3id.org/pnv#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix geos: <http://www.opengis.net/ont/geosparql#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
@@ -19,8 +20,17 @@
 #    Object Properties
 #################################################################
 
-###  http://purl.org/vocab/bio/0.1/event
-bio:event rdf:type owl:ObjectProperty .
+###  http://purl.org/vocab/bio/event
+bio:event rdf:type owl:ObjectProperty ;
+          rdfs:comment "Use to connect life events to a Person. Use more specific events, such as bio:birth and bio:death for respectively Birth and Death events."@en ;
+          rdfs:label "event"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#hasGeometry
+geos:hasGeometry rdf:type owl:ObjectProperty ;
+                 rdfs:domain geos:Feature ;
+                 rdfs:range geos:Geometry ;
+                 rdfs:label "hasGeometry"@en .
 
 
 ###  http://www.w3.org/ns/prov#agent
@@ -60,7 +70,8 @@ prov:wasAssociatedWith rdf:type owl:ObjectProperty ;
 
 ###  http://www.w3.org/ns/prov#wasDerivedFrom
 prov:wasDerivedFrom rdf:type owl:ObjectProperty ;
-                    rdfs:domain :Reconstruction .
+                    rdfs:domain :Reconstruction ;
+                    rdfs:range prov:Entity .
 
 
 ###  https://w3id.org/pnv#hasName
@@ -72,6 +83,8 @@ pnv:hasName rdf:type owl:ObjectProperty ;
 
 ###  https://w3id.org/roar#documentedIn
 :documentedIn rdf:type owl:ObjectProperty ;
+              rdfs:domain :Observation ;
+              rdfs:comment "The source (document, act, legislation etc.) in which the Observation is made."@en ;
               rdfs:label "documentedIn"@en .
 
 
@@ -95,8 +108,7 @@ pnv:hasName rdf:type owl:ObjectProperty ;
 #################################################################
 
 ###  http://www.w3.org/ns/prov#wasDerivedFrom
-prov:wasDerivedFrom rdf:type owl:DatatypeProperty ;
-                    rdfs:domain :Reconstruction .
+prov:wasDerivedFrom rdf:type owl:DatatypeProperty .
 
 
 ###  https://w3id.org/roar#relationType
@@ -113,9 +125,26 @@ Note: What about a temporal validity?"""@en ;
 #    Classes
 #################################################################
 
-###  http://purl.org/vocab/bio/0.1/Event
+###  http://purl.org/vocab/bio/Event
 bio:Event rdf:type owl:Class ;
           rdfs:subClassOf sem:Event ;
+          rdfs:comment """Also include properties from sem: 
+- sem:hasTimeStamp
+- sem:hasBeginTimeStamp
+- sem:hasEarliestBeginTimeStamp
+- sem:hasLatestBeginTimeStamp
+- sem:hasEndTimeStamp
+- sem:hasEarliestEndTimeStamp
+- sem:hasLatestEndTimeStamp
+
+And define a role by both defining bio:principal and sem:hasRole:
+
+:event1 a bio:Event ;
+    bio:principal :person1 ;
+    sem:hasActor [ a sem:Role ;
+        sem:roleType [ a sem:RoleType ;
+            rdfs:label \"<the type of role, e.g. 'born'>\" ] ;
+        rdf:value :person1 ] ."""@en ;
           rdfs:label "Event (bio)"@en .
 
 
@@ -134,6 +163,20 @@ schema:Place rdf:type owl:Class ;
 ###  http://semanticweb.cs.vu.nl/2009/11/sem/Event
 sem:Event rdf:type owl:Class ;
           rdfs:label "Event (sem)"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#Feature
+geos:Feature rdf:type owl:Class ;
+             rdfs:label "Feature"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#Geometry
+geos:Geometry rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty geos:hasGeometry ;
+                                owl:someValuesFrom geos:Geometry
+                              ] ;
+              rdfs:label "Geometry"@en .
 
 
 ###  http://www.w3.org/ns/prov#Activity
@@ -215,7 +258,8 @@ pnv:PersonName rdf:type owl:Class ;
 
 ###  https://w3id.org/roar#Location
 :Location rdf:type owl:Class ;
-          rdfs:subClassOf :Entity ;
+          rdfs:subClassOf geos:Feature ,
+                          :Entity ;
           owl:disjointWith :Person ;
           rdfs:label "Location"@en .
 
@@ -286,7 +330,7 @@ pnv:PersonName rdf:type owl:Class ;
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty prov:wasDerivedFrom ;
-                                  owl:someValuesFrom :Observation
+                                  owl:someValuesFrom prov:Entity
                                 ] ;
                 rdfs:label "Reconstruction"@en .
 
@@ -295,7 +339,7 @@ pnv:PersonName rdf:type owl:Class ;
 #    Annotations
 #################################################################
 
-prov:wasDerivedFrom rdfs:comment "A Reconstruction is derived from one or multiple Observations (or other Reconstructions). The idea is to enrich this Reconstruction with the information present in the Observations."@en ;
+prov:wasDerivedFrom rdfs:comment "A Reconstruction is derived from one or multiple Observations (or other Reconstructions). The aim is to enrich this Reconstruction with the information present in the Observations."@en ;
                     rdfs:label "wasDerivedFrom"@en .
 
 
