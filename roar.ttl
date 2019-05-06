@@ -1,0 +1,302 @@
+@prefix : <https://w3id.org/roar#> .
+@prefix bio: <http://purl.org/vocab/bio/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pnv: <https://w3id.org/pnv#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@base <https://w3id.org/roar#> .
+
+<https://w3id.org/roar#> rdf:type owl:Ontology ;
+                          rdfs:comment "Ontology to account for multiple Person/Location/Event etc. observations in archival resources, with the possibility to express a (corrected) Reconstruction of these entities, based on one or several observations. A2A can be mapped to this quite easily."@en ;
+                          rdfs:label "Reconstructions and Observations in Archival Resources"@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/vocab/bio/0.1/event
+bio:event rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/prov#agent
+prov:agent rdf:type owl:ObjectProperty ;
+           rdfs:label "agent"@en .
+
+
+###  http://www.w3.org/ns/prov#entity
+prov:entity rdf:type owl:ObjectProperty ;
+            rdfs:label "entity"@en .
+
+
+###  http://www.w3.org/ns/prov#hadActivity
+prov:hadActivity rdf:type owl:ObjectProperty ;
+                 rdfs:label "hadActivity"@en .
+
+
+###  http://www.w3.org/ns/prov#hadPlan
+prov:hadPlan rdf:type owl:ObjectProperty ;
+             rdfs:label "hadPlan"@en .
+
+
+###  http://www.w3.org/ns/prov#qualifiedAssociation
+prov:qualifiedAssociation rdf:type owl:ObjectProperty ;
+                          rdfs:label "qualifiedAssociation"@en .
+
+
+###  http://www.w3.org/ns/prov#qualifiedDerivation
+prov:qualifiedDerivation rdf:type owl:ObjectProperty ;
+                         rdfs:label "qualifiedDerivation"@en .
+
+
+###  http://www.w3.org/ns/prov#wasAssociatedWith
+prov:wasAssociatedWith rdf:type owl:ObjectProperty ;
+                       rdfs:label "wasAssociatedWith"@en .
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+prov:wasDerivedFrom rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Reconstruction .
+
+
+###  https://w3id.org/pnv#hasName
+pnv:hasName rdf:type owl:ObjectProperty ;
+            rdfs:domain :Person ;
+            rdfs:range pnv:PersonName ;
+            rdfs:label "hasName"@en .
+
+
+###  https://w3id.org/roar#documentedIn
+:documentedIn rdf:type owl:ObjectProperty ;
+              rdfs:label "documentedIn"@en .
+
+
+###  https://w3id.org/roar#hasLocation
+:hasLocation rdf:type owl:ObjectProperty ;
+             rdfs:label "hasLocation"@en .
+
+
+###  https://w3id.org/roar#hasPerson
+:hasPerson rdf:type owl:ObjectProperty ;
+           rdfs:label "hasPerson"@en .
+
+
+###  https://w3id.org/roar#hasRelation
+:hasRelation rdf:type owl:ObjectProperty ;
+             rdfs:label "hasRelation"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+prov:wasDerivedFrom rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Reconstruction .
+
+
+###  https://w3id.org/roar#relationType
+:relationType rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:range rdfs:Literal ;
+              rdfs:comment """Can be used to indicate the type of relation between two entities. In case of a Person to Location relation (through roar:hasLocation), the relationType can be 'inhabitant' or 'visitor'. 
+
+Note: What about a temporal validity?"""@en ;
+              rdfs:label "relationType"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/vocab/bio/0.1/Event
+bio:Event rdf:type owl:Class ;
+          rdfs:subClassOf sem:Event ;
+          rdfs:label "Event (bio)"@en .
+
+
+###  http://schema.org/Person
+schema:Person rdf:type owl:Class ;
+              owl:equivalentClass :Person ;
+              rdfs:label "Person (schema)"@en .
+
+
+###  http://schema.org/Place
+schema:Place rdf:type owl:Class ;
+             owl:equivalentClass :Location ;
+             rdfs:label "Place (schema)"@en .
+
+
+###  http://semanticweb.cs.vu.nl/2009/11/sem/Event
+sem:Event rdf:type owl:Class ;
+          rdfs:label "Event (sem)"@en .
+
+
+###  http://www.w3.org/ns/prov#Activity
+prov:Activity rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty prov:qualifiedAssociation ;
+                                owl:someValuesFrom prov:Association
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty prov:wasAssociatedWith ;
+                                owl:someValuesFrom prov:Agent
+                              ] ;
+              rdfs:label "Activity"@en .
+
+
+###  http://www.w3.org/ns/prov#Agent
+prov:Agent rdf:type owl:Class ;
+           rdfs:label "Agent"@en .
+
+
+###  http://www.w3.org/ns/prov#Association
+prov:Association rdf:type owl:Class ;
+                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty prov:agent ;
+                                   owl:someValuesFrom prov:Agent
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty prov:hadPlan ;
+                                   owl:someValuesFrom prov:Plan
+                                 ] ;
+                 rdfs:label "Association"@en .
+
+
+###  http://www.w3.org/ns/prov#Derivation
+prov:Derivation rdf:type owl:Class ;
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty prov:entity ;
+                                  owl:someValuesFrom :Observation
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty prov:hadActivity ;
+                                  owl:someValuesFrom prov:Activity
+                                ] ;
+                rdfs:label "Derivation"@en .
+
+
+###  http://www.w3.org/ns/prov#Entity
+prov:Entity rdf:type owl:Class ;
+            rdfs:label "Entity (prov)"@en .
+
+
+###  http://www.w3.org/ns/prov#Plan
+prov:Plan rdf:type owl:Class ;
+          rdfs:label "Plan"@en .
+
+
+###  https://w3id.org/pnv#PersonName
+pnv:PersonName rdf:type owl:Class ;
+               rdfs:label "PersonName"@en .
+
+
+###  https://w3id.org/roar#Document
+:Document rdf:type owl:Class ;
+          rdfs:label "Document"@en .
+
+
+###  https://w3id.org/roar#Entity
+:Entity rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasLocation ;
+                          owl:someValuesFrom :Location
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPerson ;
+                          owl:someValuesFrom :Person
+                        ] ;
+        rdfs:label "Entity"@en .
+
+
+###  https://w3id.org/roar#Location
+:Location rdf:type owl:Class ;
+          rdfs:subClassOf :Entity ;
+          owl:disjointWith :Person ;
+          rdfs:label "Location"@en .
+
+
+###  https://w3id.org/roar#LocationObserved
+:LocationObserved rdf:type owl:Class ;
+                  rdfs:subClassOf :Location ,
+                                  :Observation ;
+                  rdfs:label "LocationObserved"@en .
+
+
+###  https://w3id.org/roar#LocationReconstructed
+:LocationReconstructed rdf:type owl:Class ;
+                       rdfs:subClassOf :Location ,
+                                       :Reconstruction ;
+                       rdfs:label "LocationReconstructed"@en .
+
+
+###  https://w3id.org/roar#Observation
+:Observation rdf:type owl:Class ;
+             rdfs:subClassOf prov:Entity ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :documentedIn ;
+                               owl:someValuesFrom :Document
+                             ] ;
+             owl:disjointWith :Reconstruction ;
+             rdfs:label "Observation"@en .
+
+
+###  https://w3id.org/roar#Person
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf :Entity ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty bio:event ;
+                          owl:someValuesFrom bio:Event
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty pnv:hasName ;
+                          owl:someValuesFrom pnv:PersonName
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasRelation ;
+                          owl:someValuesFrom :Person
+                        ] ;
+        rdfs:label "Person"@en .
+
+
+###  https://w3id.org/roar#PersonObserved
+:PersonObserved rdf:type owl:Class ;
+                rdfs:subClassOf :Observation ,
+                                :Person ;
+                rdfs:label "PersonObserved"@en .
+
+
+###  https://w3id.org/roar#PersonReconstructed
+:PersonReconstructed rdf:type owl:Class ;
+                     rdfs:subClassOf :Person ,
+                                     :Reconstruction ;
+                     rdfs:label "PersonReconstructed"@en .
+
+
+###  https://w3id.org/roar#Reconstruction
+:Reconstruction rdf:type owl:Class ;
+                rdfs:subClassOf prov:Entity ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty prov:qualifiedDerivation ;
+                                  owl:someValuesFrom prov:Derivation
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty prov:wasDerivedFrom ;
+                                  owl:someValuesFrom :Observation
+                                ] ;
+                rdfs:label "Reconstruction"@en .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+prov:wasDerivedFrom rdfs:comment "A Reconstruction is derived from one or multiple Observations (or other Reconstructions). The idea is to enrich this Reconstruction with the information present in the Observations."@en ;
+                    rdfs:label "wasDerivedFrom"@en .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
