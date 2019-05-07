@@ -13,8 +13,31 @@
 @base <https://w3id.org/roar#> .
 
 <https://w3id.org/roar#> rdf:type owl:Ontology ;
+                          <http://purl.org/dc/elements/1.1/title> "Reconstructions and Observations in Archival Resources"@en ;
+                          <http://purl.org/vocab/vann/preferredNamespacePrefix> "roar" ;
+                          <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/roar#" ;
                           rdfs:comment "Ontology to account for multiple Person/Location/Event etc. observations in archival resources, with the possibility to express a (corrected) Reconstruction of these entities, based on one or several observations. A2A can be mapped to this quite easily."@en ;
                           rdfs:label "Reconstructions and Observations in Archival Resources"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/pav/createdBy
+<http://purl.org/pav/createdBy> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
 
 #################################################################
 #    Object Properties
@@ -22,6 +45,8 @@
 
 ###  http://purl.org/vocab/bio/event
 bio:event rdf:type owl:ObjectProperty ;
+          rdfs:domain :Person ;
+          rdfs:range bio:Event ;
           rdfs:comment "Use to connect life events to a Person. Use more specific events, such as bio:birth and bio:death for respectively Birth and Death events."@en ;
           rdfs:label "event"@en .
 
@@ -35,6 +60,8 @@ geos:hasGeometry rdf:type owl:ObjectProperty ;
 
 ###  http://www.w3.org/ns/prov#agent
 prov:agent rdf:type owl:ObjectProperty ;
+           rdfs:domain prov:Association ;
+           rdfs:range prov:Agent ;
            rdfs:label "agent"@en .
 
 
@@ -45,26 +72,36 @@ prov:entity rdf:type owl:ObjectProperty ;
 
 ###  http://www.w3.org/ns/prov#hadActivity
 prov:hadActivity rdf:type owl:ObjectProperty ;
+                 rdfs:domain prov:Derivation ;
+                 rdfs:range prov:Activity ;
                  rdfs:label "hadActivity"@en .
 
 
 ###  http://www.w3.org/ns/prov#hadPlan
 prov:hadPlan rdf:type owl:ObjectProperty ;
+             rdfs:domain prov:Agent ;
+             rdfs:range prov:Plan ;
              rdfs:label "hadPlan"@en .
 
 
 ###  http://www.w3.org/ns/prov#qualifiedAssociation
 prov:qualifiedAssociation rdf:type owl:ObjectProperty ;
+                          rdfs:domain prov:Activity ;
+                          rdfs:range prov:Association ;
                           rdfs:label "qualifiedAssociation"@en .
 
 
 ###  http://www.w3.org/ns/prov#qualifiedDerivation
 prov:qualifiedDerivation rdf:type owl:ObjectProperty ;
+                         rdfs:domain :Reconstruction ;
+                         rdfs:range prov:Derivation ;
                          rdfs:label "qualifiedDerivation"@en .
 
 
 ###  http://www.w3.org/ns/prov#wasAssociatedWith
 prov:wasAssociatedWith rdf:type owl:ObjectProperty ;
+                       rdfs:domain prov:Activity ;
+                       rdfs:range prov:Agent ;
                        rdfs:label "wasAssociatedWith"@en .
 
 
@@ -84,32 +121,43 @@ pnv:hasName rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/roar#documentedIn
 :documentedIn rdf:type owl:ObjectProperty ;
               rdfs:domain :Observation ;
+              rdfs:range :Document ;
               rdfs:comment "The source (document, act, legislation etc.) in which the Observation is made."@en ;
               rdfs:label "documentedIn"@en .
 
 
 ###  https://w3id.org/roar#hasLocation
 :hasLocation rdf:type owl:ObjectProperty ;
+             rdfs:domain :Entity ;
+             rdfs:range :Location ;
              rdfs:label "hasLocation"@en .
 
 
 ###  https://w3id.org/roar#hasPerson
 :hasPerson rdf:type owl:ObjectProperty ;
+           rdfs:domain :Entity ;
+           rdfs:range :Person ;
            rdfs:label "hasPerson"@en .
 
 
 ###  https://w3id.org/roar#hasRelation
 :hasRelation rdf:type owl:ObjectProperty ;
+             rdfs:domain :Entity ;
+             rdfs:range :Entity ;
+             rdfs:comment """Relation to another person or organisation, defined by a structured value to indicate the kind of relation. 
+
+*Example*:
+```ttl
+:person1 a roar:Person ;
+    roar:hasRelation [ rdf:value :person2 ;
+                       roar:relationType \"mother\" ] .
+```""" ;
              rdfs:label "hasRelation"@en .
 
 
 #################################################################
 #    Data properties
 #################################################################
-
-###  http://www.w3.org/ns/prov#wasDerivedFrom
-prov:wasDerivedFrom rdf:type owl:DatatypeProperty .
-
 
 ###  https://w3id.org/roar#relationType
 :relationType rdf:type owl:DatatypeProperty ;
@@ -139,12 +187,15 @@ bio:Event rdf:type owl:Class ;
 
 And define a role by both defining bio:principal and sem:hasRole:
 
+```ttl
 :event1 a bio:Event ;
     bio:principal :person1 ;
     sem:hasActor [ a sem:Role ;
-        sem:roleType [ a sem:RoleType ;
-            rdfs:label \"<the type of role, e.g. 'born'>\" ] ;
-        rdf:value :person1 ] ."""@en ;
+                   sem:roleType [ a sem:RoleType ;
+                                  rdfs:label \"<the type of role, e.g. 'born'>\" ] ;
+                   rdf:value :person1 ] .
+
+```"""@en ;
           rdfs:label "Event (bio)"@en .
 
 
@@ -167,15 +218,15 @@ sem:Event rdf:type owl:Class ;
 
 ###  http://www.opengis.net/ont/geosparql#Feature
 geos:Feature rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty geos:hasGeometry ;
+                               owl:someValuesFrom geos:Geometry
+                             ] ;
              rdfs:label "Feature"@en .
 
 
 ###  http://www.opengis.net/ont/geosparql#Geometry
 geos:Geometry rdf:type owl:Class ;
-              rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                owl:onProperty geos:hasGeometry ;
-                                owl:someValuesFrom geos:Geometry
-                              ] ;
               rdfs:label "Geometry"@en .
 
 
@@ -230,6 +281,7 @@ prov:Entity rdf:type owl:Class ;
 
 ###  http://www.w3.org/ns/prov#Plan
 prov:Plan rdf:type owl:Class ;
+          rdfs:comment "Use a `rdfs:comment` to describe the goal the Agent had in the Activity."@en ;
           rdfs:label "Plan"@en .
 
 
@@ -240,6 +292,7 @@ pnv:PersonName rdf:type owl:Class ;
 
 ###  https://w3id.org/roar#Document
 :Document rdf:type owl:Class ;
+          rdfs:comment "The source (e.g. document, act, legislation, text, picture) in which an Observation of some type can be done."@en ;
           rdfs:label "Document"@en .
 
 
@@ -333,14 +386,6 @@ pnv:PersonName rdf:type owl:Class ;
                                   owl:someValuesFrom prov:Entity
                                 ] ;
                 rdfs:label "Reconstruction"@en .
-
-
-#################################################################
-#    Annotations
-#################################################################
-
-prov:wasDerivedFrom rdfs:comment "A Reconstruction is derived from one or multiple Observations (or other Reconstructions). The aim is to enrich this Reconstruction with the information present in the Observations."@en ;
-                    rdfs:label "wasDerivedFrom"@en .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
