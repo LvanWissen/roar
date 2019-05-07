@@ -159,14 +159,25 @@ pnv:hasName rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
-###  https://w3id.org/roar#relationType
-:relationType rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf owl:topDataProperty ;
-              rdfs:range rdfs:Literal ;
-              rdfs:comment """Can be used to indicate the type of relation between two entities. In case of a Person to Location relation (through roar:hasLocation), the relationType can be 'inhabitant' or 'visitor'. 
+###  http://dbpedia.org/ontology/role
+<http://dbpedia.org/ontology/role> rdf:type owl:DatatypeProperty ;
+                                   owl:equivalentProperty :role .
+
+
+###  https://w3id.org/roar#onScan
+:onScan rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Observation ;
+        rdfs:label "onScan"@en .
+
+
+###  https://w3id.org/roar#role
+:role rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdfs:comment """Can be used to indicate the type of relation between two entities. In case of a Person to Location relation (through roar:hasLocation), the relationType can be 'inhabitant' or 'visitor'. 
 
 Note: What about a temporal validity?"""@en ;
-              rdfs:label "relationType"@en .
+      rdfs:label "role"@en .
 
 
 #################################################################
