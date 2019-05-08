@@ -1,5 +1,6 @@
 @prefix : <https://w3id.org/roar#> .
 @prefix bio: <http://purl.org/vocab/bio/> .
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pnv: <https://w3id.org/pnv#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -122,7 +123,7 @@ pnv:hasName rdf:type owl:ObjectProperty ;
 :documentedIn rdf:type owl:ObjectProperty ;
               rdfs:domain :Observation ;
               rdfs:range :Document ;
-              rdfs:comment "The source (document, act, legislation etc.) in which the Observation is made."@en ;
+              rdfs:comment "Points to source (document, act, legislation etc.) in which the Observation is made. It is recommended to point to a resource (URI) provided by some institute/archive that hold key information on this source. You are, however, free to fill `roar:Document` with additional information."@en ;
               rdfs:label "documentedIn"@en .
 
 
@@ -130,6 +131,16 @@ pnv:hasName rdf:type owl:ObjectProperty ;
 :hasLocation rdf:type owl:ObjectProperty ;
              rdfs:domain :Entity ;
              rdfs:range :Location ;
+             rdfs:comment """Use to indicate that a Person has a relation to a certain Location. Use a structured value to indicate a specific role of this person to the location or to specify a temporal validity in which this Person-Location relation is valid (use `sem` timestamp properties for this). 
+
+Example:
+```ttl
+:person1 a roar:PersonObservation ;
+         roar:hasLocation [ rdf:value :location1 ;
+                            roar:role \"inhabitant\" ;
+                            sem:hasBeginTimeStamp \"1782-11-20\" ;
+                            sem:hasEarliestEndTimesStamp \"1782-11-20\" ] .
+```"""@en ;
              rdfs:label "hasLocation"@en .
 
 
@@ -137,6 +148,16 @@ pnv:hasName rdf:type owl:ObjectProperty ;
 :hasPerson rdf:type owl:ObjectProperty ;
            rdfs:domain :Entity ;
            rdfs:range :Person ;
+           rdfs:comment """Use to indicate that a Location is in relation to a certain Person. Use a structured value to indicate a specific role of this location to the person or to specify a temporal validity in which this Location-Person relation is valid (use `sem` timestamp properties for this). 
+
+Example:
+```ttl
+:location1 a roar:LocationObservation ;
+           roar:hasLocation [ rdf:value :person1 ;
+                              roar:role \"residence\" ;
+                              sem:hasBeginTimeStamp \"1782-11-20\" ;
+                              sem:hasEarliestEndTimesStamp \"1782-11-20\" ] .
+```"""@en ;
            rdfs:label "hasPerson"@en .
 
 
@@ -174,9 +195,7 @@ pnv:hasName rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/roar#role
 :role rdf:type owl:DatatypeProperty ;
       rdfs:subPropertyOf owl:topDataProperty ;
-      rdfs:comment """Can be used to indicate the type of relation between two entities. In case of a Person to Location relation (through roar:hasLocation), the relationType can be 'inhabitant' or 'visitor'. 
-
-Note: What about a temporal validity?"""@en ;
+      rdfs:comment "Can be used to indicate the type of relation between two entities. In case of a Person to Location relation (through `roar:hasLocation`), the `roar:role` can be 'inhabitant' or 'visitor'."@en ;
       rdfs:label "role"@en .
 
 
@@ -210,6 +229,12 @@ And define a role by both defining bio:principal and sem:hasRole:
           rdfs:label "Event (bio)"@en .
 
 
+###  http://schema.org/CreativeWork
+schema:CreativeWork rdf:type owl:Class ;
+                    owl:equivalentClass :Document ;
+                    rdfs:label "CreativeWork (schema)"@en .
+
+
 ###  http://schema.org/Person
 schema:Person rdf:type owl:Class ;
               owl:equivalentClass :Person ;
@@ -225,6 +250,11 @@ schema:Place rdf:type owl:Class ;
 ###  http://semanticweb.cs.vu.nl/2009/11/sem/Event
 sem:Event rdf:type owl:Class ;
           rdfs:label "Event (sem)"@en .
+
+
+###  http://www.europeana.eu/schemas/edm/ProvidedCHO
+edm:ProvidedCHO rdf:type owl:Class ;
+                rdfs:label "ProvidedCHO (edm)"@en .
 
 
 ###  http://www.opengis.net/ont/geosparql#Feature
@@ -303,7 +333,8 @@ pnv:PersonName rdf:type owl:Class ;
 
 ###  https://w3id.org/roar#Document
 :Document rdf:type owl:Class ;
-          rdfs:comment "The source (e.g. document, act, legislation, text, picture) in which an Observation of some type can be done."@en ;
+          rdfs:subClassOf edm:ProvidedCHO ;
+          rdfs:comment "The source (e.g. document, act, legislation, text, picture) in which some entity (e.g. Person or Location) can be observed."@en ;
           rdfs:label "Document"@en .
 
 
