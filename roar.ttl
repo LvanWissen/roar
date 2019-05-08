@@ -364,18 +364,18 @@ pnv:PersonName rdf:type owl:Class ;
           rdfs:label "Location"@en .
 
 
-###  https://w3id.org/roar#LocationObserved
-:LocationObserved rdf:type owl:Class ;
+###  https://w3id.org/roar#LocationObservation
+:LocationObservation rdf:type owl:Class ;
                   rdfs:subClassOf :Location ,
                                   :Observation ;
-                  rdfs:label "LocationObserved"@en .
+                  rdfs:label "LocationObservation"@en .
 
 
-###  https://w3id.org/roar#LocationReconstructed
-:LocationReconstructed rdf:type owl:Class ;
+###  https://w3id.org/roar#LocationReconstruction
+:LocationReconstruction rdf:type owl:Class ;
                        rdfs:subClassOf :Location ,
                                        :Reconstruction ;
-                       rdfs:label "LocationReconstructed"@en .
+                       rdfs:label "LocationReconstruction"@en .
 
 
 ###  https://w3id.org/roar#Observation
@@ -407,18 +407,18 @@ pnv:PersonName rdf:type owl:Class ;
         rdfs:label "Person"@en .
 
 
-###  https://w3id.org/roar#PersonObserved
-:PersonObserved rdf:type owl:Class ;
+###  https://w3id.org/roar#PersonObservation
+:PersonObservation rdf:type owl:Class ;
                 rdfs:subClassOf :Observation ,
                                 :Person ;
-                rdfs:label "PersonObserved"@en .
+                rdfs:label "PersonObservation"@en .
 
 
-###  https://w3id.org/roar#PersonReconstructed
-:PersonReconstructed rdf:type owl:Class ;
+###  https://w3id.org/roar#PersonReconstruction
+:PersonReconstruction rdf:type owl:Class ;
                      rdfs:subClassOf :Person ,
                                      :Reconstruction ;
-                     rdfs:label "PersonReconstructed"@en .
+                     rdfs:label "PersonReconstruction"@en .
 
 
 ###  https://w3id.org/roar#Reconstruction
