@@ -472,6 +472,9 @@
     "@id" : "http://www.w3.org/ns/prov#Entity"
   } ]
 }, {
+  "@id" : "http://xmlns.com/foaf/0.1/depiction",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
   "@id" : "http://xmlns.com/foaf/0.1/logo",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
 }, {
@@ -515,8 +518,11 @@
     "@language" : "en",
     "@value" : "Reconstructions and Observations in Archival Resources"
   } ],
+  "http://xmlns.com/foaf/0.1/depiction" : [ {
+    "@id" : "https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg"
+  } ],
   "http://xmlns.com/foaf/0.1/logo" : [ {
-    "@id" : "http://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-logo.png"
+    "@id" : "https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-logo.png"
   } ]
 }, {
   "@id" : "https://w3id.org/roar#Document",
