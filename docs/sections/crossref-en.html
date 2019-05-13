@@ -13,7 +13,13 @@ This section provides details for each class and property defined by roar.
          <a href="#http://www.w3.org/ns/prov#Association" title="http://www.w3.org/ns/prov#Association">Association</a>
       </li>
       <li>
+         <a href="#http://purl.org/vocab/bio/0.1/Birth" title="http://purl.org/vocab/bio/0.1/Birth">Birth</a>
+      </li>
+      <li>
          <a href="#http://schema.org/CreativeWork" title="http://schema.org/CreativeWork">CreativeWork (schema)</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/vocab/bio/0.1/Death" title="http://purl.org/vocab/bio/0.1/Death">Death</a>
       </li>
       <li>
          <a href="#http://www.w3.org/ns/prov#Derivation" title="http://www.w3.org/ns/prov#Derivation">Derivation</a>
@@ -28,7 +34,7 @@ This section provides details for each class and property defined by roar.
          <a href="#http://www.w3.org/ns/prov#Entity" title="http://www.w3.org/ns/prov#Entity">Entity (prov)</a>
       </li>
       <li>
-         <a href="#http://purl.org/vocab/bio/Event" title="http://purl.org/vocab/bio/Event">Event (bio)</a>
+         <a href="#http://purl.org/vocab/bio/0.1/Event" title="http://purl.org/vocab/bio/0.1/Event">Event (bio)</a>
       </li>
       <li>
          <a href="#http://semanticweb.cs.vu.nl/2009/11/sem/Event" title="http://semanticweb.cs.vu.nl/2009/11/sem/Event">Event (sem)</a>
@@ -145,6 +151,26 @@ This section provides details for each class and property defined by roar.
          </dd>
       </dl>
    </div>
+   <div class="entity" id="http://purl.org/vocab/bio/0.1/Birth">
+      <h3>Birth<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/vocab/bio/0.1/Birth</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://purl.org/vocab/bio/0.1/Event" title="http://purl.org/vocab/bio/0.1/Event">Event (bio)</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#http://purl.org/vocab/bio/0.1/birth" title="http://purl.org/vocab/bio/0.1/birth">birth</a>
+            <sup class="type-op" title="object property">op</sup>
+         </dd>
+      </dl>
+   </div>
    <div class="entity" id="http://schema.org/CreativeWork">
       <h3>CreativeWork (schema)<sup class="type-c" title="class">c</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
@@ -157,6 +183,26 @@ This section provides details for each class and property defined by roar.
          <dd>
             <a href="#Document" title="https://w3id.org/roar#Document">Document</a>
             <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://purl.org/vocab/bio/0.1/Death">
+      <h3>Death<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/vocab/bio/0.1/Death</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://purl.org/vocab/bio/0.1/Event" title="http://purl.org/vocab/bio/0.1/Event">Event (bio)</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is in range of</dt>
+         <dd>
+            <a href="#http://purl.org/vocab/bio/0.1/death" title="http://purl.org/vocab/bio/0.1/death">death</a>
+            <sup class="type-op" title="object property">op</sup>
          </dd>
       </dl>
    </div>
@@ -256,13 +302,13 @@ This section provides details for each class and property defined by roar.
          </dd>
       </dl>
    </div>
-   <div class="entity" id="http://purl.org/vocab/bio/Event">
+   <div class="entity" id="http://purl.org/vocab/bio/0.1/Event">
       <h3>Event (bio)<sup class="type-c" title="class">c</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> http://purl.org/vocab/bio/Event</p>
+         <strong>IRI:</strong> http://purl.org/vocab/bio/0.1/Event</p>
       <div class="comment">
          <span class="markdown">Also include properties from sem: 
 - sem:hasTimeStamp
@@ -276,12 +322,12 @@ This section provides details for each class and property defined by roar.
 And define a role by both defining bio:principal and sem:hasRole:
 
 ```ttl
-:event1 a bio:Event ;
-    bio:principal :person1 ;
+_:event1 a bio:Event ;
+    bio:principal _:person1 ;
     sem:hasActor [ a sem:Role ;
                    sem:roleType [ a sem:RoleType ;
                                   rdfs:label "&lt;the type of role, e.g. 'born'&gt;" ] ;
-                   rdf:value :person1 ] .
+                   rdf:value _:person1 ] .
 
 ```</span>
       </div>
@@ -291,9 +337,15 @@ And define a role by both defining bio:principal and sem:hasRole:
             <a href="#http://semanticweb.cs.vu.nl/2009/11/sem/Event" title="http://semanticweb.cs.vu.nl/2009/11/sem/Event">Event (sem)</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#http://purl.org/vocab/bio/0.1/Birth" title="http://purl.org/vocab/bio/0.1/Birth">Birth</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#http://purl.org/vocab/bio/0.1/Death" title="http://purl.org/vocab/bio/0.1/Death">Death</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
          <dt>is in range of</dt>
          <dd>
-            <a href="#http://purl.org/vocab/bio/event" title="http://purl.org/vocab/bio/event">event</a>
+            <a href="#http://purl.org/vocab/bio/event/0.1" title="http://purl.org/vocab/bio/event/0.1">event</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
       </dl>
@@ -308,7 +360,7 @@ And define a role by both defining bio:principal and sem:hasRole:
       <dl class="description">
          <dt>has sub-classes</dt>
          <dd>
-            <a href="#http://purl.org/vocab/bio/Event" title="http://purl.org/vocab/bio/Event">Event (bio)</a>
+            <a href="#http://purl.org/vocab/bio/0.1/Event" title="http://purl.org/vocab/bio/0.1/Event">Event (bio)</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
       </dl>
@@ -467,7 +519,9 @@ And define a role by both defining bio:principal and sem:hasRole:
          </dd>
          <dt>is in domain of</dt>
          <dd>
-            <a href="#http://purl.org/vocab/bio/event" title="http://purl.org/vocab/bio/event">event</a>
+            <a href="#http://purl.org/vocab/bio/0.1/birth" title="http://purl.org/vocab/bio/0.1/birth">birth</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/vocab/bio/0.1/death" title="http://purl.org/vocab/bio/0.1/death">death</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/vocab/bio/event/0.1" title="http://purl.org/vocab/bio/event/0.1">event</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#https://w3id.org/pnv#hasName" title="https://w3id.org/pnv#hasName">hasName</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
@@ -632,13 +686,19 @@ And define a role by both defining bio:principal and sem:hasRole:
          <a href="#http://www.w3.org/ns/prov#agent" title="http://www.w3.org/ns/prov#agent">agent</a>
       </li>
       <li>
+         <a href="#http://purl.org/vocab/bio/0.1/birth" title="http://purl.org/vocab/bio/0.1/birth">birth</a>
+      </li>
+      <li>
+         <a href="#http://purl.org/vocab/bio/0.1/death" title="http://purl.org/vocab/bio/0.1/death">death</a>
+      </li>
+      <li>
          <a href="#documentedIn" title="https://w3id.org/roar#documentedIn">documentedIn</a>
       </li>
       <li>
          <a href="#http://www.w3.org/ns/prov#entity" title="http://www.w3.org/ns/prov#entity">entity</a>
       </li>
       <li>
-         <a href="#http://purl.org/vocab/bio/event" title="http://purl.org/vocab/bio/event">event</a>
+         <a href="#http://purl.org/vocab/bio/event/0.1" title="http://purl.org/vocab/bio/event/0.1">event</a>
       </li>
       <li>
          <a href="#http://www.w3.org/ns/prov#hadActivity" title="http://www.w3.org/ns/prov#hadActivity">hadActivity</a>
@@ -698,6 +758,136 @@ And define a role by both defining bio:principal and sem:hasRole:
          </dl>
       </div>
    </div>
+   <div class="entity" id="http://purl.org/vocab/bio/0.1/birth">
+      <h3>birth<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/vocab/bio/0.1/birth</p>
+      <div class="comment">
+         <span class="markdown">Even if there is no specific birth date mentioned in the source, it is recommended to provide a Birth event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Baptism event, by which the date of birth can be inferred.
+
+Example:
+```ttl
+_:person1 a roar:PersonReconstruction ;
+        rdfs:label "Susanna de Bock" ;
+        pnv:hasName [ a pnv:PersonName ;
+                pnv:baseSurname "Bock" ;
+                pnv:givenName "Susanna" ;
+                pnv:literalName "Susanna de Bock" ;
+                pnv:surnamePrefix "de" ] ;
+        bio:event [ a bio:Burial ;
+                    bio:place _:location1 ;
+                    bio:principal _:person1 ;
+                    sem:hasActor [ a sem:Role ;
+                                   sem:roleType [ a sem:RoleType ;
+                                                  rdfs:label "burried" ] ;
+                                   rdf:value _:person1 ] ;
+                    sem:hasTimeStamp "1697-02-28"^^xsd:date ] ;
+        bio:birth [ a bio:Birth ;
+                    bio:principal _:person1 ;
+                    sem:hasActor [ a sem:Role ;
+                                   sem:roleType [ a sem:RoleType ;
+                                                  rdfs:label "born" ] ;
+                                   rdf:value _:person1 ] ;
+                    sem:hasLatestEndTimeStamp "1697-02-28" ] ;
+        bio:death [ a bio:Death ;
+                    bio:principal _:person1 ;
+                    sem:hasActor [ a sem:Role ;
+                                   sem:roleType [ a sem:RoleType ;
+                                                  rdfs:label "died" ] ;
+                                   rdf:value _:person1 ] ;
+                    sem:hasEarliestBeginTimeStamp "1697-02-21" ; # Estimated, 7 days earlier
+                    sem:hasLatestEndTimeStamp "1697-02-28" ] ;
+        roar:documentedIn _:saaId10160347 .
+```</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.org/vocab/bio/event/0.1" title="http://purl.org/vocab/bio/event/0.1">event</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Person" title="https://w3id.org/roar#Person">Person</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.org/vocab/bio/0.1/Birth" title="http://purl.org/vocab/bio/0.1/Birth">Birth</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://purl.org/vocab/bio/0.1/death">
+      <h3>death<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/vocab/bio/0.1/death</p>
+      <div class="comment">
+         <span class="markdown">Even if there is no specific death date mentioned in the source, it is recommended to provide a Deatj event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Burial event, by which the death date can be inferred. 
+
+Example:
+```ttl
+_:person1 a roar:PersonReconstruction ;
+        rdfs:label "Susanna de Bock" ;
+        pnv:hasName [ a pnv:PersonName ;
+                pnv:baseSurname "Bock" ;
+                pnv:givenName "Susanna" ;
+                pnv:literalName "Susanna de Bock" ;
+                pnv:surnamePrefix "de" ] ;
+        bio:event [ a bio:Burial ;
+                    bio:place _:location1 ;
+                    bio:principal _:person1 ;
+                    sem:hasActor [ a sem:Role ;
+                                   sem:roleType [ a sem:RoleType ;
+                                                  rdfs:label "burried" ] ;
+                                   rdf:value _:person1 ] ;
+                    sem:hasTimeStamp "1697-02-28"^^xsd:date ] ;
+        bio:birth [ a bio:Birth ;
+                    bio:principal _:person1 ;
+                    sem:hasActor [ a sem:Role ;
+                                   sem:roleType [ a sem:RoleType ;
+                                                  rdfs:label "born" ] ;
+                                   rdf:value _:person1 ] ;
+                    sem:hasLatestEndTimeStamp "1697-02-28" ] ;
+        bio:death [ a bio:Death ;
+                    bio:principal _:person1 ;
+                    sem:hasActor [ a sem:Role ;
+                                   sem:roleType [ a sem:RoleType ;
+                                                  rdfs:label "died" ] ;
+                                   rdf:value _:person1 ] ;
+                    sem:hasEarliestBeginTimeStamp "1697-02-21" ; # Estimated, 7 days earlier
+                    sem:hasLatestEndTimeStamp "1697-02-28" ] ;
+        roar:documentedIn _:saaId10160347 .
+```</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.org/vocab/bio/event/0.1" title="http://purl.org/vocab/bio/event/0.1">event</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Person" title="https://w3id.org/roar#Person">Person</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.org/vocab/bio/0.1/Death" title="http://purl.org/vocab/bio/0.1/Death">Death</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="documentedIn">
       <h3>documentedIn<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
@@ -731,18 +921,24 @@ And define a role by both defining bio:principal and sem:hasRole:
       <p>
          <strong>IRI:</strong> http://www.w3.org/ns/prov#entity</p>
    </div>
-   <div class="entity" id="http://purl.org/vocab/bio/event">
+   <div class="entity" id="http://purl.org/vocab/bio/event/0.1">
       <h3>event<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> http://purl.org/vocab/bio/event</p>
+         <strong>IRI:</strong> http://purl.org/vocab/bio/event/0.1</p>
       <div class="comment">
-         <span class="markdown">Use to connect life events to a Person. Use more specific events, such as bio:birth and bio:death for respectively Birth and Death events.</span>
+         <span class="markdown">Use to connect life events to a Person. Use more specific events, such as `bio:birth` and `bio:death` for respectively Birth and Death events.</span>
       </div>
       <div class="description">
          <dl>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#http://purl.org/vocab/bio/0.1/birth" title="http://purl.org/vocab/bio/0.1/birth">birth</a>
+               <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/vocab/bio/0.1/death" title="http://purl.org/vocab/bio/0.1/death">death</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
             <dt>has domain</dt>
             <dd>
                <a href="#Person" title="https://w3id.org/roar#Person">Person</a>
@@ -750,7 +946,7 @@ And define a role by both defining bio:principal and sem:hasRole:
             </dd>
             <dt>has range</dt>
             <dd>
-               <a href="#http://purl.org/vocab/bio/Event" title="http://purl.org/vocab/bio/Event">Event (bio)</a>
+               <a href="#http://purl.org/vocab/bio/0.1/Event" title="http://purl.org/vocab/bio/0.1/Event">Event (bio)</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
          </dl>

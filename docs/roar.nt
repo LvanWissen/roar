@@ -1,0 +1,376 @@
+<https://w3id.org/roar#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/roar#> <http://purl.org/dc/elements/1.1/title> "Reconstructions and Observations in Archival Resources"@en .
+<https://w3id.org/roar#> <http://purl.org/vocab/vann/preferredNamespacePrefix> "roar" .
+<https://w3id.org/roar#> <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/roar#" .
+<https://w3id.org/roar#> <http://www.w3.org/2000/01/rdf-schema#comment> "Ontology to account for multiple Person/Location/Event etc. observations in archival resources, with the possibility to express a (corrected) Reconstruction of these entities, based on one or several observations. A2A can be mapped to this quite easily."@en .
+<https://w3id.org/roar#> <http://www.w3.org/2000/01/rdf-schema#label> "Reconstructions and Observations in Archival Resources"@en .
+<https://w3id.org/roar#> <http://xmlns.com/foaf/0.1/logo> <http://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-logo.png> .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/pav/createdBy
+<http://purl.org/pav/createdBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://xmlns.com/foaf/0.1/logo
+<http://xmlns.com/foaf/0.1/logo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/vocab/bio/0.1/birth
+<http://purl.org/vocab/bio/0.1/birth> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://purl.org/vocab/bio/0.1/birth> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://purl.org/vocab/bio/event/0.1> .
+<http://purl.org/vocab/bio/0.1/birth> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/roar#Person> .
+<http://purl.org/vocab/bio/0.1/birth> <http://www.w3.org/2000/01/rdf-schema#range> <http://purl.org/vocab/bio/0.1/Birth> .
+<http://purl.org/vocab/bio/0.1/birth> <http://www.w3.org/2000/01/rdf-schema#comment> "Even if there is no specific birth date mentioned in the source, it is recommended to provide a Birth event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Baptism event, by which the date of birth can be inferred.\n\nExample:\n```ttl\n_:person1 a roar:PersonReconstruction ;\n        rdfs:label \"Susanna de Bock\" ;\n        pnv:hasName [ a pnv:PersonName ;\n                pnv:baseSurname \"Bock\" ;\n                pnv:givenName \"Susanna\" ;\n                pnv:literalName \"Susanna de Bock\" ;\n                pnv:surnamePrefix \"de\" ] ;\n        bio:event [ a bio:Burial ;\n                    bio:place _:location1 ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"burried\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasTimeStamp \"1697-02-28\"^^xsd:date ] ;\n        bio:birth [ a bio:Birth ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"born\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasLatestEndTimeStamp \"1697-02-28\" ] ;\n        bio:death [ a bio:Death ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"died\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasEarliestBeginTimeStamp \"1697-02-21\" ; # Estimated, 7 days earlier\n                    sem:hasLatestEndTimeStamp \"1697-02-28\" ] ;\n        roar:documentedIn _:saaId10160347 .\n```"@en .
+<http://purl.org/vocab/bio/0.1/birth> <http://www.w3.org/2000/01/rdf-schema#label> "birth"@en .
+# 
+# http://purl.org/vocab/bio/0.1/death
+<http://purl.org/vocab/bio/0.1/death> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://purl.org/vocab/bio/0.1/death> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://purl.org/vocab/bio/event/0.1> .
+<http://purl.org/vocab/bio/0.1/death> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/roar#Person> .
+<http://purl.org/vocab/bio/0.1/death> <http://www.w3.org/2000/01/rdf-schema#range> <http://purl.org/vocab/bio/0.1/Death> .
+<http://purl.org/vocab/bio/0.1/death> <http://www.w3.org/2000/01/rdf-schema#comment> "Even if there is no specific death date mentioned in the source, it is recommended to provide a Deatj event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Burial event, by which the death date can be inferred. \n\nExample:\n```ttl\n_:person1 a roar:PersonReconstruction ;\n        rdfs:label \"Susanna de Bock\" ;\n        pnv:hasName [ a pnv:PersonName ;\n                pnv:baseSurname \"Bock\" ;\n                pnv:givenName \"Susanna\" ;\n                pnv:literalName \"Susanna de Bock\" ;\n                pnv:surnamePrefix \"de\" ] ;\n        bio:event [ a bio:Burial ;\n                    bio:place _:location1 ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"burried\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasTimeStamp \"1697-02-28\"^^xsd:date ] ;\n        bio:birth [ a bio:Birth ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"born\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasLatestEndTimeStamp \"1697-02-28\" ] ;\n        bio:death [ a bio:Death ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"died\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasEarliestBeginTimeStamp \"1697-02-21\" ; # Estimated, 7 days earlier\n                    sem:hasLatestEndTimeStamp \"1697-02-28\" ] ;\n        roar:documentedIn _:saaId10160347 .\n```"@en .
+<http://purl.org/vocab/bio/0.1/death> <http://www.w3.org/2000/01/rdf-schema#label> "death"@en .
+# 
+# http://purl.org/vocab/bio/event/0.1
+<http://purl.org/vocab/bio/event/0.1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://purl.org/vocab/bio/event/0.1> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/roar#Person> .
+<http://purl.org/vocab/bio/event/0.1> <http://www.w3.org/2000/01/rdf-schema#range> <http://purl.org/vocab/bio/0.1/Event> .
+<http://purl.org/vocab/bio/event/0.1> <http://www.w3.org/2000/01/rdf-schema#comment> "Use to connect life events to a Person. Use more specific events, such as `bio:birth` and `bio:death` for respectively Birth and Death events."@en .
+<http://purl.org/vocab/bio/event/0.1> <http://www.w3.org/2000/01/rdf-schema#label> "event"@en .
+# 
+# http://www.opengis.net/ont/geosparql#hasGeometry
+<http://www.opengis.net/ont/geosparql#hasGeometry> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.opengis.net/ont/geosparql#hasGeometry> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.opengis.net/ont/geosparql#Feature> .
+<http://www.opengis.net/ont/geosparql#hasGeometry> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.opengis.net/ont/geosparql#Geometry> .
+<http://www.opengis.net/ont/geosparql#hasGeometry> <http://www.w3.org/2000/01/rdf-schema#label> "hasGeometry"@en .
+# 
+# http://www.w3.org/ns/prov#agent
+<http://www.w3.org/ns/prov#agent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/prov#agent> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/prov#Association> .
+<http://www.w3.org/ns/prov#agent> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/prov#Agent> .
+<http://www.w3.org/ns/prov#agent> <http://www.w3.org/2000/01/rdf-schema#label> "agent"@en .
+# 
+# http://www.w3.org/ns/prov#entity
+<http://www.w3.org/ns/prov#entity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/prov#entity> <http://www.w3.org/2000/01/rdf-schema#label> "entity"@en .
+# 
+# http://www.w3.org/ns/prov#hadActivity
+<http://www.w3.org/ns/prov#hadActivity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/prov#hadActivity> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/prov#Derivation> .
+<http://www.w3.org/ns/prov#hadActivity> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/prov#Activity> .
+<http://www.w3.org/ns/prov#hadActivity> <http://www.w3.org/2000/01/rdf-schema#label> "hadActivity"@en .
+# 
+# http://www.w3.org/ns/prov#hadPlan
+<http://www.w3.org/ns/prov#hadPlan> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/prov#hadPlan> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/prov#Agent> .
+<http://www.w3.org/ns/prov#hadPlan> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/prov#Plan> .
+<http://www.w3.org/ns/prov#hadPlan> <http://www.w3.org/2000/01/rdf-schema#label> "hadPlan"@en .
+# 
+# http://www.w3.org/ns/prov#qualifiedAssociation
+<http://www.w3.org/ns/prov#qualifiedAssociation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/prov#qualifiedAssociation> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/prov#Activity> .
+<http://www.w3.org/ns/prov#qualifiedAssociation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/prov#Association> .
+<http://www.w3.org/ns/prov#qualifiedAssociation> <http://www.w3.org/2000/01/rdf-schema#label> "qualifiedAssociation"@en .
+# 
+# http://www.w3.org/ns/prov#qualifiedDerivation
+<http://www.w3.org/ns/prov#qualifiedDerivation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/prov#qualifiedDerivation> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/roar#Reconstruction> .
+<http://www.w3.org/ns/prov#qualifiedDerivation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/prov#Derivation> .
+<http://www.w3.org/ns/prov#qualifiedDerivation> <http://www.w3.org/2000/01/rdf-schema#label> "qualifiedDerivation"@en .
+# 
+# http://www.w3.org/ns/prov#wasAssociatedWith
+<http://www.w3.org/ns/prov#wasAssociatedWith> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/prov#wasAssociatedWith> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/prov#Activity> .
+<http://www.w3.org/ns/prov#wasAssociatedWith> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/prov#Agent> .
+<http://www.w3.org/ns/prov#wasAssociatedWith> <http://www.w3.org/2000/01/rdf-schema#label> "wasAssociatedWith"@en .
+# 
+# http://www.w3.org/ns/prov#wasDerivedFrom
+<http://www.w3.org/ns/prov#wasDerivedFrom> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/prov#wasDerivedFrom> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/roar#Reconstruction> .
+<http://www.w3.org/ns/prov#wasDerivedFrom> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/prov#Entity> .
+# 
+# https://w3id.org/pnv#hasName
+<https://w3id.org/pnv#hasName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/pnv#hasName> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/roar#Person> .
+<https://w3id.org/pnv#hasName> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/pnv#PersonName> .
+<https://w3id.org/pnv#hasName> <http://www.w3.org/2000/01/rdf-schema#label> "hasName"@en .
+# 
+# https://w3id.org/roar#documentedIn
+<https://w3id.org/roar#documentedIn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/roar#documentedIn> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/roar#Observation> .
+<https://w3id.org/roar#documentedIn> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/roar#Document> .
+<https://w3id.org/roar#documentedIn> <http://www.w3.org/2000/01/rdf-schema#comment> "Points to source (document, act, legislation etc.) in which the Observation is made. It is recommended to point to a resource (URI) provided by some institute/archive that hold key information on this source. You are, however, free to fill `roar:Document` with additional information."@en .
+<https://w3id.org/roar#documentedIn> <http://www.w3.org/2000/01/rdf-schema#label> "documentedIn"@en .
+# 
+# https://w3id.org/roar#hasLocation
+<https://w3id.org/roar#hasLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/roar#hasLocation> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/roar#Entity> .
+<https://w3id.org/roar#hasLocation> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/roar#Location> .
+<https://w3id.org/roar#hasLocation> <http://www.w3.org/2000/01/rdf-schema#comment> "Use to indicate that a Person has a relation to a certain Location. Use a structured value to indicate a specific role of this person to the location or to specify a temporal validity in which this Person-Location relation is valid (use `sem` timestamp properties for this). \n\nExample:\n```ttl\n:person1 a roar:PersonObservation ;\n         roar:hasLocation [ rdf:value :location1 ;\n                            roar:role \"inhabitant\" ;\n                            sem:hasBeginTimeStamp \"1782-11-20\" ;\n                            sem:hasEarliestEndTimesStamp \"1782-11-20\" ] .\n```"@en .
+<https://w3id.org/roar#hasLocation> <http://www.w3.org/2000/01/rdf-schema#label> "hasLocation"@en .
+# 
+# https://w3id.org/roar#hasPerson
+<https://w3id.org/roar#hasPerson> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/roar#hasPerson> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/roar#Entity> .
+<https://w3id.org/roar#hasPerson> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/roar#Person> .
+<https://w3id.org/roar#hasPerson> <http://www.w3.org/2000/01/rdf-schema#comment> "Use to indicate that a Location is in relation to a certain Person. Use a structured value to indicate a specific role of this location to the person or to specify a temporal validity in which this Location-Person relation is valid (use `sem` timestamp properties for this). \n\nExample:\n```ttl\n:location1 a roar:LocationObservation ;\n           roar:hasLocation [ rdf:value :person1 ;\n                              roar:role \"residence\" ;\n                              sem:hasBeginTimeStamp \"1782-11-20\" ;\n                              sem:hasEarliestEndTimesStamp \"1782-11-20\" ] .\n```"@en .
+<https://w3id.org/roar#hasPerson> <http://www.w3.org/2000/01/rdf-schema#label> "hasPerson"@en .
+# 
+# https://w3id.org/roar#hasRelation
+<https://w3id.org/roar#hasRelation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/roar#hasRelation> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/roar#Entity> .
+<https://w3id.org/roar#hasRelation> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/roar#Entity> .
+<https://w3id.org/roar#hasRelation> <http://www.w3.org/2000/01/rdf-schema#comment> "Relation to another person or organisation, defined by a structured value to indicate the kind of relation. \n\n*Example*:\n```ttl\n:person1 a roar:Person ;\n    roar:hasRelation [ rdf:value :person2 ;\n                       roar:relationType \"mother\" ] .\n```" .
+<https://w3id.org/roar#hasRelation> <http://www.w3.org/2000/01/rdf-schema#label> "hasRelation"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://dbpedia.org/ontology/role
+<http://dbpedia.org/ontology/role> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://dbpedia.org/ontology/role> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/roar#role> .
+# 
+# https://w3id.org/roar#onScan
+<https://w3id.org/roar#onScan> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/roar#onScan> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/roar#onScan> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/roar#Observation> .
+<https://w3id.org/roar#onScan> <http://www.w3.org/2000/01/rdf-schema#label> "onScan"@en .
+# 
+# https://w3id.org/roar#role
+<https://w3id.org/roar#role> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/roar#role> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/roar#role> <http://www.w3.org/2000/01/rdf-schema#comment> "Can be used to indicate the type of relation between two entities. In case of a Person to Location relation (through `roar:hasLocation`), the `roar:role` can be 'inhabitant' or 'visitor'."@en .
+<https://w3id.org/roar#role> <http://www.w3.org/2000/01/rdf-schema#label> "role"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/vocab/bio/0.1/Birth
+<http://purl.org/vocab/bio/0.1/Birth> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://purl.org/vocab/bio/0.1/Birth> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/vocab/bio/0.1/Event> .
+<http://purl.org/vocab/bio/0.1/Birth> <http://www.w3.org/2000/01/rdf-schema#label> "Birth"@en .
+# 
+# http://purl.org/vocab/bio/0.1/Death
+<http://purl.org/vocab/bio/0.1/Death> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://purl.org/vocab/bio/0.1/Death> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/vocab/bio/0.1/Event> .
+<http://purl.org/vocab/bio/0.1/Death> <http://www.w3.org/2000/01/rdf-schema#label> "Death"@en .
+# 
+# http://purl.org/vocab/bio/0.1/Event
+<http://purl.org/vocab/bio/0.1/Event> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://purl.org/vocab/bio/0.1/Event> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://semanticweb.cs.vu.nl/2009/11/sem/Event> .
+<http://purl.org/vocab/bio/0.1/Event> <http://www.w3.org/2000/01/rdf-schema#comment> "Also include properties from sem: \n- sem:hasTimeStamp\n- sem:hasBeginTimeStamp\n- sem:hasEarliestBeginTimeStamp\n- sem:hasLatestBeginTimeStamp\n- sem:hasEndTimeStamp\n- sem:hasEarliestEndTimeStamp\n- sem:hasLatestEndTimeStamp\n\nAnd define a role by both defining bio:principal and sem:hasRole:\n\n```ttl\n_:event1 a bio:Event ;\n    bio:principal _:person1 ;\n    sem:hasActor [ a sem:Role ;\n                   sem:roleType [ a sem:RoleType ;\n                                  rdfs:label \"<the type of role, e.g. 'born'>\" ] ;\n                   rdf:value _:person1 ] .\n\n```"@en .
+<http://purl.org/vocab/bio/0.1/Event> <http://www.w3.org/2000/01/rdf-schema#label> "Event (bio)"@en .
+# 
+# http://schema.org/CreativeWork
+<http://schema.org/CreativeWork> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://schema.org/CreativeWork> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/roar#Document> .
+<http://schema.org/CreativeWork> <http://www.w3.org/2000/01/rdf-schema#label> "CreativeWork (schema)"@en .
+# 
+# http://schema.org/Person
+<http://schema.org/Person> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://schema.org/Person> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/roar#Person> .
+<http://schema.org/Person> <http://www.w3.org/2000/01/rdf-schema#label> "Person (schema)"@en .
+# 
+# http://schema.org/Place
+<http://schema.org/Place> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://schema.org/Place> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/roar#Location> .
+<http://schema.org/Place> <http://www.w3.org/2000/01/rdf-schema#label> "Place (schema)"@en .
+# 
+# http://semanticweb.cs.vu.nl/2009/11/sem/Event
+<http://semanticweb.cs.vu.nl/2009/11/sem/Event> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://semanticweb.cs.vu.nl/2009/11/sem/Event> <http://www.w3.org/2000/01/rdf-schema#label> "Event (sem)"@en .
+# 
+# http://www.europeana.eu/schemas/edm/ProvidedCHO
+<http://www.europeana.eu/schemas/edm/ProvidedCHO> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.europeana.eu/schemas/edm/ProvidedCHO> <http://www.w3.org/2000/01/rdf-schema#label> "ProvidedCHO (edm)"@en .
+# 
+# http://www.opengis.net/ont/geosparql#Feature
+<http://www.opengis.net/ont/geosparql#Feature> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.opengis.net/ont/geosparql#Feature> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid1 .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid1 <http://www.w3.org/2002/07/owl#onProperty> <http://www.opengis.net/ont/geosparql#hasGeometry> .
+_:genid1 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.opengis.net/ont/geosparql#Geometry> .
+<http://www.opengis.net/ont/geosparql#Feature> <http://www.w3.org/2000/01/rdf-schema#label> "Feature"@en .
+# 
+# http://www.opengis.net/ont/geosparql#Geometry
+<http://www.opengis.net/ont/geosparql#Geometry> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.opengis.net/ont/geosparql#Geometry> <http://www.w3.org/2000/01/rdf-schema#label> "Geometry"@en .
+# 
+# http://www.w3.org/ns/prov#Activity
+<http://www.w3.org/ns/prov#Activity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/prov#Activity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid2 .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid2 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#qualifiedAssociation> .
+_:genid2 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/prov#Association> .
+<http://www.w3.org/ns/prov#Activity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid3 .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid3 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#wasAssociatedWith> .
+_:genid3 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/prov#Agent> .
+<http://www.w3.org/ns/prov#Activity> <http://www.w3.org/2000/01/rdf-schema#label> "Activity"@en .
+# 
+# http://www.w3.org/ns/prov#Agent
+<http://www.w3.org/ns/prov#Agent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/prov#Agent> <http://www.w3.org/2000/01/rdf-schema#label> "Agent"@en .
+# 
+# http://www.w3.org/ns/prov#Association
+<http://www.w3.org/ns/prov#Association> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/prov#Association> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid4 .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid4 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#agent> .
+_:genid4 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/prov#Agent> .
+<http://www.w3.org/ns/prov#Association> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid5 .
+_:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid5 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#hadPlan> .
+_:genid5 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/prov#Plan> .
+<http://www.w3.org/ns/prov#Association> <http://www.w3.org/2000/01/rdf-schema#label> "Association"@en .
+# 
+# http://www.w3.org/ns/prov#Derivation
+<http://www.w3.org/ns/prov#Derivation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/prov#Derivation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid6 .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid6 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#entity> .
+_:genid6 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#Observation> .
+<http://www.w3.org/ns/prov#Derivation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid7 .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid7 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#hadActivity> .
+_:genid7 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/prov#Activity> .
+<http://www.w3.org/ns/prov#Derivation> <http://www.w3.org/2000/01/rdf-schema#label> "Derivation"@en .
+# 
+# http://www.w3.org/ns/prov#Entity
+<http://www.w3.org/ns/prov#Entity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/prov#Entity> <http://www.w3.org/2000/01/rdf-schema#label> "Entity (prov)"@en .
+# 
+# http://www.w3.org/ns/prov#Plan
+<http://www.w3.org/ns/prov#Plan> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/prov#Plan> <http://www.w3.org/2000/01/rdf-schema#comment> "Use a `rdfs:comment` to describe the goal the Agent had in the Activity."@en .
+<http://www.w3.org/ns/prov#Plan> <http://www.w3.org/2000/01/rdf-schema#label> "Plan"@en .
+# 
+# https://w3id.org/pnv#PersonName
+<https://w3id.org/pnv#PersonName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/pnv#PersonName> <http://www.w3.org/2000/01/rdf-schema#label> "PersonName"@en .
+# 
+# https://w3id.org/roar#Document
+<https://w3id.org/roar#Document> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/roar#Document> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.europeana.eu/schemas/edm/ProvidedCHO> .
+<https://w3id.org/roar#Document> <http://www.w3.org/2000/01/rdf-schema#comment> "The source (e.g. document, act, legislation, text, picture) in which some entity (e.g. Person or Location) can be observed."@en .
+<https://w3id.org/roar#Document> <http://www.w3.org/2000/01/rdf-schema#label> "Document"@en .
+# 
+# https://w3id.org/roar#Entity
+<https://w3id.org/roar#Entity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/roar#Entity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid8 .
+_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid8 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/roar#hasLocation> .
+_:genid8 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#Location> .
+<https://w3id.org/roar#Entity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid9 .
+_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid9 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/roar#hasPerson> .
+_:genid9 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#Person> .
+<https://w3id.org/roar#Entity> <http://www.w3.org/2000/01/rdf-schema#label> "Entity"@en .
+# 
+# https://w3id.org/roar#Location
+<https://w3id.org/roar#Location> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/roar#Location> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.opengis.net/ont/geosparql#Feature> .
+<https://w3id.org/roar#Location> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Entity> .
+<https://w3id.org/roar#Location> <http://www.w3.org/2002/07/owl#disjointWith> <https://w3id.org/roar#Person> .
+<https://w3id.org/roar#Location> <http://www.w3.org/2000/01/rdf-schema#label> "Location"@en .
+# 
+# https://w3id.org/roar#LocationObservation
+<https://w3id.org/roar#LocationObservation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Location> .
+<https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Observation> .
+<https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#label> "LocationObservation"@en .
+# 
+# https://w3id.org/roar#LocationReconstruction
+<https://w3id.org/roar#LocationReconstruction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/roar#LocationReconstruction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Location> .
+<https://w3id.org/roar#LocationReconstruction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Reconstruction> .
+<https://w3id.org/roar#LocationReconstruction> <http://www.w3.org/2000/01/rdf-schema#label> "LocationReconstruction"@en .
+# 
+# https://w3id.org/roar#Observation
+<https://w3id.org/roar#Observation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/roar#Observation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Entity> .
+<https://w3id.org/roar#Observation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid10 .
+_:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid10 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/roar#documentedIn> .
+_:genid10 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#Document> .
+<https://w3id.org/roar#Observation> <http://www.w3.org/2002/07/owl#disjointWith> <https://w3id.org/roar#Reconstruction> .
+<https://w3id.org/roar#Observation> <http://www.w3.org/2000/01/rdf-schema#label> "Observation"@en .
+# 
+# https://w3id.org/roar#Person
+<https://w3id.org/roar#Person> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/roar#Person> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Entity> .
+<https://w3id.org/roar#Person> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid11 .
+_:genid11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid11 <http://www.w3.org/2002/07/owl#onProperty> <http://purl.org/vocab/bio/event/0.1> .
+_:genid11 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://purl.org/vocab/bio/0.1/Event> .
+<https://w3id.org/roar#Person> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid12 .
+_:genid12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid12 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/pnv#hasName> .
+_:genid12 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/pnv#PersonName> .
+<https://w3id.org/roar#Person> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid13 .
+_:genid13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid13 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/roar#hasRelation> .
+_:genid13 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#Person> .
+<https://w3id.org/roar#Person> <http://www.w3.org/2000/01/rdf-schema#label> "Person"@en .
+# 
+# https://w3id.org/roar#PersonObservation
+<https://w3id.org/roar#PersonObservation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Observation> .
+<https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Person> .
+<https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#label> "PersonObservation"@en .
+# 
+# https://w3id.org/roar#PersonReconstruction
+<https://w3id.org/roar#PersonReconstruction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/roar#PersonReconstruction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Person> .
+<https://w3id.org/roar#PersonReconstruction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Reconstruction> .
+<https://w3id.org/roar#PersonReconstruction> <http://www.w3.org/2000/01/rdf-schema#label> "PersonReconstruction"@en .
+# 
+# https://w3id.org/roar#Reconstruction
+<https://w3id.org/roar#Reconstruction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/roar#Reconstruction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/prov#Entity> .
+<https://w3id.org/roar#Reconstruction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid14 .
+_:genid14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid14 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#qualifiedDerivation> .
+_:genid14 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/prov#Derivation> .
+<https://w3id.org/roar#Reconstruction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid15 .
+_:genid15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:genid15 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#wasDerivedFrom> .
+_:genid15 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/prov#Entity> .
+<https://w3id.org/roar#Reconstruction> <http://www.w3.org/2000/01/rdf-schema#label> "Reconstruction"@en .
+# 
+# Generated by the OWL API (version 5.1.9) https://github.com/owlcs/owlapi/
