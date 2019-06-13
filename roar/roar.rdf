@@ -701,7 +701,6 @@ _:event1 a bio:Event ;
 
 
     <owl:Class rdf:about="https://w3id.org/roar#LocationObservation">
-        <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Location"/>
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Observation"/>
         <rdfs:label xml:lang="en">LocationObservation</rdfs:label>
     </owl:Class>
@@ -769,7 +768,6 @@ _:event1 a bio:Event ;
 
     <owl:Class rdf:about="https://w3id.org/roar#PersonObservation">
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Observation"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Person"/>
         <rdfs:label xml:lang="en">PersonObservation</rdfs:label>
     </owl:Class>
     

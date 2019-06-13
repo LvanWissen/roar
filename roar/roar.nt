@@ -315,7 +315,6 @@ _:genid9 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#P
 # 
 # https://w3id.org/roar#LocationObservation
 <https://w3id.org/roar#LocationObservation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Location> .
 <https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Observation> .
 <https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#label> "LocationObservation"@en .
 # 
@@ -355,7 +354,6 @@ _:genid13 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#
 # https://w3id.org/roar#PersonObservation
 <https://w3id.org/roar#PersonObservation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Observation> .
-<https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Person> .
 <https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#label> "PersonObservation"@en .
 # 
 # https://w3id.org/roar#PersonReconstruction

@@ -573,8 +573,6 @@
     "@value" : "LocationObservation"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "https://w3id.org/roar#Location"
-  }, {
     "@id" : "https://w3id.org/roar#Observation"
   } ]
 }, {
@@ -629,8 +627,6 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://w3id.org/roar#Observation"
-  }, {
-    "@id" : "https://w3id.org/roar#Person"
   } ]
 }, {
   "@id" : "https://w3id.org/roar#PersonReconstruction",

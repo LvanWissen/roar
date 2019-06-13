@@ -464,8 +464,7 @@ _:event1 a bio:Event ;
 
 ###  https://w3id.org/roar#LocationObservation
 :LocationObservation rdf:type owl:Class ;
-                     rdfs:subClassOf :Location ,
-                                     :Observation ;
+                     rdfs:subClassOf :Observation ;
                      rdfs:label "LocationObservation"@en .
 
 
@@ -507,8 +506,7 @@ _:event1 a bio:Event ;
 
 ###  https://w3id.org/roar#PersonObservation
 :PersonObservation rdf:type owl:Class ;
-                   rdfs:subClassOf :Observation ,
-                                   :Person ;
+                   rdfs:subClassOf :Observation ;
                    rdfs:label "PersonObservation"@en .
 
 
