@@ -512,7 +512,7 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Ontology to account for multiple Person/Location/Event etc. observations in archival resources, with the possibility to express a (corrected) Reconstruction of these entities, based on one or several observations. A2A can be mapped to this quite easily."
+    "@value" : "Ontology to account for multiple Person/Location/Event etc. observations in archival resources, with the possibility to express a (corrected) Reconstruction of these entities, based on one or several observations."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",

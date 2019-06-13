@@ -2,7 +2,7 @@
 <https://w3id.org/roar#> <http://purl.org/dc/elements/1.1/title> "Reconstructions and Observations in Archival Resources"@en .
 <https://w3id.org/roar#> <http://purl.org/vocab/vann/preferredNamespacePrefix> "roar" .
 <https://w3id.org/roar#> <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/roar#" .
-<https://w3id.org/roar#> <http://www.w3.org/2000/01/rdf-schema#comment> "Ontology to account for multiple Person/Location/Event etc. observations in archival resources, with the possibility to express a (corrected) Reconstruction of these entities, based on one or several observations. A2A can be mapped to this quite easily."@en .
+<https://w3id.org/roar#> <http://www.w3.org/2000/01/rdf-schema#comment> "Ontology to account for multiple Person/Location/Event etc. observations in archival resources, with the possibility to express a (corrected) Reconstruction of these entities, based on one or several observations."@en .
 <https://w3id.org/roar#> <http://www.w3.org/2000/01/rdf-schema#label> "Reconstructions and Observations in Archival Resources"@en .
 <https://w3id.org/roar#> <http://xmlns.com/foaf/0.1/depiction> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg> .
 <https://w3id.org/roar#> <http://xmlns.com/foaf/0.1/logo> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-logo.png> .

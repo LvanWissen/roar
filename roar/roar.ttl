@@ -10,7 +10,7 @@
                           <http://purl.org/dc/elements/1.1/title> "Reconstructions and Observations in Archival Resources"@en ;
                           <http://purl.org/vocab/vann/preferredNamespacePrefix> "roar" ;
                           <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/roar#" ;
-                          rdfs:comment "Ontology to account for multiple Person/Location/Event etc. observations in archival resources, with the possibility to express a (corrected) Reconstruction of these entities, based on one or several observations. A2A can be mapped to this quite easily."@en ;
+                          rdfs:comment "Ontology to account for multiple Person/Location/Event etc. observations in archival resources, with the possibility to express a (corrected) Reconstruction of these entities, based on one or several observations."@en ;
                           rdfs:label "Reconstructions and Observations in Archival Resources"@en ;
                           <http://xmlns.com/foaf/0.1/depiction> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg> ;
                           <http://xmlns.com/foaf/0.1/logo> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-logo.png> .

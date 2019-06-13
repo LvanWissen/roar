@@ -14,7 +14,7 @@
         <dc:title xml:lang="en">Reconstructions and Observations in Archival Resources</dc:title>
         <vann:preferredNamespacePrefix>roar</vann:preferredNamespacePrefix>
         <vann:preferredNamespaceUri>https://w3id.org/roar#</vann:preferredNamespaceUri>
-        <rdfs:comment xml:lang="en">Ontology to account for multiple Person/Location/Event etc. observations in archival resources, with the possibility to express a (corrected) Reconstruction of these entities, based on one or several observations. A2A can be mapped to this quite easily.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Ontology to account for multiple Person/Location/Event etc. observations in archival resources, with the possibility to express a (corrected) Reconstruction of these entities, based on one or several observations.</rdfs:comment>
         <rdfs:label xml:lang="en">Reconstructions and Observations in Archival Resources</rdfs:label>
         <foaf:depiction rdf:resource="https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg"/>
         <foaf:logo rdf:resource="https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-logo.png"/>
