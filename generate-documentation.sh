@@ -1,4 +1,4 @@
-java -jar widoco/widoco-1.4.10-jar-with-dependencies.jar -ontFile roar.ttl -confFile ./roar.config -outFolder roar/docs -rewriteAll -lang en 
+java -jar widoco/widoco-1.4.11-jar-with-dependencies.jar -ontFile roar.ttl -confFile ./roar.config -outFolder roar/docs -rewriteAll -lang en 
 
 mv roar/docs/ontology.json roar/roar.json
 mv roar/docs/ontology.ttl roar/roar.ttl
