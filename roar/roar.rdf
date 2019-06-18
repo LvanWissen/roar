@@ -14,7 +14,7 @@
         <dc:title xml:lang="en">Reconstructions and Observations in Archival Resources</dc:title>
         <vann:preferredNamespacePrefix>roar</vann:preferredNamespacePrefix>
         <vann:preferredNamespaceUri>https://w3id.org/roar#</vann:preferredNamespaceUri>
-        <rdfs:comment xml:lang="en">Ontology to account for multiple Person/Location/Event etc. observations in archival resources, with the possibility to express a (corrected) Reconstruction of these entities, based on one or several observations.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Ontology to describe person, location etc. observations in archival resources. One or multiple observations can be bundled into a reconstruction that combines complementary (or sometimes conflicting) information from the observation(s) so that a single entity is reconstructed out of several entity observations from one or multiple sources.</rdfs:comment>
         <rdfs:label xml:lang="en">Reconstructions and Observations in Archival Resources</rdfs:label>
         <foaf:depiction rdf:resource="https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg"/>
         <foaf:logo rdf:resource="https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-logo.png"/>
@@ -131,7 +131,7 @@ _:person1 a roar:PersonReconstruction ;
                     sem:hasLatestEndTimeStamp &quot;1697-02-28&quot; ] ;
         roar:documentedIn _:saaId10160347 .
 ```</rdfs:comment>
-        <rdfs:label xml:lang="en">birth</rdfs:label>
+        <rdfs:label xml:lang="en">birth:birth</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -179,7 +179,7 @@ _:person1 a roar:PersonReconstruction ;
                     sem:hasLatestEndTimeStamp &quot;1697-02-28&quot; ] ;
         roar:documentedIn _:saaId10160347 .
 ```</rdfs:comment>
-        <rdfs:label xml:lang="en">death</rdfs:label>
+        <rdfs:label xml:lang="en">bio:death</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -191,18 +191,7 @@ _:person1 a roar:PersonReconstruction ;
         <rdfs:domain rdf:resource="https://w3id.org/roar#Person"/>
         <rdfs:range rdf:resource="http://purl.org/vocab/bio/0.1/Event"/>
         <rdfs:comment xml:lang="en">Use to connect life events to a Person. Use more specific events, such as `bio:birth` and `bio:death` for respectively Birth and Death events.</rdfs:comment>
-        <rdfs:label xml:lang="en">event</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.opengis.net/ont/geosparql#hasGeometry -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.opengis.net/ont/geosparql#hasGeometry">
-        <rdfs:domain rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
-        <rdfs:range rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
-        <rdfs:label xml:lang="en">hasGeometry</rdfs:label>
+        <rdfs:label xml:lang="en">bio:event</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -213,7 +202,7 @@ _:person1 a roar:PersonReconstruction ;
     <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#agent">
         <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Association"/>
         <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Agent"/>
-        <rdfs:label xml:lang="en">agent</rdfs:label>
+        <rdfs:label xml:lang="en">prov:agent</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -222,7 +211,7 @@ _:person1 a roar:PersonReconstruction ;
 
 
     <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#entity">
-        <rdfs:label xml:lang="en">entity</rdfs:label>
+        <rdfs:label xml:lang="en">prov:entity</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -233,7 +222,7 @@ _:person1 a roar:PersonReconstruction ;
     <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#hadActivity">
         <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Derivation"/>
         <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Activity"/>
-        <rdfs:label xml:lang="en">hadActivity</rdfs:label>
+        <rdfs:label xml:lang="en">prov:hadActivity</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -244,7 +233,7 @@ _:person1 a roar:PersonReconstruction ;
     <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#hadPlan">
         <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Agent"/>
         <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Plan"/>
-        <rdfs:label xml:lang="en">hadPlan</rdfs:label>
+        <rdfs:label xml:lang="en">prov:hadPlan</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -255,7 +244,7 @@ _:person1 a roar:PersonReconstruction ;
     <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#qualifiedAssociation">
         <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Activity"/>
         <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Association"/>
-        <rdfs:label xml:lang="en">qualifiedAssociation</rdfs:label>
+        <rdfs:label xml:lang="en">prov:qualifiedAssociation</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -266,7 +255,7 @@ _:person1 a roar:PersonReconstruction ;
     <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#qualifiedDerivation">
         <rdfs:domain rdf:resource="https://w3id.org/roar#Reconstruction"/>
         <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Derivation"/>
-        <rdfs:label xml:lang="en">qualifiedDerivation</rdfs:label>
+        <rdfs:label xml:lang="en">prov:qualifiedDerivation</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -277,7 +266,7 @@ _:person1 a roar:PersonReconstruction ;
     <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasAssociatedWith">
         <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Activity"/>
         <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Agent"/>
-        <rdfs:label xml:lang="en">wasAssociatedWith</rdfs:label>
+        <rdfs:label xml:lang="en">prov:wasAssociatedWith</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -298,7 +287,7 @@ _:person1 a roar:PersonReconstruction ;
     <owl:ObjectProperty rdf:about="https://w3id.org/pnv#hasName">
         <rdfs:domain rdf:resource="https://w3id.org/roar#Person"/>
         <rdfs:range rdf:resource="https://w3id.org/pnv#PersonName"/>
-        <rdfs:label xml:lang="en">hasName</rdfs:label>
+        <rdfs:label xml:lang="en">pnv:hasName</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -408,6 +397,17 @@ Example:
     
 
 
+    <!-- https://w3id.org/roar#relationType -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/roar#relationType">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:comment xml:lang="en">Used to specify the kind of relation (e.g. &quot;patron&quot;) in a person to person relation as specified by roar:hasRelation.</rdfs:comment>
+        <rdfs:label xml:lang="en">relationType</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://w3id.org/roar#role -->
 
 
@@ -476,7 +476,7 @@ _:event1 a bio:Event ;
                    rdf:value _:person1 ] .
 
 ```</rdfs:comment>
-        <rdfs:label xml:lang="en">Event (bio)</rdfs:label>
+        <rdfs:label xml:lang="en">bio:Event</rdfs:label>
     </owl:Class>
     
 
@@ -486,7 +486,7 @@ _:event1 a bio:Event ;
 
     <owl:Class rdf:about="http://schema.org/CreativeWork">
         <owl:equivalentClass rdf:resource="https://w3id.org/roar#Document"/>
-        <rdfs:label xml:lang="en">CreativeWork (schema)</rdfs:label>
+        <rdfs:label xml:lang="en">schema:CreativeWork</rdfs:label>
     </owl:Class>
     
 
@@ -496,7 +496,7 @@ _:event1 a bio:Event ;
 
     <owl:Class rdf:about="http://schema.org/Person">
         <owl:equivalentClass rdf:resource="https://w3id.org/roar#Person"/>
-        <rdfs:label xml:lang="en">Person (schema)</rdfs:label>
+        <rdfs:label xml:lang="en">schema:Person</rdfs:label>
     </owl:Class>
     
 
@@ -506,7 +506,7 @@ _:event1 a bio:Event ;
 
     <owl:Class rdf:about="http://schema.org/Place">
         <owl:equivalentClass rdf:resource="https://w3id.org/roar#Location"/>
-        <rdfs:label xml:lang="en">Place (schema)</rdfs:label>
+        <rdfs:label xml:lang="en">schema:Place</rdfs:label>
     </owl:Class>
     
 
@@ -515,40 +515,7 @@ _:event1 a bio:Event ;
 
 
     <owl:Class rdf:about="http://semanticweb.cs.vu.nl/2009/11/sem/Event">
-        <rdfs:label xml:lang="en">Event (sem)</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.europeana.eu/schemas/edm/ProvidedCHO -->
-
-
-    <owl:Class rdf:about="http://www.europeana.eu/schemas/edm/ProvidedCHO">
-        <rdfs:label xml:lang="en">ProvidedCHO (edm)</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.opengis.net/ont/geosparql#Feature -->
-
-
-    <owl:Class rdf:about="http://www.opengis.net/ont/geosparql#Feature">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.opengis.net/ont/geosparql#hasGeometry"/>
-                <owl:someValuesFrom rdf:resource="http://www.opengis.net/ont/geosparql#Geometry"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">Feature</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.opengis.net/ont/geosparql#Geometry -->
-
-
-    <owl:Class rdf:about="http://www.opengis.net/ont/geosparql#Geometry">
-        <rdfs:label xml:lang="en">Geometry</rdfs:label>
+        <rdfs:label xml:lang="en">sem:Event</rdfs:label>
     </owl:Class>
     
 
@@ -569,7 +536,7 @@ _:event1 a bio:Event ;
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/ns/prov#Agent"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">Activity</rdfs:label>
+        <rdfs:label xml:lang="en">prov:Activity</rdfs:label>
     </owl:Class>
     
 
@@ -578,7 +545,7 @@ _:event1 a bio:Event ;
 
 
     <owl:Class rdf:about="http://www.w3.org/ns/prov#Agent">
-        <rdfs:label xml:lang="en">Agent</rdfs:label>
+        <rdfs:label xml:lang="en">prov:Agent</rdfs:label>
     </owl:Class>
     
 
@@ -599,7 +566,7 @@ _:event1 a bio:Event ;
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/ns/prov#Plan"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">Association</rdfs:label>
+        <rdfs:label xml:lang="en">prov:Association</rdfs:label>
     </owl:Class>
     
 
@@ -620,7 +587,7 @@ _:event1 a bio:Event ;
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/ns/prov#Activity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">Derivation</rdfs:label>
+        <rdfs:label xml:lang="en">prov:Derivation</rdfs:label>
     </owl:Class>
     
 
@@ -629,7 +596,7 @@ _:event1 a bio:Event ;
 
 
     <owl:Class rdf:about="http://www.w3.org/ns/prov#Entity">
-        <rdfs:label xml:lang="en">Entity (prov)</rdfs:label>
+        <rdfs:label xml:lang="en">prov:Entity</rdfs:label>
     </owl:Class>
     
 
@@ -639,7 +606,7 @@ _:event1 a bio:Event ;
 
     <owl:Class rdf:about="http://www.w3.org/ns/prov#Plan">
         <rdfs:comment xml:lang="en">Use a `rdfs:comment` to describe the goal the Agent had in the Activity.</rdfs:comment>
-        <rdfs:label xml:lang="en">Plan</rdfs:label>
+        <rdfs:label xml:lang="en">prov:Plan</rdfs:label>
     </owl:Class>
     
 
@@ -648,7 +615,7 @@ _:event1 a bio:Event ;
 
 
     <owl:Class rdf:about="https://w3id.org/pnv#PersonName">
-        <rdfs:label xml:lang="en">PersonName</rdfs:label>
+        <rdfs:label xml:lang="en">pnv:PersonName</rdfs:label>
     </owl:Class>
     
 
@@ -657,7 +624,6 @@ _:event1 a bio:Event ;
 
 
     <owl:Class rdf:about="https://w3id.org/roar#Document">
-        <rdfs:subClassOf rdf:resource="http://www.europeana.eu/schemas/edm/ProvidedCHO"/>
         <rdfs:comment xml:lang="en">The source (e.g. document, act, legislation, text, picture) in which some entity (e.g. Person or Location) can be observed.</rdfs:comment>
         <rdfs:label xml:lang="en">Document</rdfs:label>
     </owl:Class>
@@ -689,7 +655,6 @@ _:event1 a bio:Event ;
 
 
     <owl:Class rdf:about="https://w3id.org/roar#Location">
-        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#Feature"/>
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Entity"/>
         <owl:disjointWith rdf:resource="https://w3id.org/roar#Person"/>
         <rdfs:label xml:lang="en">Location</rdfs:label>
