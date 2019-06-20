@@ -197,7 +197,7 @@
 # http://purl.org/vocab/bio/0.1/Event
 <http://purl.org/vocab/bio/0.1/Event> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://purl.org/vocab/bio/0.1/Event> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://semanticweb.cs.vu.nl/2009/11/sem/Event> .
-<http://purl.org/vocab/bio/0.1/Event> <http://www.w3.org/2000/01/rdf-schema#comment> "Also include properties from sem: \n- sem:hasTimeStamp\n- sem:hasBeginTimeStamp\n- sem:hasEarliestBeginTimeStamp\n- sem:hasLatestBeginTimeStamp\n- sem:hasEndTimeStamp\n- sem:hasEarliestEndTimeStamp\n- sem:hasLatestEndTimeStamp\n\nAnd define a role by both defining bio:principal and sem:hasRole:\n\n```ttl\n_:event1 a bio:Event ;\n    bio:principal _:person1 ;\n    sem:hasActor [ a sem:Role ;\n                   sem:roleType [ a sem:RoleType ;\n                                  rdfs:label \"<the type of role, e.g. 'born'>\" ] ;\n                   rdf:value _:person1 ] .\n\n```"@en .
+<http://purl.org/vocab/bio/0.1/Event> <http://www.w3.org/2000/01/rdf-schema#comment> "A life event from the bio vocabulary.\nIt is recommended to include timestamp properties from the sem vocabulary. If the exact date is known, sem:hasTimeStamp can be used. If dates are uncertain, use the other properties:\n- sem:hasTimeStamp\n- sem:hasBeginTimeStamp\n- sem:hasEarliestBeginTimeStamp\n- sem:hasLatestBeginTimeStamp\n- sem:hasEndTimeStamp\n- sem:hasEarliestEndTimeStamp\n- sem:hasLatestEndTimeStamp\nTo make a bio:Event compliant to a sem:Event, also define a role (next to the bio:principal or bio:partner) by defining a sem:hasRole:\n```ttl\n_:event1 a bio:Event ;\n    rdfs:label \"Living on the Keizersgracht\"\n    bio:principal _:person1 ;\n    sem:hasActor [ a sem:Role ;\n                   sem:roleType [ a sem:RoleType ;\n                                  rdfs:label \"Resident\" ] ;\n                   rdf:value _:person1 ] .\n\n```"@en .
 <http://purl.org/vocab/bio/0.1/Event> <http://www.w3.org/2000/01/rdf-schema#label> "bio:Event"@en .
 # 
 # http://schema.org/CreativeWork
@@ -274,7 +274,7 @@ _:genid6 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/pr
 # 
 # https://w3id.org/roar#Document
 <https://w3id.org/roar#Document> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://w3id.org/roar#Document> <http://www.w3.org/2000/01/rdf-schema#comment> "The source (e.g. document, act, legislation, text, picture) in which some entity (e.g. Person or Location) can be observed."@en .
+<https://w3id.org/roar#Document> <http://www.w3.org/2000/01/rdf-schema#comment> "The source (e.g. document, act, legislation, text, picture, recording) in which some entity (e.g. Person or Location) can be observed."@en .
 <https://w3id.org/roar#Document> <http://www.w3.org/2000/01/rdf-schema#label> "Document"@en .
 # 
 # https://w3id.org/roar#Entity
@@ -293,6 +293,7 @@ _:genid8 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#P
 <https://w3id.org/roar#Location> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://w3id.org/roar#Location> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Entity> .
 <https://w3id.org/roar#Location> <http://www.w3.org/2002/07/owl#disjointWith> <https://w3id.org/roar#Person> .
+<https://w3id.org/roar#Location> <http://www.w3.org/2000/01/rdf-schema#comment> "A Location can be any type of place where another entity can be located."@en .
 <https://w3id.org/roar#Location> <http://www.w3.org/2000/01/rdf-schema#label> "Location"@en .
 # 
 # https://w3id.org/roar#LocationObservation
@@ -314,6 +315,7 @@ _:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/20
 _:genid9 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/roar#documentedIn> .
 _:genid9 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#Document> .
 <https://w3id.org/roar#Observation> <http://www.w3.org/2002/07/owl#disjointWith> <https://w3id.org/roar#Reconstruction> .
+<https://w3id.org/roar#Observation> <http://www.w3.org/2000/01/rdf-schema#comment> "Something of a type 'Observation' is something that is mentioned or described in a 'Document' (described by roar:inDocument). Two common subclasses are PersonObservation and LocationObservation, but one can also think about EventObservation and other entities."@en .
 <https://w3id.org/roar#Observation> <http://www.w3.org/2000/01/rdf-schema#label> "Observation"@en .
 # 
 # https://w3id.org/roar#Person
@@ -331,6 +333,7 @@ _:genid11 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/pnv#P
 _:genid12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:genid12 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/roar#hasRelation> .
 _:genid12 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#Person> .
+<https://w3id.org/roar#Person> <http://www.w3.org/2000/01/rdf-schema#comment> "A Person is a human being that is mentioned in a Document. This can be a direct mention (e.g. 'Aaltie Jans') or indirect (e.g. 'husband of Aaltie Jans'), in which a name might not be known."@en .
 <https://w3id.org/roar#Person> <http://www.w3.org/2000/01/rdf-schema#label> "Person"@en .
 # 
 # https://w3id.org/roar#PersonObservation
@@ -355,6 +358,7 @@ _:genid13 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/p
 _:genid14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:genid14 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/ns/prov#wasDerivedFrom> .
 _:genid14 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/prov#Entity> .
+<https://w3id.org/roar#Reconstruction> <http://www.w3.org/2000/01/rdf-schema#comment> "A 'Reconstruction' is a specific modelling of one or several entities of type 'Observation' into a single resource. The prov:wasDerivedFrom property is used to indicate on which Observations a Reconstruction was based. \nIt is also possible to derrive a Reconstruction from other Reconstructions."@en .
 <https://w3id.org/roar#Reconstruction> <http://www.w3.org/2000/01/rdf-schema#label> "Reconstruction"@en .
 # 
 # Generated by the OWL API (version 5.1.9) https://github.com/owlcs/owlapi/

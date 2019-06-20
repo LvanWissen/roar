@@ -456,7 +456,8 @@ Example:
 
     <owl:Class rdf:about="http://purl.org/vocab/bio/0.1/Event">
         <rdfs:subClassOf rdf:resource="http://semanticweb.cs.vu.nl/2009/11/sem/Event"/>
-        <rdfs:comment xml:lang="en">Also include properties from sem: 
+        <rdfs:comment xml:lang="en">A life event from the bio vocabulary.
+It is recommended to include timestamp properties from the sem vocabulary. If the exact date is known, sem:hasTimeStamp can be used. If dates are uncertain, use the other properties:
 - sem:hasTimeStamp
 - sem:hasBeginTimeStamp
 - sem:hasEarliestBeginTimeStamp
@@ -464,15 +465,14 @@ Example:
 - sem:hasEndTimeStamp
 - sem:hasEarliestEndTimeStamp
 - sem:hasLatestEndTimeStamp
-
-And define a role by both defining bio:principal and sem:hasRole:
-
+To make a bio:Event compliant to a sem:Event, also define a role (next to the bio:principal or bio:partner) by defining a sem:hasRole:
 ```ttl
 _:event1 a bio:Event ;
+    rdfs:label &quot;Living on the Keizersgracht&quot;
     bio:principal _:person1 ;
     sem:hasActor [ a sem:Role ;
                    sem:roleType [ a sem:RoleType ;
-                                  rdfs:label &quot;&lt;the type of role, e.g. &apos;born&apos;&gt;&quot; ] ;
+                                  rdfs:label &quot;Resident&quot; ] ;
                    rdf:value _:person1 ] .
 
 ```</rdfs:comment>
@@ -624,7 +624,7 @@ _:event1 a bio:Event ;
 
 
     <owl:Class rdf:about="https://w3id.org/roar#Document">
-        <rdfs:comment xml:lang="en">The source (e.g. document, act, legislation, text, picture) in which some entity (e.g. Person or Location) can be observed.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The source (e.g. document, act, legislation, text, picture, recording) in which some entity (e.g. Person or Location) can be observed.</rdfs:comment>
         <rdfs:label xml:lang="en">Document</rdfs:label>
     </owl:Class>
     
@@ -657,6 +657,7 @@ _:event1 a bio:Event ;
     <owl:Class rdf:about="https://w3id.org/roar#Location">
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Entity"/>
         <owl:disjointWith rdf:resource="https://w3id.org/roar#Person"/>
+        <rdfs:comment xml:lang="en">A Location can be any type of place where another entity can be located.</rdfs:comment>
         <rdfs:label xml:lang="en">Location</rdfs:label>
     </owl:Class>
     
@@ -695,6 +696,7 @@ _:event1 a bio:Event ;
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://w3id.org/roar#Reconstruction"/>
+        <rdfs:comment xml:lang="en">Something of a type &apos;Observation&apos; is something that is mentioned or described in a &apos;Document&apos; (described by roar:inDocument). Two common subclasses are PersonObservation and LocationObservation, but one can also think about EventObservation and other entities.</rdfs:comment>
         <rdfs:label xml:lang="en">Observation</rdfs:label>
     </owl:Class>
     
@@ -723,6 +725,7 @@ _:event1 a bio:Event ;
                 <owl:someValuesFrom rdf:resource="https://w3id.org/roar#Person"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A Person is a human being that is mentioned in a Document. This can be a direct mention (e.g. &apos;Aaltie Jans&apos;) or indirect (e.g. &apos;husband of Aaltie Jans&apos;), in which a name might not be known.</rdfs:comment>
         <rdfs:label xml:lang="en">Person</rdfs:label>
     </owl:Class>
     
@@ -766,6 +769,8 @@ _:event1 a bio:Event ;
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/ns/prov#Entity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A &apos;Reconstruction&apos; is a specific modelling of one or several entities of type &apos;Observation&apos; into a single resource. The prov:wasDerivedFrom property is used to indicate on which Observations a Reconstruction was based. 
+It is also possible to derrive a Reconstruction from other Reconstructions.</rdfs:comment>
         <rdfs:label xml:lang="en">Reconstruction</rdfs:label>
     </owl:Class>
 </rdf:RDF>

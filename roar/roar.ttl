@@ -309,7 +309,8 @@ Example:
 ###  http://purl.org/vocab/bio/0.1/Event
 <http://purl.org/vocab/bio/0.1/Event> rdf:type owl:Class ;
                                       rdfs:subClassOf <http://semanticweb.cs.vu.nl/2009/11/sem/Event> ;
-                                      rdfs:comment """Also include properties from sem: 
+                                      rdfs:comment """A life event from the bio vocabulary.
+It is recommended to include timestamp properties from the sem vocabulary. If the exact date is known, sem:hasTimeStamp can be used. If dates are uncertain, use the other properties:
 - sem:hasTimeStamp
 - sem:hasBeginTimeStamp
 - sem:hasEarliestBeginTimeStamp
@@ -317,15 +318,14 @@ Example:
 - sem:hasEndTimeStamp
 - sem:hasEarliestEndTimeStamp
 - sem:hasLatestEndTimeStamp
-
-And define a role by both defining bio:principal and sem:hasRole:
-
+To make a bio:Event compliant to a sem:Event, also define a role (next to the bio:principal or bio:partner) by defining a sem:hasRole:
 ```ttl
 _:event1 a bio:Event ;
+    rdfs:label \"Living on the Keizersgracht\"
     bio:principal _:person1 ;
     sem:hasActor [ a sem:Role ;
                    sem:roleType [ a sem:RoleType ;
-                                  rdfs:label \"<the type of role, e.g. 'born'>\" ] ;
+                                  rdfs:label \"Resident\" ] ;
                    rdf:value _:person1 ] .
 
 ```"""@en ;
@@ -417,7 +417,7 @@ _:event1 a bio:Event ;
 
 ###  https://w3id.org/roar#Document
 :Document rdf:type owl:Class ;
-          rdfs:comment "The source (e.g. document, act, legislation, text, picture) in which some entity (e.g. Person or Location) can be observed."@en ;
+          rdfs:comment "The source (e.g. document, act, legislation, text, picture, recording) in which some entity (e.g. Person or Location) can be observed."@en ;
           rdfs:label "Document"@en .
 
 
@@ -438,6 +438,7 @@ _:event1 a bio:Event ;
 :Location rdf:type owl:Class ;
           rdfs:subClassOf :Entity ;
           owl:disjointWith :Person ;
+          rdfs:comment "A Location can be any type of place where another entity can be located."@en ;
           rdfs:label "Location"@en .
 
 
@@ -462,6 +463,7 @@ _:event1 a bio:Event ;
                                owl:someValuesFrom :Document
                              ] ;
              owl:disjointWith :Reconstruction ;
+             rdfs:comment "Something of a type 'Observation' is something that is mentioned or described in a 'Document' (described by roar:inDocument). Two common subclasses are PersonObservation and LocationObservation, but one can also think about EventObservation and other entities."@en ;
              rdfs:label "Observation"@en .
 
 
@@ -480,6 +482,7 @@ _:event1 a bio:Event ;
                           owl:onProperty :hasRelation ;
                           owl:someValuesFrom :Person
                         ] ;
+        rdfs:comment "A Person is a human being that is mentioned in a Document. This can be a direct mention (e.g. 'Aaltie Jans') or indirect (e.g. 'husband of Aaltie Jans'), in which a name might not be known."@en ;
         rdfs:label "Person"@en .
 
 
@@ -507,6 +510,8 @@ _:event1 a bio:Event ;
                                   owl:onProperty <http://www.w3.org/ns/prov#wasDerivedFrom> ;
                                   owl:someValuesFrom <http://www.w3.org/ns/prov#Entity>
                                 ] ;
+                rdfs:comment """A 'Reconstruction' is a specific modelling of one or several entities of type 'Observation' into a single resource. The prov:wasDerivedFrom property is used to indicate on which Observations a Reconstruction was based. 
+It is also possible to derrive a Reconstruction from other Reconstructions."""@en ;
                 rdfs:label "Reconstruction"@en .
 
 

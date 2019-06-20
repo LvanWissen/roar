@@ -161,7 +161,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Also include properties from sem: \n- sem:hasTimeStamp\n- sem:hasBeginTimeStamp\n- sem:hasEarliestBeginTimeStamp\n- sem:hasLatestBeginTimeStamp\n- sem:hasEndTimeStamp\n- sem:hasEarliestEndTimeStamp\n- sem:hasLatestEndTimeStamp\n\nAnd define a role by both defining bio:principal and sem:hasRole:\n\n```ttl\n_:event1 a bio:Event ;\n    bio:principal _:person1 ;\n    sem:hasActor [ a sem:Role ;\n                   sem:roleType [ a sem:RoleType ;\n                                  rdfs:label \"<the type of role, e.g. 'born'>\" ] ;\n                   rdf:value _:person1 ] .\n\n```"
+    "@value" : "A life event from the bio vocabulary.\nIt is recommended to include timestamp properties from the sem vocabulary. If the exact date is known, sem:hasTimeStamp can be used. If dates are uncertain, use the other properties:\n- sem:hasTimeStamp\n- sem:hasBeginTimeStamp\n- sem:hasEarliestBeginTimeStamp\n- sem:hasLatestBeginTimeStamp\n- sem:hasEndTimeStamp\n- sem:hasEarliestEndTimeStamp\n- sem:hasLatestEndTimeStamp\nTo make a bio:Event compliant to a sem:Event, also define a role (next to the bio:principal or bio:partner) by defining a sem:hasRole:\n```ttl\n_:event1 a bio:Event ;\n    rdfs:label \"Living on the Keizersgracht\"\n    bio:principal _:person1 ;\n    sem:hasActor [ a sem:Role ;\n                   sem:roleType [ a sem:RoleType ;\n                                  rdfs:label \"Resident\" ] ;\n                   rdf:value _:person1 ] .\n\n```"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
@@ -483,7 +483,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "The source (e.g. document, act, legislation, text, picture) in which some entity (e.g. Person or Location) can be observed."
+    "@value" : "The source (e.g. document, act, legislation, text, picture, recording) in which some entity (e.g. Person or Location) can be observed."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
@@ -504,6 +504,10 @@
 }, {
   "@id" : "https://w3id.org/roar#Location",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A Location can be any type of place where another entity can be located."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Location"
@@ -539,6 +543,10 @@
 }, {
   "@id" : "https://w3id.org/roar#Observation",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Something of a type 'Observation' is something that is mentioned or described in a 'Document' (described by roar:inDocument). Two common subclasses are PersonObservation and LocationObservation, but one can also think about EventObservation and other entities."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Observation"
@@ -554,6 +562,10 @@
 }, {
   "@id" : "https://w3id.org/roar#Person",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A Person is a human being that is mentioned in a Document. This can be a direct mention (e.g. 'Aaltie Jans') or indirect (e.g. 'husband of Aaltie Jans'), in which a name might not be known."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Person"
@@ -592,6 +604,10 @@
 }, {
   "@id" : "https://w3id.org/roar#Reconstruction",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A 'Reconstruction' is a specific modelling of one or several entities of type 'Observation' into a single resource. The prov:wasDerivedFrom property is used to indicate on which Observations a Reconstruction was based. \nIt is also possible to derrive a Reconstruction from other Reconstructions."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Reconstruction"
