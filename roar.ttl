@@ -101,7 +101,7 @@ bio:death rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf <http://purl.org/vocab/bio/event/0.1> ;
           rdfs:domain :Person ;
           rdfs:range bio:Death ;
-          rdfs:comment """Even if there is no specific death date mentioned in the source, it is recommended to provide a Deatj event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Burial event, by which the death date can be inferred. 
+          rdfs:comment """Even if there is no specific death date mentioned in the source, it is recommended to provide a Death event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Burial event, by which the death date can be inferred. 
 
 Example:
 ```ttl
@@ -212,7 +212,7 @@ pnv:hasName rdf:type owl:ObjectProperty ;
 :documentedIn rdf:type owl:ObjectProperty ;
               rdfs:domain :Observation ;
               rdfs:range :Document ;
-              rdfs:comment "Points to source (document, act, legislation etc.) in which the Observation is made. It is recommended to point to a resource (URI) provided by some institute/archive that hold key information on this source. You are, however, free to fill `roar:Document` with additional information."@en ;
+              rdfs:comment "Refers to the Document (source, act, legislation etc.) in which the Observation is made. It is recommended to point to a resource (URI) provided by some institute/archive that hold key information on this source. You are, however, free to fill `roar:Document` with additional information."@en ;
               rdfs:label "documentedIn"@en .
 
 
@@ -220,7 +220,7 @@ pnv:hasName rdf:type owl:ObjectProperty ;
 :hasLocation rdf:type owl:ObjectProperty ;
              rdfs:domain :Entity ;
              rdfs:range :Location ;
-             rdfs:comment """Use to indicate that a Person has a relation to a certain Location. Use a structured value to indicate a specific role of this person to the location or to specify a temporal validity in which this Person-Location relation is valid (use `sem` timestamp properties for this). 
+             rdfs:comment """Use to indicate that a Person has a relation to a certain entity (e.g. Location). Use a structured value to indicate a specific role of this person to the entity or to specify a temporal validity in which this Person-Entity relation is valid (use `sem` timestamp properties for this). 
 
 Example:
 ```ttl
@@ -302,13 +302,13 @@ Example:
 ###  http://purl.org/vocab/bio/0.1/Birth
 bio:Birth rdf:type owl:Class ;
           rdfs:subClassOf bio:Event ;
-          rdfs:label "Birth"@en .
+          rdfs:label "bio:Birth"@en .
 
 
 ###  http://purl.org/vocab/bio/0.1/Death
 bio:Death rdf:type owl:Class ;
           rdfs:subClassOf bio:Event ;
-          rdfs:label "Death"@en .
+          rdfs:label "bio:Death"@en .
 
 
 ###  http://purl.org/vocab/bio/0.1/Event
@@ -323,6 +323,7 @@ It is recommended to include timestamp properties from the sem vocabulary. If th
 - sem:hasEndTimeStamp
 - sem:hasEarliestEndTimeStamp
 - sem:hasLatestEndTimeStamp
+
 To make a bio:Event compliant to a sem:Event, also define a role (next to the bio:principal or bio:partner) by defining a sem:hasRole:
 ```ttl
 _:event1 a bio:Event ;
