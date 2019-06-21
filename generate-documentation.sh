@@ -20,16 +20,34 @@ echo "<html><h2 id=\"intro\" class=\"list\">Introduction <span class=\"backlink\
 
 <p>On the other, roar lets you make reconstructions - the puzzle put together. A <em>person reconstruction</em> can be derived from observations in a birth certificate, a notary deed, a newspaper article, a diary and even a photograph.</p>
 
+<img src=\"https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-example1.svg\" width=\"60%\" alt=\"roar-example1\" style=\"display: block; margin-left: auto; margin-right: auto;\">
+
 <p>Reconstructions can be made manually, but also in an automated process. When using algorithms, changing parameters can even result in multiple reconstructions for different purposes of the same person or location. With the prov ontology you may annotate who made what reconstruction when, and wich software or parameters where used in doing so.</p></span>
 <div id=\"namespacedeclarations\">
 <h3 id=\"depiction\" class=\"list\">Visualisation</h3>
 <div id=\"depiction\" align=\"center\">
 
-    <img src=\"https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg\" width=\"80%\" alt=\"roar!\">
+<p><img src=\"https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg\" width=\"80%\" alt=\"roar-visualisation\" style=\"display: block; margin-left: auto; margin-right: auto;\"></p>
+<p>Visualisation made with [<cite><a class="bibref" href="#bib-WEBVOWL">WEBVOWL</a></cite>]</p>
 
 </div>
 </div>
 </html>" > roar/docs/sections/introduction-en.html
+
+echo "<html>
+<h2 id=\"ref\" class=\"list\">References <span class=\"backlink\"> back to <a href=\"#toc\">ToC</a></span></h2>
+<span>
+    <dl class=\"bibliography\">
+        <dt id=\"bib-WEBVOWL\">[WEBVOWL]</dt>
+        <dd>Lohmann, S., Negru, S., Haag F., Ertl, T. <a
+                href=\"http://www.semantic-web-journal.net/content/visualizing-ontologies-vowl-0\"><cite>Visualizing
+                    Ontologies with VOWL</cite></a>. Semantic Web 7(4): 399-419 (2016) URL: <a
+                href=\"http://www.visualdataweb.de/webvowl/\">http://www.visualdataweb.de/webvowl/</a>
+        </dd>
+    </dl>
+</span>
+
+</html>" > roar/docs/sections/references-en.html
 
 cp roar/docs/index-en.html roar/docs/index.html
 

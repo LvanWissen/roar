@@ -141,7 +141,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
-    "@value" : "Birth"
+    "@value" : "bio:Birth"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.org/vocab/bio/0.1/Event"
@@ -151,7 +151,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
-    "@value" : "Death"
+    "@value" : "bio:Death"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.org/vocab/bio/0.1/Event"
@@ -161,7 +161,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "A life event from the bio vocabulary.\nIt is recommended to include timestamp properties from the sem vocabulary. If the exact date is known, sem:hasTimeStamp can be used. If dates are uncertain, use the other properties:\n- sem:hasTimeStamp\n- sem:hasBeginTimeStamp\n- sem:hasEarliestBeginTimeStamp\n- sem:hasLatestBeginTimeStamp\n- sem:hasEndTimeStamp\n- sem:hasEarliestEndTimeStamp\n- sem:hasLatestEndTimeStamp\nTo make a bio:Event compliant to a sem:Event, also define a role (next to the bio:principal or bio:partner) by defining a sem:hasRole:\n```ttl\n_:event1 a bio:Event ;\n    rdfs:label \"Living on the Keizersgracht\"\n    bio:principal _:person1 ;\n    sem:hasActor [ a sem:Role ;\n                   sem:roleType [ a sem:RoleType ;\n                                  rdfs:label \"Resident\" ] ;\n                   rdf:value _:person1 ] .\n\n```"
+    "@value" : "A life event from the bio vocabulary.\nIt is recommended to include timestamp properties from the sem vocabulary. If the exact date is known, sem:hasTimeStamp can be used. If dates are uncertain, use the other properties:\n- sem:hasTimeStamp\n- sem:hasBeginTimeStamp\n- sem:hasEarliestBeginTimeStamp\n- sem:hasLatestBeginTimeStamp\n- sem:hasEndTimeStamp\n- sem:hasEarliestEndTimeStamp\n- sem:hasLatestEndTimeStamp\n\nTo make a bio:Event compliant to a sem:Event, also define a role (next to the bio:principal or bio:partner) by defining a sem:hasRole:\n```ttl\n_:event1 a bio:Event ;\n    rdfs:label \"Living on the Keizersgracht\"\n    bio:principal _:person1 ;\n    sem:hasActor [ a sem:Role ;\n                   sem:roleType [ a sem:RoleType ;\n                                  rdfs:label \"Resident\" ] ;\n                   rdf:value _:person1 ] .\n\n```"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
@@ -195,7 +195,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Even if there is no specific death date mentioned in the source, it is recommended to provide a Deatj event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Burial event, by which the death date can be inferred. \n\nExample:\n```ttl\n_:person1 a roar:PersonReconstruction ;\n        rdfs:label \"Susanna de Bock\" ;\n        pnv:hasName [ a pnv:PersonName ;\n                pnv:baseSurname \"Bock\" ;\n                pnv:givenName \"Susanna\" ;\n                pnv:literalName \"Susanna de Bock\" ;\n                pnv:surnamePrefix \"de\" ] ;\n        bio:event [ a bio:Burial ;\n                    bio:place _:location1 ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"burried\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasTimeStamp \"1697-02-28\"^^xsd:date ] ;\n        bio:birth [ a bio:Birth ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"born\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasLatestEndTimeStamp \"1697-02-28\" ] ;\n        bio:death [ a bio:Death ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"died\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasEarliestBeginTimeStamp \"1697-02-21\" ; # Estimated, 7 days earlier\n                    sem:hasLatestEndTimeStamp \"1697-02-28\" ] ;\n        roar:documentedIn _:saaId10160347 .\n```"
+    "@value" : "Even if there is no specific death date mentioned in the source, it is recommended to provide a Death event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Burial event, by which the death date can be inferred. \n\nExample:\n```ttl\n_:person1 a roar:PersonReconstruction ;\n        rdfs:label \"Susanna de Bock\" ;\n        pnv:hasName [ a pnv:PersonName ;\n                pnv:baseSurname \"Bock\" ;\n                pnv:givenName \"Susanna\" ;\n                pnv:literalName \"Susanna de Bock\" ;\n                pnv:surnamePrefix \"de\" ] ;\n        bio:event [ a bio:Burial ;\n                    bio:place _:location1 ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"burried\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasTimeStamp \"1697-02-28\"^^xsd:date ] ;\n        bio:birth [ a bio:Birth ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"born\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasLatestEndTimeStamp \"1697-02-28\" ] ;\n        bio:death [ a bio:Death ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"died\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasEarliestBeginTimeStamp \"1697-02-21\" ; # Estimated, 7 days earlier\n                    sem:hasLatestEndTimeStamp \"1697-02-28\" ] ;\n        roar:documentedIn _:saaId10160347 .\n```"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/roar#Person"
@@ -624,7 +624,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Points to source (document, act, legislation etc.) in which the Observation is made. It is recommended to point to a resource (URI) provided by some institute/archive that hold key information on this source. You are, however, free to fill `roar:Document` with additional information."
+    "@value" : "Refers to the Document (source, act, legislation etc.) in which the Observation is made. It is recommended to point to a resource (URI) provided by some institute/archive that hold key information on this source. You are, however, free to fill `roar:Document` with additional information."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/roar#Observation"
@@ -641,7 +641,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Use to indicate that a Person has a relation to a certain Location. Use a structured value to indicate a specific role of this person to the location or to specify a temporal validity in which this Person-Location relation is valid (use `sem` timestamp properties for this). \n\nExample:\n```ttl\n:person1 a roar:PersonObservation ;\n         roar:hasLocation [ rdf:value :location1 ;\n                            roar:role \"inhabitant\" ;\n                            sem:hasBeginTimeStamp \"1782-11-20\" ;\n                            sem:hasEarliestEndTimesStamp \"1782-11-20\" ] .\n```"
+    "@value" : "Use to indicate that a Person has a relation to a certain entity (e.g. Location). Use a structured value to indicate a specific role of this person to the entity or to specify a temporal validity in which this Person-Entity relation is valid (use `sem` timestamp properties for this). \n\nExample:\n```ttl\n:person1 a roar:PersonObservation ;\n         roar:hasLocation [ rdf:value :location1 ;\n                            roar:role \"inhabitant\" ;\n                            sem:hasBeginTimeStamp \"1782-11-20\" ;\n                            sem:hasEarliestEndTimesStamp \"1782-11-20\" ] .\n```"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/roar#Entity"

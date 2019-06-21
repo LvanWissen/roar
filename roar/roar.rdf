@@ -143,7 +143,7 @@ _:person1 a roar:PersonReconstruction ;
         <rdfs:subPropertyOf rdf:resource="http://purl.org/vocab/bio/event/0.1"/>
         <rdfs:domain rdf:resource="https://w3id.org/roar#Person"/>
         <rdfs:range rdf:resource="http://purl.org/vocab/bio/0.1/Death"/>
-        <rdfs:comment xml:lang="en">Even if there is no specific death date mentioned in the source, it is recommended to provide a Deatj event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Burial event, by which the death date can be inferred. 
+        <rdfs:comment xml:lang="en">Even if there is no specific death date mentioned in the source, it is recommended to provide a Death event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Burial event, by which the death date can be inferred. 
 
 Example:
 ```ttl
@@ -298,7 +298,7 @@ _:person1 a roar:PersonReconstruction ;
     <owl:ObjectProperty rdf:about="https://w3id.org/roar#documentedIn">
         <rdfs:domain rdf:resource="https://w3id.org/roar#Observation"/>
         <rdfs:range rdf:resource="https://w3id.org/roar#Document"/>
-        <rdfs:comment xml:lang="en">Points to source (document, act, legislation etc.) in which the Observation is made. It is recommended to point to a resource (URI) provided by some institute/archive that hold key information on this source. You are, however, free to fill `roar:Document` with additional information.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Refers to the Document (source, act, legislation etc.) in which the Observation is made. It is recommended to point to a resource (URI) provided by some institute/archive that hold key information on this source. You are, however, free to fill `roar:Document` with additional information.</rdfs:comment>
         <rdfs:label xml:lang="en">documentedIn</rdfs:label>
     </owl:ObjectProperty>
     
@@ -310,7 +310,7 @@ _:person1 a roar:PersonReconstruction ;
     <owl:ObjectProperty rdf:about="https://w3id.org/roar#hasLocation">
         <rdfs:domain rdf:resource="https://w3id.org/roar#Entity"/>
         <rdfs:range rdf:resource="https://w3id.org/roar#Location"/>
-        <rdfs:comment xml:lang="en">Use to indicate that a Person has a relation to a certain Location. Use a structured value to indicate a specific role of this person to the location or to specify a temporal validity in which this Person-Location relation is valid (use `sem` timestamp properties for this). 
+        <rdfs:comment xml:lang="en">Use to indicate that a Person has a relation to a certain entity (e.g. Location). Use a structured value to indicate a specific role of this person to the entity or to specify a temporal validity in which this Person-Entity relation is valid (use `sem` timestamp properties for this). 
 
 Example:
 ```ttl
@@ -436,7 +436,7 @@ Example:
 
     <owl:Class rdf:about="http://purl.org/vocab/bio/0.1/Birth">
         <rdfs:subClassOf rdf:resource="http://purl.org/vocab/bio/0.1/Event"/>
-        <rdfs:label xml:lang="en">Birth</rdfs:label>
+        <rdfs:label xml:lang="en">bio:Birth</rdfs:label>
     </owl:Class>
     
 
@@ -446,7 +446,7 @@ Example:
 
     <owl:Class rdf:about="http://purl.org/vocab/bio/0.1/Death">
         <rdfs:subClassOf rdf:resource="http://purl.org/vocab/bio/0.1/Event"/>
-        <rdfs:label xml:lang="en">Death</rdfs:label>
+        <rdfs:label xml:lang="en">bio:Death</rdfs:label>
     </owl:Class>
     
 
@@ -465,6 +465,7 @@ It is recommended to include timestamp properties from the sem vocabulary. If th
 - sem:hasEndTimeStamp
 - sem:hasEarliestEndTimeStamp
 - sem:hasLatestEndTimeStamp
+
 To make a bio:Event compliant to a sem:Event, also define a role (next to the bio:principal or bio:partner) by defining a sem:hasRole:
 ```ttl
 _:event1 a bio:Event ;
