@@ -173,7 +173,8 @@ _:event1 a bio:Event ;
       <p>
          <strong>IRI:</strong> https://w3id.org/roar#Document</p>
       <div class="comment">
-         <span class="markdown">The source (e.g. document, act, legislation, text, picture, recording) in which some entity (e.g. Person or Location) can be observed.</span>
+         <span class="markdown">The source (e.g. document, act, legislation, text, picture, painting, recording, obelisk) in which some entity (e.g. Person or Location) can be observed.
+If the source that you are describing is not digitised or is not available as URI, you can define your own resource of class `roar:Document` and use for instance the properties defined by `schema:CreativeWork` to describe it. The `roar:onScan` property can then be used on an Observation to specify the location of the Entity in the source.</span>
       </div>
       <dl class="description">
          <dt>is in range of</dt>
@@ -190,6 +191,9 @@ _:event1 a bio:Event ;
       </h3>
       <p>
          <strong>IRI:</strong> https://w3id.org/roar#Entity</p>
+      <div class="comment">
+         <span class="markdown">Basic class to hold classes that can be combined with an Observation or Reconstruction class. Pre-modelled are Person and Location, but you are free to specify more types, such as Event or Organisation.</span>
+      </div>
       <dl class="description">
          <dt>has super-classes</dt>
          <dd/>
@@ -406,6 +410,9 @@ _:event1 a bio:Event ;
       </h3>
       <p>
          <strong>IRI:</strong> http://www.w3.org/ns/prov#Activity</p>
+      <div class="comment">
+         <span class="markdown">The Activity in which the Derivation and thereby the Reconstruction was made. Use `rdfs:comment` to specify what the Activity did.</span>
+      </div>
       <dl class="description">
          <dt>has super-classes</dt>
          <dd/>
@@ -429,6 +436,9 @@ _:event1 a bio:Event ;
       </h3>
       <p>
          <strong>IRI:</strong> http://www.w3.org/ns/prov#Agent</p>
+      <div class="comment">
+         <span class="markdown">The Person or Organisation that was involved in the Derivation. In other words, who made the Reconstruction?</span>
+      </div>
       <dl class="description">
          <dt>is in domain of</dt>
          <dd>
@@ -477,7 +487,8 @@ _:event1 a bio:Event ;
          <dd/>
          <dt>is in domain of</dt>
          <dd>
-            <a href="#http://www.w3.org/ns/prov#hadActivity" title="http://www.w3.org/ns/prov#hadActivity">prov:hadActivity</a>
+            <a href="#http://www.w3.org/ns/prov#entity" title="http://www.w3.org/ns/prov#entity">prov:entity</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/ns/prov#hadActivity" title="http://www.w3.org/ns/prov#hadActivity">prov:hadActivity</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
          <dt>is in range of</dt>
@@ -503,7 +514,8 @@ _:event1 a bio:Event ;
          </dd>
          <dt>is in range of</dt>
          <dd>
-            <a href="#http://www.w3.org/ns/prov#wasDerivedFrom" title="http://www.w3.org/ns/prov#wasDerivedFrom">was derived from</a>
+            <a href="#http://www.w3.org/ns/prov#entity" title="http://www.w3.org/ns/prov#entity">prov:entity</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/ns/prov#wasDerivedFrom" title="http://www.w3.org/ns/prov#wasDerivedFrom">prov:wasDerivedFrom</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
       </dl>
@@ -552,7 +564,7 @@ It is also possible to derrive a Reconstruction from other Reconstructions.</spa
          <dt>is in domain of</dt>
          <dd>
             <a href="#http://www.w3.org/ns/prov#qualifiedDerivation" title="http://www.w3.org/ns/prov#qualifiedDerivation">prov:qualifiedDerivation</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/ns/prov#wasDerivedFrom" title="http://www.w3.org/ns/prov#wasDerivedFrom">was derived from</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://www.w3.org/ns/prov#wasDerivedFrom" title="http://www.w3.org/ns/prov#wasDerivedFrom">prov:wasDerivedFrom</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
          <dt>is disjoint with</dt>
@@ -671,9 +683,7 @@ It is also possible to derrive a Reconstruction from other Reconstructions.</spa
          <a href="#http://www.w3.org/ns/prov#wasAssociatedWith" title="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a>
       </li>
       <li>
-         <a href="#http://www.w3.org/ns/prov#wasDerivedFrom" title="http://www.w3.org/ns/prov#wasDerivedFrom">
-            <span>was derived from</span>
-         </a>
+         <a href="#http://www.w3.org/ns/prov#wasDerivedFrom" title="http://www.w3.org/ns/prov#wasDerivedFrom">prov:wasDerivedFrom</a>
       </li>
    </ul>
    <div class="entity" id="http://purl.org/vocab/bio/0.1/death">
@@ -791,12 +801,12 @@ _:person1 a roar:PersonReconstruction ;
                 pnv:givenName "Susanna" ;
                 pnv:literalName "Susanna de Bock" ;
                 pnv:surnamePrefix "de" ] ;
-        bio:event [ a bio:Burial ;
+        bio:event [ a bio:Baptism ;
                     bio:place _:location1 ;
                     bio:principal _:person1 ;
                     sem:hasActor [ a sem:Role ;
                                    sem:roleType [ a sem:RoleType ;
-                                                  rdfs:label "burried" ] ;
+                                                  rdfs:label "baptized" ] ;
                                    rdf:value _:person1 ] ;
                     sem:hasTimeStamp "1697-02-28"^^xsd:date ] ;
         bio:birth [ a bio:Birth ;
@@ -805,15 +815,7 @@ _:person1 a roar:PersonReconstruction ;
                                    sem:roleType [ a sem:RoleType ;
                                                   rdfs:label "born" ] ;
                                    rdf:value _:person1 ] ;
-                    sem:hasLatestEndTimeStamp "1697-02-28" ] ;
-        bio:death [ a bio:Death ;
-                    bio:principal _:person1 ;
-                    sem:hasActor [ a sem:Role ;
-                                   sem:roleType [ a sem:RoleType ;
-                                                  rdfs:label "died" ] ;
-                                   rdf:value _:person1 ] ;
-                    sem:hasEarliestBeginTimeStamp "1697-02-21" ; # Estimated, 7 days earlier
-                    sem:hasLatestEndTimeStamp "1697-02-28" ] ;
+                    sem:hasLatestEndTimeStamp "1697-02-28"^^xsd:date ] ;
         roar:documentedIn _:saaId10160347 .
 ```</span>
       </div>
@@ -870,13 +872,13 @@ _:person1 a roar:PersonReconstruction ;
       <p>
          <strong>IRI:</strong> https://w3id.org/roar#hasLocation</p>
       <div class="comment">
-         <span class="markdown">Use to indicate that a Person has a relation to a certain entity (e.g. Location). Use a structured value to indicate a specific role of this person to the entity or to specify a temporal validity in which this Person-Entity relation is valid (use `sem` timestamp properties for this). 
+         <span class="markdown">Use to indicate that an Entity has a relation to a Location. Use a structured value to indicate a specific role of this Entity (e.g. Person) to the Location or to specify a temporal validity in which this Entity-Location relation is valid (use `sem` timestamp properties for this). 
 
 Example:
 ```ttl
 :person1 a roar:PersonObservation ;
          roar:hasLocation [ rdf:value :location1 ;
-                            roar:role "inhabitant" ;
+                            roar:role "resident" ;
                             sem:hasBeginTimeStamp "1782-11-20" ;
                             sem:hasEarliestEndTimesStamp "1782-11-20" ] .
 ```</span>
@@ -904,12 +906,12 @@ Example:
       <p>
          <strong>IRI:</strong> https://w3id.org/roar#hasPerson</p>
       <div class="comment">
-         <span class="markdown">Use to indicate that a Location is in relation to a certain Person. Use a structured value to indicate a specific role of this location to the person or to specify a temporal validity in which this Location-Person relation is valid (use `sem` timestamp properties for this). 
+         <span class="markdown">Use to indicate that an Entity has a relation to a Person. Use a structured value to indicate a specific role of this Entity (e.g. Location) to the Person or to specify a temporal validity in which this Entity-Person relation is valid (use `sem` timestamp properties for this). Use `roar:hasRelation` for Person to Person relations. 
 
 Example:
 ```ttl
 :location1 a roar:LocationObservation ;
-           roar:hasLocation [ rdf:value :person1 ;
+           roar:hasPerson [ rdf:value :person1 ;
                               roar:role "residence" ;
                               sem:hasBeginTimeStamp "1782-11-20" ;
                               sem:hasEarliestEndTimesStamp "1782-11-20" ] .
@@ -943,8 +945,14 @@ Example:
 *Example*:
 ```ttl
 :person1 a roar:Person ;
+    schema:gender schema:Female ;
     roar:hasRelation [ rdf:value :person2 ;
                        roar:relationType "mother" ] .
+
+:person2 a roar:Person ;
+    schema:gender schema:Male ;
+    roar:hasRelation [ rdf:value :person1 ;
+                       roar:relationType "firstborn son" ] .
 ```</span>
       </div>
       <div class="description">
@@ -1013,6 +1021,20 @@ Example:
       </h3>
       <p>
          <strong>IRI:</strong> http://www.w3.org/ns/prov#entity</p>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://www.w3.org/ns/prov#Derivation" title="http://www.w3.org/ns/prov#Derivation">prov:Derivation</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://www.w3.org/ns/prov#Entity" title="http://www.w3.org/ns/prov#Entity">prov:Entity</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
    </div>
    <div class="entity" id="http://www.w3.org/ns/prov#hadActivity">
       <h3>prov:hadActivity<sup class="type-op" title="object property">op</sup>
@@ -1125,12 +1147,16 @@ Example:
       </div>
    </div>
    <div class="entity" id="http://www.w3.org/ns/prov#wasDerivedFrom">
-      <h3>was derived from<sup class="type-op" title="object property">op</sup>
+      <h3>prov:wasDerivedFrom<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
          </span>
       </h3>
       <p>
          <strong>IRI:</strong> http://www.w3.org/ns/prov#wasDerivedFrom</p>
+      <div class="comment">
+         <span class="markdown">A Reconstruction is derived from one or several Observation(s) or Reconstruction(s). 
+It is good practise to also specify the activity in which the derivation was made. This can be done by modelling a `prov:qualifiedDerivation` on the Reconstruction in which the Activity, Agent and Plan can be specified.</span>
+      </div>
       <div class="description">
          <dl>
             <dt>has domain</dt>
@@ -1171,6 +1197,9 @@ Example:
       </h3>
       <p>
          <strong>IRI:</strong> https://w3id.org/roar#onScan</p>
+      <div class="comment">
+         <span class="markdown">This property can be used to indicate the location of the EntityObservation in the source, for instance if the roar:Document is too general (e.g. it refers to multiple pages). This should refer to a URI or filename and assumes the source is digitized.</span>
+      </div>
       <div class="description">
          <dl>
             <dt>has super-properties</dt>
@@ -1193,7 +1222,7 @@ Example:
       <p>
          <strong>IRI:</strong> https://w3id.org/roar#relationType</p>
       <div class="comment">
-         <span class="markdown">Used to specify the kind of relation (e.g. "patron") in a person to person relation as specified by roar:hasRelation.</span>
+         <span class="markdown">Used to specify the kind of relation (e.g. "patron") in a person to person relation as specified by `roar:hasRelation`.</span>
       </div>
       <div class="description">
          <dl>
@@ -1229,7 +1258,8 @@ Example:
       <p>
          <strong>IRI:</strong> https://w3id.org/roar#role</p>
       <div class="comment">
-         <span class="markdown">Can be used to indicate the type of relation between two entities. In case of a Person to Location relation (through `roar:hasLocation`), the `roar:role` can be 'inhabitant' or 'visitor'.</span>
+         <span class="markdown">Can be used to indicate the role of an entity in a `roar:hasLocation` or `roar:hasPerson` relation. 
+In case of a Person to Location relation (through `roar:hasLocation`), the `roar:role` can for instance be 'inhabitant' or 'visitor'. Similarly, the role of a Location to Person (through `roar:hasPerson`) is for example 'country cottage' or 'residence'.</span>
       </div>
       <div class="description">
          <dl>

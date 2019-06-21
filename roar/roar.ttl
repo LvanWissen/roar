@@ -63,12 +63,12 @@ _:person1 a roar:PersonReconstruction ;
                 pnv:givenName \"Susanna\" ;
                 pnv:literalName \"Susanna de Bock\" ;
                 pnv:surnamePrefix \"de\" ] ;
-        bio:event [ a bio:Burial ;
+        bio:event [ a bio:Baptism ;
                     bio:place _:location1 ;
                     bio:principal _:person1 ;
                     sem:hasActor [ a sem:Role ;
                                    sem:roleType [ a sem:RoleType ;
-                                                  rdfs:label \"burried\" ] ;
+                                                  rdfs:label \"baptized\" ] ;
                                    rdf:value _:person1 ] ;
                     sem:hasTimeStamp \"1697-02-28\"^^xsd:date ] ;
         bio:birth [ a bio:Birth ;
@@ -77,15 +77,7 @@ _:person1 a roar:PersonReconstruction ;
                                    sem:roleType [ a sem:RoleType ;
                                                   rdfs:label \"born\" ] ;
                                    rdf:value _:person1 ] ;
-                    sem:hasLatestEndTimeStamp \"1697-02-28\" ] ;
-        bio:death [ a bio:Death ;
-                    bio:principal _:person1 ;
-                    sem:hasActor [ a sem:Role ;
-                                   sem:roleType [ a sem:RoleType ;
-                                                  rdfs:label \"died\" ] ;
-                                   rdf:value _:person1 ] ;
-                    sem:hasEarliestBeginTimeStamp \"1697-02-21\" ; # Estimated, 7 days earlier
-                    sem:hasLatestEndTimeStamp \"1697-02-28\" ] ;
+                    sem:hasLatestEndTimeStamp \"1697-02-28\"^^xsd:date ] ;
         roar:documentedIn _:saaId10160347 .
 ```"""@en ;
                                       rdfs:label "birth:birth"@en .
@@ -152,6 +144,8 @@ _:person1 a roar:PersonReconstruction ;
 
 ###  http://www.w3.org/ns/prov#entity
 <http://www.w3.org/ns/prov#entity> rdf:type owl:ObjectProperty ;
+                                   rdfs:domain <http://www.w3.org/ns/prov#Derivation> ;
+                                   rdfs:range <http://www.w3.org/ns/prov#Entity> ;
                                    rdfs:label "prov:entity"@en .
 
 
@@ -193,7 +187,10 @@ _:person1 a roar:PersonReconstruction ;
 ###  http://www.w3.org/ns/prov#wasDerivedFrom
 <http://www.w3.org/ns/prov#wasDerivedFrom> rdf:type owl:ObjectProperty ;
                                            rdfs:domain :Reconstruction ;
-                                           rdfs:range <http://www.w3.org/ns/prov#Entity> .
+                                           rdfs:range <http://www.w3.org/ns/prov#Entity> ;
+                                           rdfs:comment """A Reconstruction is derived from one or several Observation(s) or Reconstruction(s). 
+It is good practise to also specify the activity in which the derivation was made. This can be done by modelling a `prov:qualifiedDerivation` on the Reconstruction in which the Activity, Agent and Plan can be specified."""@en ;
+                                           rdfs:label "prov:wasDerivedFrom"@en .
 
 
 ###  https://w3id.org/pnv#hasName
@@ -215,13 +212,13 @@ _:person1 a roar:PersonReconstruction ;
 :hasLocation rdf:type owl:ObjectProperty ;
              rdfs:domain :Entity ;
              rdfs:range :Location ;
-             rdfs:comment """Use to indicate that a Person has a relation to a certain entity (e.g. Location). Use a structured value to indicate a specific role of this person to the entity or to specify a temporal validity in which this Person-Entity relation is valid (use `sem` timestamp properties for this). 
+             rdfs:comment """Use to indicate that an Entity has a relation to a Location. Use a structured value to indicate a specific role of this Entity (e.g. Person) to the Location or to specify a temporal validity in which this Entity-Location relation is valid (use `sem` timestamp properties for this). 
 
 Example:
 ```ttl
 :person1 a roar:PersonObservation ;
          roar:hasLocation [ rdf:value :location1 ;
-                            roar:role \"inhabitant\" ;
+                            roar:role \"resident\" ;
                             sem:hasBeginTimeStamp \"1782-11-20\" ;
                             sem:hasEarliestEndTimesStamp \"1782-11-20\" ] .
 ```"""@en ;
@@ -232,12 +229,12 @@ Example:
 :hasPerson rdf:type owl:ObjectProperty ;
            rdfs:domain :Entity ;
            rdfs:range :Person ;
-           rdfs:comment """Use to indicate that a Location is in relation to a certain Person. Use a structured value to indicate a specific role of this location to the person or to specify a temporal validity in which this Location-Person relation is valid (use `sem` timestamp properties for this). 
+           rdfs:comment """Use to indicate that an Entity has a relation to a Person. Use a structured value to indicate a specific role of this Entity (e.g. Location) to the Person or to specify a temporal validity in which this Entity-Person relation is valid (use `sem` timestamp properties for this). Use `roar:hasRelation` for Person to Person relations. 
 
 Example:
 ```ttl
 :location1 a roar:LocationObservation ;
-           roar:hasLocation [ rdf:value :person1 ;
+           roar:hasPerson [ rdf:value :person1 ;
                               roar:role \"residence\" ;
                               sem:hasBeginTimeStamp \"1782-11-20\" ;
                               sem:hasEarliestEndTimesStamp \"1782-11-20\" ] .
@@ -254,9 +251,15 @@ Example:
 *Example*:
 ```ttl
 :person1 a roar:Person ;
+    schema:gender schema:Female ;
     roar:hasRelation [ rdf:value :person2 ;
                        roar:relationType \"mother\" ] .
-```""" ;
+
+:person2 a roar:Person ;
+    schema:gender schema:Male ;
+    roar:hasRelation [ rdf:value :person1 ;
+                       roar:relationType \"firstborn son\" ] .
+```"""@en ;
              rdfs:label "hasRelation"@en .
 
 
@@ -273,20 +276,22 @@ Example:
 :onScan rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdfs:domain :Observation ;
+        rdfs:comment "This property can be used to indicate the location of the EntityObservation in the source, for instance if the roar:Document is too general (e.g. it refers to multiple pages). This should refer to a URI or filename and assumes the source is digitized."@en ;
         rdfs:label "onScan"@en .
 
 
 ###  https://w3id.org/roar#relationType
 :relationType rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
-              rdfs:comment "Used to specify the kind of relation (e.g. \"patron\") in a person to person relation as specified by roar:hasRelation."@en ;
+              rdfs:comment "Used to specify the kind of relation (e.g. \"patron\") in a person to person relation as specified by `roar:hasRelation`."@en ;
               rdfs:label "relationType"@en .
 
 
 ###  https://w3id.org/roar#role
 :role rdf:type owl:DatatypeProperty ;
       rdfs:subPropertyOf owl:topDataProperty ;
-      rdfs:comment "Can be used to indicate the type of relation between two entities. In case of a Person to Location relation (through `roar:hasLocation`), the `roar:role` can be 'inhabitant' or 'visitor'."@en ;
+      rdfs:comment """Can be used to indicate the role of an entity in a `roar:hasLocation` or `roar:hasPerson` relation. 
+In case of a Person to Location relation (through `roar:hasLocation`), the `roar:role` can for instance be 'inhabitant' or 'visitor'. Similarly, the role of a Location to Person (through `roar:hasPerson`) is for example 'country cottage' or 'residence'."""@en ;
       rdfs:label "role"@en .
 
 
@@ -366,11 +371,13 @@ _:event1 a bio:Event ;
                                                        owl:onProperty <http://www.w3.org/ns/prov#wasAssociatedWith> ;
                                                        owl:someValuesFrom <http://www.w3.org/ns/prov#Agent>
                                                      ] ;
+                                     rdfs:comment "The Activity in which the Derivation and thereby the Reconstruction was made. Use `rdfs:comment` to specify what the Activity did."@en ;
                                      rdfs:label "prov:Activity"@en .
 
 
 ###  http://www.w3.org/ns/prov#Agent
 <http://www.w3.org/ns/prov#Agent> rdf:type owl:Class ;
+                                  rdfs:comment "The Person or Organisation that was involved in the Derivation. In other words, who made the Reconstruction?"@en ;
                                   rdfs:label "prov:Agent"@en .
 
 
@@ -418,7 +425,8 @@ _:event1 a bio:Event ;
 
 ###  https://w3id.org/roar#Document
 :Document rdf:type owl:Class ;
-          rdfs:comment "The source (e.g. document, act, legislation, text, picture, recording) in which some entity (e.g. Person or Location) can be observed."@en ;
+          rdfs:comment """The source (e.g. document, act, legislation, text, picture, painting, recording, obelisk) in which some entity (e.g. Person or Location) can be observed.
+If the source that you are describing is not digitised or is not available as URI, you can define your own resource of class `roar:Document` and use for instance the properties defined by `schema:CreativeWork` to describe it. The `roar:onScan` property can then be used on an Observation to specify the location of the Entity in the source."""@en ;
           rdfs:label "Document"@en .
 
 
@@ -432,6 +440,7 @@ _:event1 a bio:Event ;
                           owl:onProperty :hasPerson ;
                           owl:someValuesFrom :Person
                         ] ;
+        rdfs:comment "Basic class to hold classes that can be combined with an Observation or Reconstruction class. Pre-modelled are Person and Location, but you are free to specify more types, such as Event or Organisation."@en ;
         rdfs:label "Entity"@en .
 
 

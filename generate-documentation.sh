@@ -22,7 +22,7 @@ echo "<html><h2 id=\"intro\" class=\"list\">Introduction <span class=\"backlink\
 
 <img src=\"https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-example1.svg\" width=\"60%\" alt=\"roar-example1\" style=\"display: block; margin-left: auto; margin-right: auto;\">
 
-<p>Reconstructions can be made manually, but also in an automated process. When using algorithms, changing parameters can even result in multiple reconstructions for different purposes of the same person or location. With the prov ontology you may annotate who made what reconstruction when, and wich software or parameters where used in doing so.</p></span>
+<p>Reconstructions can be made manually, but also in an automated process. When using algorithms, changing parameters can even result in multiple reconstructions for different purposes of the same person or location. With the prov ontology you may annotate who made what reconstruction when, and which software or parameters where used in doing so.</p></span>
 <div id=\"namespacedeclarations\">
 <h3 id=\"depiction\" class=\"list\">Visualisation</h3>
 <div id=\"depiction\" align=\"center\">

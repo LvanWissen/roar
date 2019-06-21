@@ -175,7 +175,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Even if there is no specific birth date mentioned in the source, it is recommended to provide a Birth event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Baptism event, by which the date of birth can be inferred.\n\nExample:\n```ttl\n_:person1 a roar:PersonReconstruction ;\n        rdfs:label \"Susanna de Bock\" ;\n        pnv:hasName [ a pnv:PersonName ;\n                pnv:baseSurname \"Bock\" ;\n                pnv:givenName \"Susanna\" ;\n                pnv:literalName \"Susanna de Bock\" ;\n                pnv:surnamePrefix \"de\" ] ;\n        bio:event [ a bio:Burial ;\n                    bio:place _:location1 ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"burried\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasTimeStamp \"1697-02-28\"^^xsd:date ] ;\n        bio:birth [ a bio:Birth ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"born\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasLatestEndTimeStamp \"1697-02-28\" ] ;\n        bio:death [ a bio:Death ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"died\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasEarliestBeginTimeStamp \"1697-02-21\" ; # Estimated, 7 days earlier\n                    sem:hasLatestEndTimeStamp \"1697-02-28\" ] ;\n        roar:documentedIn _:saaId10160347 .\n```"
+    "@value" : "Even if there is no specific birth date mentioned in the source, it is recommended to provide a Birth event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Baptism event, by which the date of birth can be inferred.\n\nExample:\n```ttl\n_:person1 a roar:PersonReconstruction ;\n        rdfs:label \"Susanna de Bock\" ;\n        pnv:hasName [ a pnv:PersonName ;\n                pnv:baseSurname \"Bock\" ;\n                pnv:givenName \"Susanna\" ;\n                pnv:literalName \"Susanna de Bock\" ;\n                pnv:surnamePrefix \"de\" ] ;\n        bio:event [ a bio:Baptism ;\n                    bio:place _:location1 ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"baptized\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasTimeStamp \"1697-02-28\"^^xsd:date ] ;\n        bio:birth [ a bio:Birth ;\n                    bio:principal _:person1 ;\n                    sem:hasActor [ a sem:Role ;\n                                   sem:roleType [ a sem:RoleType ;\n                                                  rdfs:label \"born\" ] ;\n                                   rdf:value _:person1 ] ;\n                    sem:hasLatestEndTimeStamp \"1697-02-28\"^^xsd:date ] ;\n        roar:documentedIn _:saaId10160347 .\n```"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/roar#Person"
@@ -273,6 +273,10 @@
 }, {
   "@id" : "http://www.w3.org/ns/prov#Activity",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The Activity in which the Derivation and thereby the Reconstruction was made. Use `rdfs:comment` to specify what the Activity did."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "prov:Activity"
@@ -285,6 +289,10 @@
 }, {
   "@id" : "http://www.w3.org/ns/prov#Agent",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The Person or Organisation that was involved in the Derivation. In other words, who made the Reconstruction?"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "prov:Agent"
@@ -347,9 +355,15 @@
 }, {
   "@id" : "http://www.w3.org/ns/prov#entity",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://www.w3.org/ns/prov#Derivation"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "prov:entity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/ns/prov#Entity"
   } ]
 }, {
   "@id" : "http://www.w3.org/ns/prov#hadActivity",
@@ -419,8 +433,16 @@
 }, {
   "@id" : "http://www.w3.org/ns/prov#wasDerivedFrom",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A Reconstruction is derived from one or several Observation(s) or Reconstruction(s). \nIt is good practise to also specify the activity in which the derivation was made. This can be done by modelling a `prov:qualifiedDerivation` on the Reconstruction in which the Activity, Agent and Plan can be specified."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/roar#Reconstruction"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "prov:wasDerivedFrom"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "http://www.w3.org/ns/prov#Entity"
@@ -483,7 +505,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "The source (e.g. document, act, legislation, text, picture, recording) in which some entity (e.g. Person or Location) can be observed."
+    "@value" : "The source (e.g. document, act, legislation, text, picture, painting, recording, obelisk) in which some entity (e.g. Person or Location) can be observed.\nIf the source that you are describing is not digitised or is not available as URI, you can define your own resource of class `roar:Document` and use for instance the properties defined by `schema:CreativeWork` to describe it. The `roar:onScan` property can then be used on an Observation to specify the location of the Entity in the source."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
@@ -492,6 +514,10 @@
 }, {
   "@id" : "https://w3id.org/roar#Entity",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "Basic class to hold classes that can be combined with an Observation or Reconstruction class. Pre-modelled are Person and Location, but you are free to specify more types, such as Event or Organisation."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
     "@value" : "Entity"
@@ -641,7 +667,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Use to indicate that a Person has a relation to a certain entity (e.g. Location). Use a structured value to indicate a specific role of this person to the entity or to specify a temporal validity in which this Person-Entity relation is valid (use `sem` timestamp properties for this). \n\nExample:\n```ttl\n:person1 a roar:PersonObservation ;\n         roar:hasLocation [ rdf:value :location1 ;\n                            roar:role \"inhabitant\" ;\n                            sem:hasBeginTimeStamp \"1782-11-20\" ;\n                            sem:hasEarliestEndTimesStamp \"1782-11-20\" ] .\n```"
+    "@value" : "Use to indicate that an Entity has a relation to a Location. Use a structured value to indicate a specific role of this Entity (e.g. Person) to the Location or to specify a temporal validity in which this Entity-Location relation is valid (use `sem` timestamp properties for this). \n\nExample:\n```ttl\n:person1 a roar:PersonObservation ;\n         roar:hasLocation [ rdf:value :location1 ;\n                            roar:role \"resident\" ;\n                            sem:hasBeginTimeStamp \"1782-11-20\" ;\n                            sem:hasEarliestEndTimesStamp \"1782-11-20\" ] .\n```"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/roar#Entity"
@@ -658,7 +684,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Use to indicate that a Location is in relation to a certain Person. Use a structured value to indicate a specific role of this location to the person or to specify a temporal validity in which this Location-Person relation is valid (use `sem` timestamp properties for this). \n\nExample:\n```ttl\n:location1 a roar:LocationObservation ;\n           roar:hasLocation [ rdf:value :person1 ;\n                              roar:role \"residence\" ;\n                              sem:hasBeginTimeStamp \"1782-11-20\" ;\n                              sem:hasEarliestEndTimesStamp \"1782-11-20\" ] .\n```"
+    "@value" : "Use to indicate that an Entity has a relation to a Person. Use a structured value to indicate a specific role of this Entity (e.g. Location) to the Person or to specify a temporal validity in which this Entity-Person relation is valid (use `sem` timestamp properties for this). Use `roar:hasRelation` for Person to Person relations. \n\nExample:\n```ttl\n:location1 a roar:LocationObservation ;\n           roar:hasPerson [ rdf:value :person1 ;\n                              roar:role \"residence\" ;\n                              sem:hasBeginTimeStamp \"1782-11-20\" ;\n                              sem:hasEarliestEndTimesStamp \"1782-11-20\" ] .\n```"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/roar#Entity"
@@ -674,7 +700,8 @@
   "@id" : "https://w3id.org/roar#hasRelation",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "Relation to another person or organisation, defined by a structured value to indicate the kind of relation. \n\n*Example*:\n```ttl\n:person1 a roar:Person ;\n    roar:hasRelation [ rdf:value :person2 ;\n                       roar:relationType \"mother\" ] .\n```"
+    "@language" : "en",
+    "@value" : "Relation to another person or organisation, defined by a structured value to indicate the kind of relation. \n\n*Example*:\n```ttl\n:person1 a roar:Person ;\n    schema:gender schema:Female ;\n    roar:hasRelation [ rdf:value :person2 ;\n                       roar:relationType \"mother\" ] .\n\n:person2 a roar:Person ;\n    schema:gender schema:Male ;\n    roar:hasRelation [ rdf:value :person1 ;\n                       roar:relationType \"firstborn son\" ] .\n```"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/roar#Entity"
@@ -689,6 +716,10 @@
 }, {
   "@id" : "https://w3id.org/roar#onScan",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "This property can be used to indicate the location of the EntityObservation in the source, for instance if the roar:Document is too general (e.g. it refers to multiple pages). This should refer to a URI or filename and assumes the source is digitized."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
     "@id" : "https://w3id.org/roar#Observation"
   } ],
@@ -704,7 +735,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Used to specify the kind of relation (e.g. \"patron\") in a person to person relation as specified by roar:hasRelation."
+    "@value" : "Used to specify the kind of relation (e.g. \"patron\") in a person to person relation as specified by `roar:hasRelation`."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
@@ -718,7 +749,7 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "Can be used to indicate the type of relation between two entities. In case of a Person to Location relation (through `roar:hasLocation`), the `roar:role` can be 'inhabitant' or 'visitor'."
+    "@value" : "Can be used to indicate the role of an entity in a `roar:hasLocation` or `roar:hasPerson` relation. \nIn case of a Person to Location relation (through `roar:hasLocation`), the `roar:role` can for instance be 'inhabitant' or 'visitor'. Similarly, the role of a Location to Person (through `roar:hasPerson`) is for example 'country cottage' or 'residence'."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
