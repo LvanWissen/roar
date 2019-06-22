@@ -1,115 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1159px" height="499px" viewBox="0 0 1159 499" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="1772px" height="499px" viewBox="0 0 1772 499" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
     <title>Group</title>
     <desc>Created with Sketch.</desc>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group" transform="translate(1.000000, 1.000000)">
-            <path d="M628.5,0.5 L628.5,497" id="Line" stroke="#979797" stroke-width="2" stroke-linecap="square" stroke-dasharray="7"></path>
-            <circle id="Oval" stroke="#C9CEED" stroke-width="17" cx="164.5" cy="144.932924" r="34.5"></circle>
-            <text id="Gerit" transform="translate(96.671875, 94.257143) rotate(34.000000) translate(-96.671875, -94.257143) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="64.671875" y="101.757143">Gerit</tspan>
+        <g id="Group" transform="translate(0.000000, 1.000000)">
+            <path d="M1242.5,0.5 L1242.5,497" id="Line" stroke="#979797" stroke-width="2" stroke-linecap="square" stroke-dasharray="7"></path>
+            <path d="M572.5,0.5 L572.5,497" id="Line" stroke="#979797" stroke-width="2" stroke-linecap="square" stroke-dasharray="7"></path>
+            <circle id="Oval" stroke="#C9CEED" stroke-width="17" cx="778.5" cy="144.932924" r="34.5"></circle>
+            <text id="Gerit" transform="translate(710.671875, 94.257143) rotate(34.000000) translate(-710.671875, -94.257143) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="678.671875" y="101.757143">Gerit</tspan>
             </text>
             <text id="Adriaensz" font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="0" y="149.432924">Adriaensz</tspan>
+                <tspan x="614" y="149.432924">Adriaensz</tspan>
             </text>
-            <text id="derived-from-a" transform="translate(849.408952, 123.677961) rotate(-350.000000) translate(-849.408952, -123.677961) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="760.908952" y="131.177961">derived from a</tspan>
+            <text id="derived-from-a" transform="translate(1463.408952, 123.677961) rotate(-350.000000) translate(-1463.408952, -123.677961) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="1374.90895" y="131.177961">derived from a</tspan>
             </text>
-            <text id="derived-from-b" transform="translate(847.363701, 170.038931) rotate(-7.000000) translate(-847.363701, -170.038931) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="758.863701" y="177.538931">derived from b</tspan>
+            <text id="derived-from-b" transform="translate(1461.363701, 170.038931) rotate(-7.000000) translate(-1461.363701, -170.038931) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="1372.8637" y="177.538931">derived from b</tspan>
             </text>
-            <text id="derived-from-c" transform="translate(890.847205, 399.798814) rotate(-6.000000) translate(-890.847205, -399.798814) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="802.347205" y="407.298814">derived from c</tspan>
+            <text id="derived-from-c" transform="translate(1504.847205, 399.798814) rotate(-6.000000) translate(-1504.847205, -399.798814) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="1416.3472" y="407.298814">derived from c</tspan>
             </text>
-            <text id="derived-from-d" transform="translate(891.397054, 440.240837) rotate(5.000000) translate(-891.397054, -440.240837) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="802.897054" y="447.740837">derived from d</tspan>
+            <text id="derived-from-d" transform="translate(1505.397054, 440.240837) rotate(5.000000) translate(-1505.397054, -440.240837) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="1416.89705" y="447.740837">derived from d</tspan>
             </text>
-            <text id="van-Rooij" transform="translate(69.462253, 199.447964) rotate(-27.000000) translate(-69.462253, -199.447964) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="12.4622531" y="206.947964">van Rooij</tspan>
+            <text id="van-Rooij" transform="translate(683.462253, 199.447964) rotate(-27.000000) translate(-683.462253, -199.447964) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="626.462253" y="206.947964">van Rooij</tspan>
             </text>
-            <text id="van-Rooij" transform="translate(1097.265483, 193.921801) rotate(20.000000) translate(-1097.265483, -193.921801) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="1040.26548" y="201.421801">van Rooij</tspan>
+            <text id="van-Rooij" transform="translate(1711.265483, 193.921801) rotate(20.000000) translate(-1711.265483, -193.921801) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="1654.26548" y="201.421801">van Rooij</tspan>
             </text>
-            <text id="married-d" transform="translate(114.167286, 247.923242) rotate(-64.000000) translate(-114.167286, -247.923242) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="57.1672857" y="255.423242">married d</tspan>
+            <text id="married-d" transform="translate(728.167286, 247.923242) rotate(-64.000000) translate(-728.167286, -247.923242) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="671.167286" y="255.423242">married d</tspan>
             </text>
-            <text id="married-a" transform="translate(492.745193, 432.026577) rotate(-64.000000) translate(-492.745193, -432.026577) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="435.745193" y="439.526577">married a</tspan>
+            <text id="married-a" transform="translate(1038.994354, 409.610974) rotate(-6.000000) translate(-1038.994354, -409.610974) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="981.994354" y="417.110974">married a</tspan>
             </text>
-            <circle id="Oval" stroke="#C9CEED" stroke-width="17" cx="344.5" cy="166.938643" r="34.5"></circle>
-            <text id="Gerryt" transform="translate(412.934745, 101.364113) rotate(-41.000000) translate(-412.934745, -101.364113) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="374.934745" y="108.864113">Gerryt</tspan>
+            <circle id="Oval" stroke="#C9CEED" stroke-width="17" cx="941.5" cy="190.938643" r="34.5"></circle>
+            <text id="Gerryt" transform="translate(1009.934745, 125.364113) rotate(-41.000000) translate(-1009.934745, -125.364113) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="971.934745" y="132.864113">Gerryt</tspan>
             </text>
-            <text id="married-b" transform="translate(240.996741, 418.624646) rotate(-8.000000) translate(-240.996741, -418.624646) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="183.996741" y="426.124646">married b</tspan>
+            <text id="married-b" transform="translate(816.562500, 409.242187) rotate(-376.000000) translate(-816.562500, -409.242187) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="759.5625" y="416.742187">married b</tspan>
             </text>
-            <text id="deed-1667-05-21" transform="translate(256.923856, 356.213352) rotate(-28.000000) translate(-256.923856, -356.213352) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="161.923856" y="363.713352">deed 1667-05-21</tspan>
+            <text id="married-c" transform="translate(990.073321, 86.219288) rotate(-421.000000) translate(-990.073321, -86.219288) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="933.073321" y="93.719288">married c</tspan>
             </text>
-            <text id="deed-1667-05-21" transform="translate(493.881228, 189.855393) rotate(8.000000) translate(-493.881228, -189.855393) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="398.881228" y="197.355393">deed 1667-05-21</tspan>
+            <text id="death-&lt;-1667-07-17" transform="translate(1109.201188, 216.430096) rotate(8.000000) translate(-1109.201188, -216.430096) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="995.701188" y="223.930096">death &lt; 1667-07-17</tspan>
             </text>
-            <text id="Adriaensz" transform="translate(453.046875, 138.958844) rotate(-10.000000) translate(-453.046875, -138.958844) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="396.046875" y="146.458844">Adriaensz</tspan>
+            <text id="Adriaensz" transform="translate(1050.046875, 162.958844) rotate(-10.000000) translate(-1050.046875, -162.958844) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="993.046875" y="170.458844">Adriaensz</tspan>
             </text>
-            <text id="timmerman" transform="translate(446.693684, 222.096728) rotate(24.000000) translate(-446.693684, -222.096728) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="389.693684" y="229.596728">timmerman</tspan>
+            <text id="timmerman" transform="translate(1043.693684, 246.096728) rotate(24.000000) translate(-1043.693684, -246.096728) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="986.693684" y="253.596728">timmerman</tspan>
             </text>
-            <text id="Catrijn" transform="translate(460.882083, 391.541039) rotate(-34.000000) translate(-460.882083, -391.541039) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="416.382083" y="399.041039">Catrijn</tspan>
+            <text id="Catrijn" transform="translate(1054.464825, 358.135360) rotate(25.000000) translate(-1054.464825, -358.135360) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="1009.96482" y="365.63536">Catrijn</tspan>
             </text>
-            <text id="Catrijn" transform="translate(739.393164, 321.067522) rotate(83.000000) translate(-739.393164, -321.067522) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="694.893164" y="328.567522">Catrijn</tspan>
+            <text id="Catrijn" transform="translate(1353.393164, 321.067522) rotate(83.000000) translate(-1353.393164, -321.067522) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="1308.89316" y="328.567522">Catrijn</tspan>
             </text>
-            <circle id="Oval" stroke="#E8C9ED" stroke-width="17" transform="translate(992.172824, 159.984528) rotate(10.000000) translate(-992.172824, -159.984528) " cx="992.172824" cy="159.984528" r="34.5"></circle>
-            <text id="Gerrit" transform="translate(1070.954789, 107.289791) rotate(-31.000000) translate(-1070.954789, -107.289791) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="1032.95479" y="114.789791">Gerrit</tspan>
+            <circle id="Oval" stroke="#E8C9ED" stroke-width="17" transform="translate(1606.172824, 159.984528) rotate(10.000000) translate(-1606.172824, -159.984528) " cx="1606.17282" cy="159.984528" r="34.5"></circle>
+            <text id="Gerrit" transform="translate(1684.954789, 107.289791) rotate(-31.000000) translate(-1684.954789, -107.289791) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="1646.95479" y="114.789791">Gerrit</tspan>
             </text>
             <text id="Adriaensz" font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="1046.92927" y="158.778772">Adriaensz</tspan>
+                <tspan x="1660.92927" y="158.778772">Adriaensz</tspan>
             </text>
-            <text id="timmerman" transform="translate(1070.713468, 237.069873) rotate(50.000000) translate(-1070.713468, -237.069873) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="1013.71347" y="244.569873">timmerman</tspan>
+            <text id="timmerman" transform="translate(1684.713468, 237.069873) rotate(50.000000) translate(-1684.713468, -237.069873) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="1627.71347" y="244.569873">timmerman</tspan>
             </text>
-            <text id="married-2" transform="translate(993.248501, 271.564495) rotate(91.000000) translate(-993.248501, -271.564495) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="936.248501" y="279.064495">married 2</tspan>
+            <text id="married-2" transform="translate(1607.248501, 271.564495) rotate(91.000000) translate(-1607.248501, -271.564495) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="1550.2485" y="279.064495">married 2</tspan>
             </text>
-            <text id="married-1" transform="translate(696.942374, 322.058854) rotate(68.000000) translate(-696.942374, -322.058854) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="639.942374" y="329.558854">married 1</tspan>
+            <text id="married-1" transform="translate(1310.942374, 322.058854) rotate(68.000000) translate(-1310.942374, -322.058854) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="1253.94237" y="329.558854">married 1</tspan>
             </text>
-            <text id="death-&lt;-1667-05-21" transform="translate(1046.821105, 318.511212) rotate(73.000000) translate(-1046.821105, -318.511212) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="933.321105" y="326.011212">death &lt; 1667-05-21</tspan>
+            <text id="death-&lt;-1667-07-17" transform="translate(1660.821105, 318.511212) rotate(73.000000) translate(-1660.821105, -318.511212) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="1547.32111" y="326.011212">death &lt; 1667-07-17</tspan>
             </text>
             <text id="a" font-family="Courier-Bold, Courier" font-size="45" font-weight="bold" fill="#9BA0BE">
-                <tspan x="151" y="155">a</tspan>
+                <tspan x="765" y="155">a</tspan>
             </text>
             <text id="b" font-family="Courier-Bold, Courier" font-size="45" font-weight="bold" fill="#9BA0BE">
-                <tspan x="332" y="178">b</tspan>
+                <tspan x="929" y="202">b</tspan>
             </text>
-            <circle id="Oval" stroke="#C9CEED" stroke-width="17" cx="127.5" cy="439.042582" r="34.5"></circle>
-            <text id="Trijntje" transform="translate(180.987653, 344.227394) rotate(-57.000000) translate(-180.987653, -344.227394) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
-                <tspan x="130.487653" y="351.727394">Trijntje</tspan>
+            <circle id="Oval" stroke="#C9CEED" stroke-width="17" cx="705.5" cy="440.835893" r="34.5"></circle>
+            <text id="Trijntje" transform="translate(790.720089, 373.036330) rotate(-40.000000) translate(-790.720089, -373.036330) " font-family="Courier-Bold, Courier" font-size="21" font-weight="bold" fill="#737373">
+                <tspan x="740.220089" y="380.53633">Trijntje</tspan>
             </text>
             <text id="c" font-family="Courier-Bold, Courier" font-size="45" font-weight="bold" fill="#9BA0BE">
-                <tspan x="115" y="450.103939">c</tspan>
+                <tspan x="693" y="451.89725">c</tspan>
             </text>
-            <circle id="Oval" stroke="#C9CEED" stroke-width="17" cx="546.023112" cy="329.5" r="34.5"></circle>
-            <text id="d" font-family="Courier-Bold, Courier" font-size="45" font-weight="bold" fill="#9BA0BE">
-                <tspan x="532.523112" y="340.561357">d</tspan>
+            <circle id="Oval" stroke="#C9CEED" stroke-width="17" transform="translate(1149.406485, 398.471092) rotate(74.000000) translate(-1149.406485, -398.471092) " cx="1149.40649" cy="398.471092" r="34.5"></circle>
+            <text id="d" transform="translate(1149.291632, 394.590448) rotate(-360.000000) translate(-1149.291632, -394.590448) " font-family="Courier-Bold, Courier" font-size="45" font-weight="bold" fill="#9BA0BE">
+                <tspan x="1135.29163" y="410.590448">d</tspan>
             </text>
-            <text id="1" transform="translate(993.701195, 157.270045) rotate(-360.000000) translate(-993.701195, -157.270045) " font-family="Courier-Bold, Courier" font-size="45" font-weight="bold" fill="#BB9BBE">
-                <tspan x="979.701195" y="173.270045">1</tspan>
+            <text id="1" transform="translate(1607.701195, 157.270045) rotate(-360.000000) translate(-1607.701195, -157.270045) " font-family="Courier-Bold, Courier" font-size="45" font-weight="bold" fill="#BB9BBE">
+                <tspan x="1593.7012" y="173.270045">1</tspan>
             </text>
-            <circle id="Oval" stroke="#E8C9ED" stroke-width="17" cx="749.025411" cy="423.616522" r="34.5"></circle>
+            <circle id="Oval" stroke="#E8C9ED" stroke-width="17" cx="1363.02541" cy="423.616522" r="34.5"></circle>
             <text id="2" font-family="Courier-Bold, Courier" font-size="45" font-weight="bold" fill="#BB9BBE">
-                <tspan x="736.059198" y="436.677879">2</tspan>
+                <tspan x="1350.0592" y="436.677879">2</tspan>
             </text>
-            <text id="observations-in-arch" font-family="Courier-Bold, Courier" font-size="28" font-weight="bold" fill="#9BA0BE">
-                <tspan x="6" y="35">observations in archival resources</tspan>
+            <text id="observations" font-family="Courier-Bold, Courier" font-size="28" font-weight="bold" fill="#9BA0BE">
+                <tspan x="620" y="35">observations</tspan>
+            </text>
+            <text id="archival-resources" font-family="Courier-Bold, Courier" font-size="28" font-weight="bold" fill="#BE9B9B">
+                <tspan x="0" y="35">archival resources</tspan>
             </text>
             <text id="reconstructions" font-family="Courier-Bold, Courier" font-size="28" font-weight="bold" fill="#B09BBE">
-                <tspan x="900" y="35">reconstructions</tspan>
+                <tspan x="1514" y="35">reconstructions</tspan>
+            </text>
+            <rect id="Rectangle" stroke="#EDC9C9" stroke-width="17" x="8.5" y="137.5" width="225" height="210"></rect>
+            <text id="Gerit-Adriaensz-van" font-family="Courier-Bold, Courier" font-size="24" font-weight="bold" fill="#737373">
+                <tspan x="29" y="185">Gerit </tspan>
+                <tspan x="29" y="214">Adriaensz </tspan>
+                <tspan x="29" y="243">van Rooij en </tspan>
+                <tspan x="29" y="272">Catrijn sijn </tspan>
+                <tspan x="29" y="301">huysvrou</tspan>
+            </text>
+            <rect id="Rectangle" stroke="#EDC9C9" stroke-width="17" x="293.5" y="213.5" width="225" height="243"></rect>
+            <text id="Trijntje-weduwe-van" font-family="Courier-Bold, Courier" font-size="24" font-weight="bold" fill="#737373">
+                <tspan x="315" y="313">Trijntje </tspan>
+                <tspan x="315" y="342">weduwe van </tspan>
+                <tspan x="315" y="371">Gerryt </tspan>
+                <tspan x="315" y="400">Adriaensz </tspan>
+                <tspan x="315" y="429">timmerman</tspan>
+            </text>
+            <text id="17-julij-1667" font-family="Courier-Bold, Courier" font-size="24" font-weight="bold" fill="#737373">
+                <tspan x="313" y="253">17 julij 1667</tspan>
             </text>
         </g>
     </g>
