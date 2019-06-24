@@ -95,7 +95,7 @@
         <rdfs:subPropertyOf rdf:resource="http://purl.org/vocab/bio/event/0.1"/>
         <rdfs:domain rdf:resource="https://w3id.org/roar#Person"/>
         <rdfs:range rdf:resource="http://purl.org/vocab/bio/0.1/Birth"/>
-        <rdfs:comment xml:lang="en">Even if there is no specific birth date mentioned in the source, it is recommended to provide a Birth event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Baptism event, by which the date of birth can be inferred.
+        <rdfs:comment xml:lang="en">Even if there is no specific birth date mentioned in the source, it is recommended to provide a Birth event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Baptism event, by which the date of birth can be estimated, for instance by setting the `sem:hasLatestEndTimeStamp` property to the date of the Baptism event.
 
 Example:
 ```ttl
@@ -123,7 +123,7 @@ _:person1 a roar:PersonReconstruction ;
                     sem:hasLatestEndTimeStamp &quot;1697-02-28&quot;^^xsd:date ] ;
         roar:documentedIn _:saaId10160347 .
 ```</rdfs:comment>
-        <rdfs:label xml:lang="en">birth:birth</rdfs:label>
+        <rdfs:label xml:lang="en">bio:birth</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -135,7 +135,7 @@ _:person1 a roar:PersonReconstruction ;
         <rdfs:subPropertyOf rdf:resource="http://purl.org/vocab/bio/event/0.1"/>
         <rdfs:domain rdf:resource="https://w3id.org/roar#Person"/>
         <rdfs:range rdf:resource="http://purl.org/vocab/bio/0.1/Death"/>
-        <rdfs:comment xml:lang="en">Even if there is no specific death date mentioned in the source, it is recommended to provide a Death event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Burial event, by which the death date can be inferred. 
+        <rdfs:comment xml:lang="en">Even if there is no specific death date mentioned in the source, it is recommended to provide a Death event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Burial event, by which the death date can be estimated, for instance by setting the `sem:hasEarliestBeginTimeStamp` property to the date of the Burial event.
 
 Example:
 ```ttl
@@ -678,6 +678,7 @@ If the source that you are describing is not digitised or is not available as UR
 
     <owl:Class rdf:about="https://w3id.org/roar#LocationObservation">
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Observation"/>
+        <rdfs:comment xml:lang="en">A LocationObservation is a location that can be observed in a `roar:Document`.</rdfs:comment>
         <rdfs:label xml:lang="en">LocationObservation</rdfs:label>
     </owl:Class>
     
@@ -689,6 +690,7 @@ If the source that you are describing is not digitised or is not available as UR
     <owl:Class rdf:about="https://w3id.org/roar#LocationReconstruction">
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Location"/>
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Reconstruction"/>
+        <rdfs:comment xml:lang="en">A LocationReconstruction is the result of modelling one or multiple LocationObservation(s) into a single resource.</rdfs:comment>
         <rdfs:label xml:lang="en">LocationReconstruction</rdfs:label>
     </owl:Class>
     
@@ -746,6 +748,7 @@ If the source that you are describing is not digitised or is not available as UR
 
     <owl:Class rdf:about="https://w3id.org/roar#PersonObservation">
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Observation"/>
+        <rdfs:comment xml:lang="en">A PersonObservation is a person that can be observed in a `roar:Document`.</rdfs:comment>
         <rdfs:label xml:lang="en">PersonObservation</rdfs:label>
     </owl:Class>
     
@@ -757,6 +760,7 @@ If the source that you are describing is not digitised or is not available as UR
     <owl:Class rdf:about="https://w3id.org/roar#PersonReconstruction">
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Person"/>
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Reconstruction"/>
+        <rdfs:comment xml:lang="en">A PersonReconstruction is the result of modelling one or multiple PersonObservation(s) into a single resource.</rdfs:comment>
         <rdfs:label xml:lang="en">PersonReconstruction</rdfs:label>
     </owl:Class>
     

@@ -91,7 +91,7 @@ This section provides details for each class and property defined by roar.
          </dd>
          <dt>is in range of</dt>
          <dd>
-            <a href="#http://purl.org/vocab/bio/0.1/birth" title="http://purl.org/vocab/bio/0.1/birth">birth:birth</a>
+            <a href="#http://purl.org/vocab/bio/0.1/birth" title="http://purl.org/vocab/bio/0.1/birth">bio:birth</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
       </dl>
@@ -257,6 +257,9 @@ If the source that you are describing is not digitised or is not available as UR
       </h3>
       <p>
          <strong>IRI:</strong> https://w3id.org/roar#LocationObservation</p>
+      <div class="comment">
+         <span class="markdown">A LocationObservation is a location that can be observed in a `roar:Document`.</span>
+      </div>
       <dl class="description">
          <dt>has super-classes</dt>
          <dd>
@@ -272,6 +275,9 @@ If the source that you are describing is not digitised or is not available as UR
       </h3>
       <p>
          <strong>IRI:</strong> https://w3id.org/roar#LocationReconstruction</p>
+      <div class="comment">
+         <span class="markdown">A LocationReconstruction is the result of modelling one or multiple LocationObservation(s) into a single resource.</span>
+      </div>
       <dl class="description">
          <dt>has super-classes</dt>
          <dd>
@@ -339,9 +345,9 @@ If the source that you are describing is not digitised or is not available as UR
          </dd>
          <dt>is in domain of</dt>
          <dd>
-            <a href="#http://purl.org/vocab/bio/0.1/death" title="http://purl.org/vocab/bio/0.1/death">bio:death</a>
+            <a href="#http://purl.org/vocab/bio/0.1/birth" title="http://purl.org/vocab/bio/0.1/birth">bio:birth</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/vocab/bio/0.1/death" title="http://purl.org/vocab/bio/0.1/death">bio:death</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/vocab/bio/event/0.1" title="http://purl.org/vocab/bio/event/0.1">bio:event</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/vocab/bio/0.1/birth" title="http://purl.org/vocab/bio/0.1/birth">birth:birth</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#https://w3id.org/pnv#hasName" title="https://w3id.org/pnv#hasName">pnv:hasName</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
@@ -364,6 +370,9 @@ If the source that you are describing is not digitised or is not available as UR
       </h3>
       <p>
          <strong>IRI:</strong> https://w3id.org/roar#PersonObservation</p>
+      <div class="comment">
+         <span class="markdown">A PersonObservation is a person that can be observed in a `roar:Document`.</span>
+      </div>
       <dl class="description">
          <dt>has super-classes</dt>
          <dd>
@@ -379,6 +388,9 @@ If the source that you are describing is not digitised or is not available as UR
       </h3>
       <p>
          <strong>IRI:</strong> https://w3id.org/roar#PersonReconstruction</p>
+      <div class="comment">
+         <span class="markdown">A PersonReconstruction is the result of modelling one or multiple PersonObservation(s) into a single resource.</span>
+      </div>
       <dl class="description">
          <dt>has super-classes</dt>
          <dd>
@@ -638,13 +650,13 @@ It is also possible to derrive a Reconstruction from other Reconstructions.</spa
    <h3 id="properties" class="list">Object Properties</h3>
    <ul class="hlist">
       <li>
+         <a href="#http://purl.org/vocab/bio/0.1/birth" title="http://purl.org/vocab/bio/0.1/birth">bio:birth</a>
+      </li>
+      <li>
          <a href="#http://purl.org/vocab/bio/0.1/death" title="http://purl.org/vocab/bio/0.1/death">bio:death</a>
       </li>
       <li>
          <a href="#http://purl.org/vocab/bio/event/0.1" title="http://purl.org/vocab/bio/event/0.1">bio:event</a>
-      </li>
-      <li>
-         <a href="#http://purl.org/vocab/bio/0.1/birth" title="http://purl.org/vocab/bio/0.1/birth">birth:birth</a>
       </li>
       <li>
          <a href="#documentedIn" title="https://w3id.org/roar#documentedIn">documentedIn</a>
@@ -686,6 +698,63 @@ It is also possible to derrive a Reconstruction from other Reconstructions.</spa
          <a href="#http://www.w3.org/ns/prov#wasDerivedFrom" title="http://www.w3.org/ns/prov#wasDerivedFrom">prov:wasDerivedFrom</a>
       </li>
    </ul>
+   <div class="entity" id="http://purl.org/vocab/bio/0.1/birth">
+      <h3>bio:birth<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://purl.org/vocab/bio/0.1/birth</p>
+      <div class="comment">
+         <span class="markdown">Even if there is no specific birth date mentioned in the source, it is recommended to provide a Birth event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Baptism event, by which the date of birth can be estimated, for instance by setting the `sem:hasLatestEndTimeStamp` property to the date of the Baptism event.
+
+Example:
+```ttl
+_:person1 a roar:PersonReconstruction ;
+        rdfs:label "Susanna de Bock" ;
+        pnv:hasName [ a pnv:PersonName ;
+                pnv:baseSurname "Bock" ;
+                pnv:givenName "Susanna" ;
+                pnv:literalName "Susanna de Bock" ;
+                pnv:surnamePrefix "de" ] ;
+        bio:event [ a bio:Baptism ;
+                    bio:place _:location1 ;
+                    bio:principal _:person1 ;
+                    sem:hasActor [ a sem:Role ;
+                                   sem:roleType [ a sem:RoleType ;
+                                                  rdfs:label "baptized" ] ;
+                                   rdf:value _:person1 ] ;
+                    sem:hasTimeStamp "1697-02-28"^^xsd:date ] ;
+        bio:birth [ a bio:Birth ;
+                    bio:principal _:person1 ;
+                    sem:hasActor [ a sem:Role ;
+                                   sem:roleType [ a sem:RoleType ;
+                                                  rdfs:label "born" ] ;
+                                   rdf:value _:person1 ] ;
+                    sem:hasLatestEndTimeStamp "1697-02-28"^^xsd:date ] ;
+        roar:documentedIn _:saaId10160347 .
+```</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#http://purl.org/vocab/bio/event/0.1" title="http://purl.org/vocab/bio/event/0.1">bio:event</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Person" title="https://w3id.org/roar#Person">Person</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://purl.org/vocab/bio/0.1/Birth" title="http://purl.org/vocab/bio/0.1/Birth">bio:Birth</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="http://purl.org/vocab/bio/0.1/death">
       <h3>bio:death<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
@@ -694,7 +763,7 @@ It is also possible to derrive a Reconstruction from other Reconstructions.</spa
       <p>
          <strong>IRI:</strong> http://purl.org/vocab/bio/0.1/death</p>
       <div class="comment">
-         <span class="markdown">Even if there is no specific death date mentioned in the source, it is recommended to provide a Death event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Burial event, by which the death date can be inferred. 
+         <span class="markdown">Even if there is no specific death date mentioned in the source, it is recommended to provide a Death event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Burial event, by which the death date can be estimated, for instance by setting the `sem:hasEarliestBeginTimeStamp` property to the date of the Burial event.
 
 Example:
 ```ttl
@@ -765,8 +834,8 @@ _:person1 a roar:PersonReconstruction ;
          <dl>
             <dt>has sub-properties</dt>
             <dd>
-               <a href="#http://purl.org/vocab/bio/0.1/death" title="http://purl.org/vocab/bio/0.1/death">bio:death</a>
-               <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/vocab/bio/0.1/birth" title="http://purl.org/vocab/bio/0.1/birth">birth:birth</a>
+               <a href="#http://purl.org/vocab/bio/0.1/birth" title="http://purl.org/vocab/bio/0.1/birth">bio:birth</a>
+               <sup class="type-op" title="object property">op</sup>, <a href="#http://purl.org/vocab/bio/0.1/death" title="http://purl.org/vocab/bio/0.1/death">bio:death</a>
                <sup class="type-op" title="object property">op</sup>
             </dd>
             <dt>has domain</dt>
@@ -777,63 +846,6 @@ _:person1 a roar:PersonReconstruction ;
             <dt>has range</dt>
             <dd>
                <a href="#http://purl.org/vocab/bio/0.1/Event" title="http://purl.org/vocab/bio/0.1/Event">bio:Event</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-         </dl>
-      </div>
-   </div>
-   <div class="entity" id="http://purl.org/vocab/bio/0.1/birth">
-      <h3>birth:birth<sup class="type-op" title="object property">op</sup>
-         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
-         </span>
-      </h3>
-      <p>
-         <strong>IRI:</strong> http://purl.org/vocab/bio/0.1/birth</p>
-      <div class="comment">
-         <span class="markdown">Even if there is no specific birth date mentioned in the source, it is recommended to provide a Birth event and estimate the dates based on other (life) events around the person. A concrete example would be the mentioning of a Baptism event, by which the date of birth can be inferred.
-
-Example:
-```ttl
-_:person1 a roar:PersonReconstruction ;
-        rdfs:label "Susanna de Bock" ;
-        pnv:hasName [ a pnv:PersonName ;
-                pnv:baseSurname "Bock" ;
-                pnv:givenName "Susanna" ;
-                pnv:literalName "Susanna de Bock" ;
-                pnv:surnamePrefix "de" ] ;
-        bio:event [ a bio:Baptism ;
-                    bio:place _:location1 ;
-                    bio:principal _:person1 ;
-                    sem:hasActor [ a sem:Role ;
-                                   sem:roleType [ a sem:RoleType ;
-                                                  rdfs:label "baptized" ] ;
-                                   rdf:value _:person1 ] ;
-                    sem:hasTimeStamp "1697-02-28"^^xsd:date ] ;
-        bio:birth [ a bio:Birth ;
-                    bio:principal _:person1 ;
-                    sem:hasActor [ a sem:Role ;
-                                   sem:roleType [ a sem:RoleType ;
-                                                  rdfs:label "born" ] ;
-                                   rdf:value _:person1 ] ;
-                    sem:hasLatestEndTimeStamp "1697-02-28"^^xsd:date ] ;
-        roar:documentedIn _:saaId10160347 .
-```</span>
-      </div>
-      <div class="description">
-         <dl>
-            <dt>has super-properties</dt>
-            <dd>
-               <a href="#http://purl.org/vocab/bio/event/0.1" title="http://purl.org/vocab/bio/event/0.1">bio:event</a>
-               <sup class="type-op" title="object property">op</sup>
-            </dd>
-            <dt>has domain</dt>
-            <dd>
-               <a href="#Person" title="https://w3id.org/roar#Person">Person</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-            <dt>has range</dt>
-            <dd>
-               <a href="#http://purl.org/vocab/bio/0.1/Birth" title="http://purl.org/vocab/bio/0.1/Birth">bio:Birth</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
          </dl>
