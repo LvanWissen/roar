@@ -235,7 +235,8 @@ If the source that you are describing is not digitised or is not available as UR
          </dd>
          <dt>has sub-classes</dt>
          <dd>
-            <a href="#LocationReconstruction" title="https://w3id.org/roar#LocationReconstruction">LocationReconstruction</a>
+            <a href="#LocationObservation" title="https://w3id.org/roar#LocationObservation">LocationObservation</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#LocationReconstruction" title="https://w3id.org/roar#LocationReconstruction">LocationReconstruction</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dt>is in range of</dt>
@@ -263,7 +264,8 @@ If the source that you are describing is not digitised or is not available as UR
       <dl class="description">
          <dt>has super-classes</dt>
          <dd>
-            <a href="#Observation" title="https://w3id.org/roar#Observation">Observation</a>
+            <a href="#Location" title="https://w3id.org/roar#Location">Location</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Observation" title="https://w3id.org/roar#Observation">Observation</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
       </dl>
@@ -312,7 +314,8 @@ If the source that you are describing is not digitised or is not available as UR
          <dt>is in domain of</dt>
          <dd>
             <a href="#documentedIn" title="https://w3id.org/roar#documentedIn">documentedIn</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#onScan" title="https://w3id.org/roar#onScan">onScan</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#locationInDocument" title="https://w3id.org/roar#locationInDocument">locationInDocument</a>
+            <sup class="type-dp" title="data property">dp</sup>, <a href="#onScan" title="https://w3id.org/roar#onScan">onScan</a>
             <sup class="type-dp" title="data property">dp</sup>
          </dd>
          <dt>is disjoint with</dt>
@@ -340,7 +343,8 @@ If the source that you are describing is not digitised or is not available as UR
          </dd>
          <dt>has sub-classes</dt>
          <dd>
-            <a href="#PersonReconstruction" title="https://w3id.org/roar#PersonReconstruction">PersonReconstruction</a>
+            <a href="#PersonObservation" title="https://w3id.org/roar#PersonObservation">PersonObservation</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PersonReconstruction" title="https://w3id.org/roar#PersonReconstruction">PersonReconstruction</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dt>is in domain of</dt>
@@ -377,6 +381,7 @@ If the source that you are describing is not digitised or is not available as UR
          <dt>has super-classes</dt>
          <dd>
             <a href="#Observation" title="https://w3id.org/roar#Observation">Observation</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Person" title="https://w3id.org/roar#Person">Person</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
       </dl>
@@ -1188,6 +1193,9 @@ It is good practise to also specify the activity in which the derivation was mad
    <h3 id="dataproperties-headline" class="list">Data Properties</h3>
    <ul class="hlist">
       <li>
+         <a href="#locationInDocument" title="https://w3id.org/roar#locationInDocument">locationInDocument</a>
+      </li>
+      <li>
          <a href="#onScan" title="https://w3id.org/roar#onScan">onScan</a>
       </li>
       <li>
@@ -1202,6 +1210,30 @@ It is good practise to also specify the activity in which the derivation was mad
          <a href="#role" title="https://w3id.org/roar#role">role</a>
       </li>
    </ul>
+   <div class="entity" id="locationInDocument">
+      <h3>locationInDocument<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> https://w3id.org/roar#locationInDocument</p>
+      <div class="comment">
+         <span class="markdown">The locationInDocument property can hold any location reference relative to the Document an Observation is in. This can be used to indicate a location in the source, even when the source has not yet been digitized (then a roar:onScan can be used).</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <span class="dotted" title="http://www.w3.org/2002/07/owl#topDataProperty">top data property</span>
+            </dd>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#Observation" title="https://w3id.org/roar#Observation">Observation</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
    <div class="entity" id="onScan">
       <h3>onScan<sup class="type-dp" title="data property">dp</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>

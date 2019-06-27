@@ -4,16 +4,16 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://w3id.org/roar#> .
+@base <https://w3id.org/roar> .
 
-<https://w3id.org/roar#> rdf:type owl:Ontology ;
-                          <http://purl.org/dc/elements/1.1/title> "Reconstructions and Observations in Archival Resources"@en ;
-                          <http://purl.org/vocab/vann/preferredNamespacePrefix> "roar" ;
-                          <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/roar#" ;
-                          rdfs:comment "Ontology to describe person, location etc. observations in archival resources. One or multiple observations can be bundled into a reconstruction that combines complementary (or sometimes conflicting) information from the observation(s) so that a single entity is reconstructed out of several entity observations from one or multiple sources."@en ;
-                          rdfs:label "Reconstructions and Observations in Archival Resources"@en ;
-                          <http://xmlns.com/foaf/0.1/depiction> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg> ;
-                          <http://xmlns.com/foaf/0.1/logo> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-logo.png> .
+<https://w3id.org/roar> rdf:type owl:Ontology ;
+                         <http://purl.org/dc/elements/1.1/title> "Reconstructions and Observations in Archival Resources"@en ;
+                         <http://purl.org/vocab/vann/preferredNamespacePrefix> "roar" ;
+                         <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/roar#" ;
+                         rdfs:comment "Ontology to describe person, location etc. observations in archival resources. One or multiple observations can be bundled into a reconstruction that combines complementary (or sometimes conflicting) information from the observation(s) so that a single entity is reconstructed out of several entity observations from one or multiple sources."@en ;
+                         rdfs:label "Reconstructions and Observations in Archival Resources"@en ;
+                         <http://xmlns.com/foaf/0.1/depiction> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg> ;
+                         <http://xmlns.com/foaf/0.1/logo> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-logo.png> .
 
 #################################################################
 #    Annotation properties
@@ -272,6 +272,14 @@ Example:
                                    owl:equivalentProperty :role .
 
 
+###  https://w3id.org/roar#locationInDocument
+:locationInDocument rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain :Observation ;
+                    rdfs:comment "The locationInDocument property can hold any location reference relative to the Document an Observation is in. This can be used to indicate a location in the source, even when the source has not yet been digitized (then a roar:onScan can be used)."@en ;
+                    rdfs:label "locationInDocument"@en .
+
+
 ###  https://w3id.org/roar#onScan
 :onScan rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
@@ -454,7 +462,8 @@ If the source that you are describing is not digitised or is not available as UR
 
 ###  https://w3id.org/roar#LocationObservation
 :LocationObservation rdf:type owl:Class ;
-                     rdfs:subClassOf :Observation ;
+                     rdfs:subClassOf :Location ,
+                                     :Observation ;
                      rdfs:comment "A LocationObservation is a location that can be observed in a `roar:Document`."@en ;
                      rdfs:label "LocationObservation"@en .
 
@@ -500,7 +509,8 @@ If the source that you are describing is not digitised or is not available as UR
 
 ###  https://w3id.org/roar#PersonObservation
 :PersonObservation rdf:type owl:Class ;
-                   rdfs:subClassOf :Observation ;
+                   rdfs:subClassOf :Observation ,
+                                   :Person ;
                    rdfs:comment "A PersonObservation is a person that can be observed in a `roar:Document`."@en ;
                    rdfs:label "PersonObservation"@en .
 

@@ -474,7 +474,7 @@
     "@id" : "https://w3id.org/pnv#PersonName"
   } ]
 }, {
-  "@id" : "https://w3id.org/roar#",
+  "@id" : "https://w3id.org/roar",
   "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
   "http://purl.org/dc/elements/1.1/title" : [ {
     "@language" : "en",
@@ -556,6 +556,8 @@
     "@value" : "LocationObservation"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/roar#Location"
+  }, {
     "@id" : "https://w3id.org/roar#Observation"
   } ]
 }, {
@@ -626,6 +628,8 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://w3id.org/roar#Observation"
+  }, {
+    "@id" : "https://w3id.org/roar#Person"
   } ]
 }, {
   "@id" : "https://w3id.org/roar#PersonReconstruction",
@@ -728,6 +732,23 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "https://w3id.org/roar#Entity"
+  } ]
+}, {
+  "@id" : "https://w3id.org/roar#locationInDocument",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The locationInDocument property can hold any location reference relative to the Document an Observation is in. This can be used to indicate a location in the source, even when the source has not yet been digitized (then a roar:onScan can be used)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/roar#Observation"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "locationInDocument"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
   } ]
 }, {
   "@id" : "https://w3id.org/roar#onScan",

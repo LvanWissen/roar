@@ -1,11 +1,11 @@
-<https://w3id.org/roar#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
-<https://w3id.org/roar#> <http://purl.org/dc/elements/1.1/title> "Reconstructions and Observations in Archival Resources"@en .
-<https://w3id.org/roar#> <http://purl.org/vocab/vann/preferredNamespacePrefix> "roar" .
-<https://w3id.org/roar#> <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/roar#" .
-<https://w3id.org/roar#> <http://www.w3.org/2000/01/rdf-schema#comment> "Ontology to describe person, location etc. observations in archival resources. One or multiple observations can be bundled into a reconstruction that combines complementary (or sometimes conflicting) information from the observation(s) so that a single entity is reconstructed out of several entity observations from one or multiple sources."@en .
-<https://w3id.org/roar#> <http://www.w3.org/2000/01/rdf-schema#label> "Reconstructions and Observations in Archival Resources"@en .
-<https://w3id.org/roar#> <http://xmlns.com/foaf/0.1/depiction> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg> .
-<https://w3id.org/roar#> <http://xmlns.com/foaf/0.1/logo> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-logo.png> .
+<https://w3id.org/roar> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/roar> <http://purl.org/dc/elements/1.1/title> "Reconstructions and Observations in Archival Resources"@en .
+<https://w3id.org/roar> <http://purl.org/vocab/vann/preferredNamespacePrefix> "roar" .
+<https://w3id.org/roar> <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/roar#" .
+<https://w3id.org/roar> <http://www.w3.org/2000/01/rdf-schema#comment> "Ontology to describe person, location etc. observations in archival resources. One or multiple observations can be bundled into a reconstruction that combines complementary (or sometimes conflicting) information from the observation(s) so that a single entity is reconstructed out of several entity observations from one or multiple sources."@en .
+<https://w3id.org/roar> <http://www.w3.org/2000/01/rdf-schema#label> "Reconstructions and Observations in Archival Resources"@en .
+<https://w3id.org/roar> <http://xmlns.com/foaf/0.1/depiction> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg> .
+<https://w3id.org/roar> <http://xmlns.com/foaf/0.1/logo> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-logo.png> .
 # 
 # 
 # #################################################################
@@ -161,6 +161,13 @@
 <http://dbpedia.org/ontology/role> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 <http://dbpedia.org/ontology/role> <http://www.w3.org/2002/07/owl#equivalentProperty> <https://w3id.org/roar#role> .
 # 
+# https://w3id.org/roar#locationInDocument
+<https://w3id.org/roar#locationInDocument> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/roar#locationInDocument> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/roar#locationInDocument> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/roar#Observation> .
+<https://w3id.org/roar#locationInDocument> <http://www.w3.org/2000/01/rdf-schema#comment> "The locationInDocument property can hold any location reference relative to the Document an Observation is in. This can be used to indicate a location in the source, even when the source has not yet been digitized (then a roar:onScan can be used)."@en .
+<https://w3id.org/roar#locationInDocument> <http://www.w3.org/2000/01/rdf-schema#label> "locationInDocument"@en .
+# 
 # https://w3id.org/roar#onScan
 <https://w3id.org/roar#onScan> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
 <https://w3id.org/roar#onScan> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
@@ -306,6 +313,7 @@ _:genid8 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#P
 # 
 # https://w3id.org/roar#LocationObservation
 <https://w3id.org/roar#LocationObservation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Location> .
 <https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Observation> .
 <https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#comment> "A LocationObservation is a location that can be observed in a `roar:Document`."@en .
 <https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#label> "LocationObservation"@en .
@@ -349,6 +357,7 @@ _:genid12 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#
 # https://w3id.org/roar#PersonObservation
 <https://w3id.org/roar#PersonObservation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Observation> .
+<https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Person> .
 <https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#comment> "A PersonObservation is a person that can be observed in a `roar:Document`."@en .
 <https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#label> "PersonObservation"@en .
 # 

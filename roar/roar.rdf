@@ -10,7 +10,7 @@
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:vann="http://purl.org/vocab/vann/">
-    <owl:Ontology rdf:about="https://w3id.org/roar#">
+    <owl:Ontology rdf:about="https://w3id.org/roar">
         <dc:title xml:lang="en">Reconstructions and Observations in Archival Resources</dc:title>
         <vann:preferredNamespacePrefix>roar</vann:preferredNamespacePrefix>
         <vann:preferredNamespaceUri>https://w3id.org/roar#</vann:preferredNamespaceUri>
@@ -389,6 +389,18 @@ Example:
     
 
 
+    <!-- https://w3id.org/roar#locationInDocument -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/roar#locationInDocument">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/roar#Observation"/>
+        <rdfs:comment xml:lang="en">The locationInDocument property can hold any location reference relative to the Document an Observation is in. This can be used to indicate a location in the source, even when the source has not yet been digitized (then a roar:onScan can be used).</rdfs:comment>
+        <rdfs:label xml:lang="en">locationInDocument</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://w3id.org/roar#onScan -->
 
 
@@ -677,6 +689,7 @@ If the source that you are describing is not digitised or is not available as UR
 
 
     <owl:Class rdf:about="https://w3id.org/roar#LocationObservation">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Location"/>
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Observation"/>
         <rdfs:comment xml:lang="en">A LocationObservation is a location that can be observed in a `roar:Document`.</rdfs:comment>
         <rdfs:label xml:lang="en">LocationObservation</rdfs:label>
@@ -748,6 +761,7 @@ If the source that you are describing is not digitised or is not available as UR
 
     <owl:Class rdf:about="https://w3id.org/roar#PersonObservation">
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Observation"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Person"/>
         <rdfs:comment xml:lang="en">A PersonObservation is a person that can be observed in a `roar:Document`.</rdfs:comment>
         <rdfs:label xml:lang="en">PersonObservation</rdfs:label>
     </owl:Class>
