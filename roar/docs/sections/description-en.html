@@ -4,7 +4,109 @@
 <p>The diagram below shows an overview of the classes and properties of the ontology.</p>
 
 <p style="text-align: center;"><img src="https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg"
-        width="100%" alt="roar-visualization" style="display: block; margin-left: auto; margin-right: auto;"></br>
+        width="100%" alt="roar-visualization" style="display: block; margin-left: auto; margin-right: auto;" />
     Visualization made with [<cite><a class=bibref href=#bib-WEBVOWL>WEBVOWL</a></cite>]</p>
+
+<h3 id="examples" class="list">Examples <span class="backlink"> back to <a href="#toc">ToC</a></span></h3>
+<h4 id="ex1" class="list">WW2 victims - Genealogie Online (Bob Coret)<span class="backlink"> back to <a
+            href="#toc">ToC</a></span></h4>
+
+<figure>
+    <figcaption>Example of Willem Hermanus (Wim) Brizee taken from <a
+            href="https://www.genealogieonline.nl/en/wo2slachtoffers/">WW2 victims</a> (<a
+            href="https://www.genealogieonline.nl/wo2slachtoffers/23.ttl">ttl</a>)</figcaption>
+    <pre>
+          <code class="lang-ttl">
+@prefix roar: &lt;https://w3id.org/roar#> .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
+@prefix pnv: &lt;https://w3id.org/pnv#> .
+@prefix bio: &lt;http://purl.org/vocab/bio/0.1/> .
+@prefix sem: &lt;http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+@prefix wo2slachtoffer: &lt;https://www.genealogieonline.nl/wo2slachtoffers/> .
+@prefix prov: &lt;http://www.w3.org/ns/prov#> .
+
+&lt;go:595_I000342> 
+a roar:PersonReconstruction ;
+rdfs:label "Willem Hermanus Brizee" ;
+pnv:hasName [
+    a pnv:PersonName ;
+    pnv:givenName "Willem Hermanus" ;
+    pnv:surname "Brizee" ;
+    pnv:literalName "Willem Hermanus Brizee"
+] ;
+bio:birth [
+    a bio:Birth ;
+    bio:principal &lt;go:595_I000342> ;
+    bio:place &lt;http://sws.geonames.org/2747373/> ;
+    sem:hasTimeStamp "1914-06-14"^^xsd:date
+] ;
+bio:death [
+    a bio:Death ;
+    bio:principal &lt;go:595_I000342> ;
+    sem:hasTimeStamp "1945-05-03"^^xsd:date ;
+    bio:place &lt;https://data.niod.nl/WO2_Thesaurus/kampen/3697>
+] ;
+roar:documentedIn &lt;https://www.genealogieonline.nl/595/I000342> .
+
+&lt;aa:3772230_222866> 
+a roar:PersonObservation ;
+rdfs:label "Willem Hermanus Brizee" ;
+pnv:hasName [
+    a pnv:PersonName ;
+    pnv:givenName "Willem Hermanus" ;
+    pnv:surname "Brizee" ;
+    pnv:literalName "Willem Hermanus Brizee"
+] ;
+roar:documentedIn &lt;https://collections.arolsen-archives.org/en/search/people/3772230/?p=1&amp;s_lastName=asc> .
+
+&lt;neug:400674> 
+a roar:PersonObservation ;
+rdfs:label "Willem Hermanus Brizee" ;
+pnv:hasName [
+    a pnv:PersonName ;
+    pnv:givenName "Willem Hermanus" ;
+    pnv:surname "Brizee" ;
+    pnv:literalName "Willem Hermanus Brizee"
+] ;
+roar:documentedIn &lt;https://monument.vriendenkringneuengamme.nl/person/400674/genealogieonline> .
+
+&lt;ogs:225645> 
+a roar:PersonObservation ;
+rdfs:label "Willem Hermanus Brizee" ;
+pnv:hasName [
+    a pnv:PersonName ;
+    pnv:givenName "Willem Hermanus" ;
+    pnv:surname "Brizee" ;
+    pnv:literalName "Willem Hermanus Brizee"
+] ;
+roar:documentedIn &lt;https://www.oorlogsgravenstichting.nl/persoon/225645/genealogieonline> .
+
+wo2slachtoffer:23 
+a roar:PersonReconstruction ;
+rdfs:label "Willem Hermanus Brizee" ;
+pnv:hasName [
+    a pnv:PersonName ;
+    pnv:givenName "Willem Hermanus" ;
+    pnv:surname "Brizee" ;
+    pnv:literalName "Willem Hermanus Brizee"
+] ;
+bio:birth [
+    a bio:Birth ;
+    bio:principal wo2slachtoffer:23 ;
+    bio:place &lt;http://sws.geonames.org/2747373/> ;
+    sem:hasTimeStamp "1914-06-14"^^xsd:date
+] ;
+bio:death [
+    a bio:Death ;
+    bio:principal wo2slachtoffer:23 ;
+    sem:hasTimeStamp "1945-05-03"^^xsd:date ;
+    bio:place &lt;https://data.niod.nl/WO2_Thesaurus/kampen/3697>
+] ;
+prov:wasDerivedFrom &lt;go:595_I000342>, &lt;aa:3772230_222866>, &lt;neug:400674>, &lt;ogs:225645> .
+          </code>
+        </pre>
+</figure>
+
 
 </html>
