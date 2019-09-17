@@ -11,11 +11,13 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:vann="http://purl.org/vocab/vann/">
     <owl:Ontology rdf:about="https://w3id.org/roar">
+        <owl:versionIRI rdf:resource="https://w3id.org/roar/0.1"/>
         <dc:title xml:lang="en">Reconstructions and Observations in Archival Resources</dc:title>
         <vann:preferredNamespacePrefix>roar</vann:preferredNamespacePrefix>
         <vann:preferredNamespaceUri>https://w3id.org/roar#</vann:preferredNamespaceUri>
         <rdfs:comment xml:lang="en">Ontology to describe person, location etc. observations in archival resources. One or multiple observations can be bundled into a reconstruction that combines complementary (or sometimes conflicting) information from the observation(s) so that a single entity is reconstructed out of several entity observations from one or multiple sources.</rdfs:comment>
         <rdfs:label xml:lang="en">Reconstructions and Observations in Archival Resources</rdfs:label>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</owl:versionInfo>
         <foaf:depiction rdf:resource="https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg"/>
         <foaf:logo rdf:resource="https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-logo.png"/>
     </owl:Ontology>
@@ -293,7 +295,7 @@ It is good practise to also specify the activity in which the derivation was mad
 
 
     <owl:ObjectProperty rdf:about="https://w3id.org/roar#documentedIn">
-        <rdfs:domain rdf:resource="https://w3id.org/roar#Observation"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Entity"/>
         <rdfs:range rdf:resource="https://w3id.org/roar#Document"/>
         <rdfs:comment xml:lang="en">Refers to the Document (source, act, legislation etc.) in which the Observation is made. It is recommended to point to a resource (URI) provided by some institute/archive that hold key information on this source. You are, however, free to fill `roar:Document` with additional information.</rdfs:comment>
         <rdfs:label xml:lang="en">documentedIn</rdfs:label>
@@ -689,7 +691,6 @@ If the source that you are describing is not digitised or is not available as UR
 
 
     <owl:Class rdf:about="https://w3id.org/roar#LocationObservation">
-        <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Location"/>
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Observation"/>
         <rdfs:comment xml:lang="en">A LocationObservation is a location that can be observed in a `roar:Document`.</rdfs:comment>
         <rdfs:label xml:lang="en">LocationObservation</rdfs:label>
@@ -761,7 +762,6 @@ If the source that you are describing is not digitised or is not available as UR
 
     <owl:Class rdf:about="https://w3id.org/roar#PersonObservation">
         <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Observation"/>
-        <rdfs:subClassOf rdf:resource="https://w3id.org/roar#Person"/>
         <rdfs:comment xml:lang="en">A PersonObservation is a person that can be observed in a `roar:Document`.</rdfs:comment>
         <rdfs:label xml:lang="en">PersonObservation</rdfs:label>
     </owl:Class>

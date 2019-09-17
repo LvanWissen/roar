@@ -1,9 +1,11 @@
 <https://w3id.org/roar> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/roar> <http://www.w3.org/2002/07/owl#versionIRI> <https://w3id.org/roar/0.1> .
 <https://w3id.org/roar> <http://purl.org/dc/elements/1.1/title> "Reconstructions and Observations in Archival Resources"@en .
 <https://w3id.org/roar> <http://purl.org/vocab/vann/preferredNamespacePrefix> "roar" .
 <https://w3id.org/roar> <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/roar#" .
 <https://w3id.org/roar> <http://www.w3.org/2000/01/rdf-schema#comment> "Ontology to describe person, location etc. observations in archival resources. One or multiple observations can be bundled into a reconstruction that combines complementary (or sometimes conflicting) information from the observation(s) so that a single entity is reconstructed out of several entity observations from one or multiple sources."@en .
 <https://w3id.org/roar> <http://www.w3.org/2000/01/rdf-schema#label> "Reconstructions and Observations in Archival Resources"@en .
+<https://w3id.org/roar> <http://www.w3.org/2002/07/owl#versionInfo> "0.1"^^<http://www.w3.org/2001/XMLSchema#decimal> .
 <https://w3id.org/roar> <http://xmlns.com/foaf/0.1/depiction> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg> .
 <https://w3id.org/roar> <http://xmlns.com/foaf/0.1/logo> <https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-logo.png> .
 # 
@@ -122,7 +124,7 @@
 # 
 # https://w3id.org/roar#documentedIn
 <https://w3id.org/roar#documentedIn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<https://w3id.org/roar#documentedIn> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/roar#Observation> .
+<https://w3id.org/roar#documentedIn> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/prov#Entity> .
 <https://w3id.org/roar#documentedIn> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/roar#Document> .
 <https://w3id.org/roar#documentedIn> <http://www.w3.org/2000/01/rdf-schema#comment> "Refers to the Document (source, act, legislation etc.) in which the Observation is made. It is recommended to point to a resource (URI) provided by some institute/archive that hold key information on this source. You are, however, free to fill `roar:Document` with additional information."@en .
 <https://w3id.org/roar#documentedIn> <http://www.w3.org/2000/01/rdf-schema#label> "documentedIn"@en .
@@ -313,7 +315,6 @@ _:genid8 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#P
 # 
 # https://w3id.org/roar#LocationObservation
 <https://w3id.org/roar#LocationObservation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Location> .
 <https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Observation> .
 <https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#comment> "A LocationObservation is a location that can be observed in a `roar:Document`."@en .
 <https://w3id.org/roar#LocationObservation> <http://www.w3.org/2000/01/rdf-schema#label> "LocationObservation"@en .
@@ -357,7 +358,6 @@ _:genid12 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/roar#
 # https://w3id.org/roar#PersonObservation
 <https://w3id.org/roar#PersonObservation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Observation> .
-<https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/roar#Person> .
 <https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#comment> "A PersonObservation is a person that can be observed in a `roar:Document`."@en .
 <https://w3id.org/roar#PersonObservation> <http://www.w3.org/2000/01/rdf-schema#label> "PersonObservation"@en .
 # 

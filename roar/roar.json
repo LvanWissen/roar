@@ -494,6 +494,13 @@
     "@language" : "en",
     "@value" : "Reconstructions and Observations in Archival Resources"
   } ],
+  "http://www.w3.org/2002/07/owl#versionIRI" : [ {
+    "@id" : "https://w3id.org/roar/0.1"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#decimal",
+    "@value" : "0.1"
+  } ],
   "http://xmlns.com/foaf/0.1/depiction" : [ {
     "@id" : "https://www.leonvanwissen.nl/vocab/roar/docs/resources/roar-graph.svg"
   } ],
@@ -556,8 +563,6 @@
     "@value" : "LocationObservation"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
-    "@id" : "https://w3id.org/roar#Location"
-  }, {
     "@id" : "https://w3id.org/roar#Observation"
   } ]
 }, {
@@ -628,8 +633,6 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://w3id.org/roar#Observation"
-  }, {
-    "@id" : "https://w3id.org/roar#Person"
   } ]
 }, {
   "@id" : "https://w3id.org/roar#PersonReconstruction",
@@ -673,7 +676,7 @@
     "@value" : "Refers to the Document (source, act, legislation etc.) in which the Observation is made. It is recommended to point to a resource (URI) provided by some institute/archive that hold key information on this source. You are, however, free to fill `roar:Document` with additional information."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
-    "@id" : "https://w3id.org/roar#Observation"
+    "@id" : "http://www.w3.org/ns/prov#Entity"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
